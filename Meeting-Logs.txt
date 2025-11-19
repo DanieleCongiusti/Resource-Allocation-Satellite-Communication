@@ -1,0 +1,51 @@
+[2025-11-19]
+- Determined the: 
+	- "Objective" of the project 
+	- "Indeces" to measure 
+	- rough "Model" of the system 
+
+- For next time: 
+	- Determine the assumptions on 
+		- Time Propagation
+		- How to transmit each packet: "One time transmission" || "Gradual transmission"
+
+	- Begin implementing each module 
+		- *Terminal*: 
+			- Data Structure of "Terminal"
+			- Data Structure of "Queue" to save packets 
+			- Develop "Routines" 
+				- Generating Packets of size S every T time: 
+					-> Inserting in Queue 
+					---
+					-> Collect Statistical Data after each "New Packet": 
+						- Packets Discarded = Packets Generated when Queue Full 
+				
+				- Transmission/Communication: 
+					(AFTER HAVING DETERMINED THE ASSUMPTION ON "How to transmit each packet)
+					-> Sending B every "Time Frame" 
+					-> Receiving Ok/No (after Sending B) 
+					-> Extracting and Transmitting Packet with S_i < M-S_(i-1)
+					---	
+					-> Collect Statistical Data at end of each "Time Frame":
+						//- Packets Sent (either here or at the base station) 
+						- Queue Length = Packets Remaining in queue
+	
+
+		- *Packets* 
+			- Data Structure for B 		(T_i -> BS)
+			- ... for Ok/No			(BS -> T_i) 
+			- ... for transmitting M Bytes 	(T_i -> BS) 
+
+		- *Base Station* 
+			- Data Structure of "BS" (mainly the Schedule Slots counter)
+			- Routine: 
+				-> Receive B_i from all T_i 
+				-> Sort all B_i
+				-> Decrement B_i from "Schedule" -> Send Ok to T_i of such B_i
+				-> Receive Packets from T_i
+				---
+				-> Collect Statistical Data:
+					- Packets Received (either here or at the terminals) 
+					
+				
+			
