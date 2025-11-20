@@ -29,8 +29,8 @@
 					-> Collect Statistical Data at end of each "Time Frame":
 						//- Packets Sent (either here or at the base station) 
 						- Queue Length = Packets Remaining in queue
-	
 
+	
 		- *Packets* 
 			- Data Structure for B 		(T_i -> BS)
 			- ... for Ok/No			(BS -> T_i) 
@@ -48,8 +48,37 @@
 					- Packets Received (either here or at the terminals) 
 					
 
-
 Question to professor about time of propagation and time delay: We don't need to model it and we can make assumption to be constant or zero, because we have to focus non our objective that is measuring performance of the allocation of time frame scheduling
+-------------------------------------------------
+[2025-11-20]
+- Wrote the NED files to establish the Model of the system 
+	- Terminals 
+	- Satellite 
+	- GS
+
+	- Network with all three components 
+
+- Resume from "Factors" and decide who implements which modules 
+	- Factors: just add the K to the Terminal NED file as a Parameter
+-------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 				
 			
