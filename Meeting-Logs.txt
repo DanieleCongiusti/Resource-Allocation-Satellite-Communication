@@ -60,6 +60,7 @@ Question to professor about time of propagation and time delay: We don't need to
 
 - Resume from "Factors" and decide who implements which modules 
 	- Factors: just add the K to the Terminal NED file as a Parameter
+-------------------------------------------------
 
 
 
