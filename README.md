@@ -1,32 +1,48 @@
 # Resource-Allocation-Satellite-Communication
 
-This repository created for supporting developing of project assigned to my group for course Performance Evaluation of Computer Systems and Networks. Group members: Daniele Congiusti, Iacopo Massei and Giorgio Charles Sorrentini
+This repository was created to support the development of the project assigned to my group for the course \*\*Performance Evaluation of Computer Systems and Networks\*\*.
 
 
 
+\*\*Group members:\*\*  
 
+\- Daniele Congiusti  
 
-Workflow:
+\- Iacopo Massei  
 
-
-
-* objective of simulator - \[x]
-* KPI (Key Performance Index) to avaluate - \[x]
-* model -\[]
-* valuation: model represents correctly what I want do replicate -\[]
-* factors -\[]
-* tool -\[]
-* implementation -\[]
-* verify the code -\[]
-* calibrate your simulator: remember we want to simulate a system -\[]
-* experiment design -\[]
-* run -\[]
+\- Giorgio Charles Sorrentini  
 
 
 
-\- \[ ] Elemento non selezionato
+---
 
-\- \[x] Elemento selezionato
+
+
+\## Workflow
+
+
+
+\- \[x] Objective of simulator  
+
+\- \[x] KPI (Key Performance Index) to evaluate  
+
+\- \[ ] Model  
+
+\- \[ ] Evaluation: the model represents correctly what I want to replicate  
+
+\- \[ ] Factors  
+
+\- \[ ] Tool  
+
+\- \[ ] Implementation  
+
+\- \[ ] Verify the code  
+
+\- \[ ] Calibrate your simulator: remember we want to simulate a system  
+
+\- \[ ] Experiment design  
+
+\- \[ ] Run  
 
 
 
