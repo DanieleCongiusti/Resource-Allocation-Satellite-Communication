@@ -21,3 +21,12 @@ Workflow:
 * calibrate your simulator: remember we want to simulate a system -\[]
 * experiment design -\[]
 * run -\[]
+
+
+
+\- \[ ] Elemento non selezionato
+
+\- \[x] Elemento selezionato
+
+
+
