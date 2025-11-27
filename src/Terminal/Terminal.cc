@@ -13,6 +13,18 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
+// declaration of cpacket with: B, gate_index, boolean grant
+// declaration of cpacket with S bytes
+
+// T e S parameters NED file
+// Every T (expon. distributed), using scheduleAt(), message to itself (timer) to generate a packet of size S (uniform. distributed)
+// Queue, that is a list, to accumulate the packets with a FIFO policy -> header file
+// while (simTime = k*80ms && list is not empty) -> generate B (uniform distributed i = [1,4] and B = 2^i)
+// send to Satellite with index of the terminal based on the index gate and boolean grant
+// ... (waiting for grant)
+// if (grant) transmits M bytes, based on B value: B=2->M=100*K^0, B=4->M=100*K^1, B=8->M=100*K^2, B=16->M=100*K^3
+// read S of the packet (FIFO policy), while(M >= S && list is not empty), extract, M -= S and send to Satellite, otherwise finish
+
 #include "../Terminal/Terminal.h"
 
 Define_Module(Terminal);

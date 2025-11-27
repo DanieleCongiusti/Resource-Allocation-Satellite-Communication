@@ -13,6 +13,10 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
+
+// if packet from terminal, send to GS
+// if packet from GS, analyze gate_index and send to the gate
+
 #include "../Satellite/Satellite.h"
 
 Define_Module(Satellite);
