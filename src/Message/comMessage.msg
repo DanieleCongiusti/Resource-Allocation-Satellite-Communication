@@ -30,7 +30,7 @@ message ComMessage {
     //parameter to allocate slots at ground station and tells me how much byte I have to send
     int B;
     //parameter set by the terminal that represent the gate at satellite
-    int gate_index;
+    int gateIndex;
     //parameter set by GS to grant communication permission to the terminal that has requested for 
     bool grant;
 }

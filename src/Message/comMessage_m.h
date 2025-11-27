@@ -25,7 +25,7 @@ class ComMessage;
  *     //parameter to allocate slots at ground station and tells me how much byte I have to send
  *     int B;
  *     //parameter set by the terminal that represent the gate at satellite
- *     int gate_index;
+ *     int gateIndex;
  *     //parameter set by GS to grant communication permission to the terminal that has requested for 
  *     bool grant;
  * }
@@ -35,7 +35,7 @@ class ComMessage : public ::omnetpp::cMessage
 {
   protected:
     int B = 0;
-    int gate_index = 0;
+    int gateIndex = 0;
     bool grant = false;
 
   private:
@@ -56,8 +56,8 @@ class ComMessage : public ::omnetpp::cMessage
     virtual int getB() const;
     virtual void setB(int B);
 
-    virtual int getGate_index() const;
-    virtual void setGate_index(int gate_index);
+    virtual int getGateIndex() const;
+    virtual void setGateIndex(int gateIndex);
 
     virtual bool getGrant() const;
     virtual void setGrant(bool grant);

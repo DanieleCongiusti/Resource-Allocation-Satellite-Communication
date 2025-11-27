@@ -176,7 +176,7 @@ ComMessage& ComMessage::operator=(const ComMessage& other)
 void ComMessage::copy(const ComMessage& other)
 {
     this->B = other.B;
-    this->gate_index = other.gate_index;
+    this->gateIndex = other.gateIndex;
     this->grant = other.grant;
 }
 
@@ -184,7 +184,7 @@ void ComMessage::parsimPack(omnetpp::cCommBuffer *b) const
 {
     ::omnetpp::cMessage::parsimPack(b);
     doParsimPacking(b,this->B);
-    doParsimPacking(b,this->gate_index);
+    doParsimPacking(b,this->gateIndex);
     doParsimPacking(b,this->grant);
 }
 
@@ -192,7 +192,7 @@ void ComMessage::parsimUnpack(omnetpp::cCommBuffer *b)
 {
     ::omnetpp::cMessage::parsimUnpack(b);
     doParsimUnpacking(b,this->B);
-    doParsimUnpacking(b,this->gate_index);
+    doParsimUnpacking(b,this->gateIndex);
     doParsimUnpacking(b,this->grant);
 }
 
@@ -206,14 +206,14 @@ void ComMessage::setB(int B)
     this->B = B;
 }
 
-int ComMessage::getGate_index() const
+int ComMessage::getGateIndex() const
 {
-    return this->gate_index;
+    return this->gateIndex;
 }
 
-void ComMessage::setGate_index(int gate_index)
+void ComMessage::setGateIndex(int gateIndex)
 {
-    this->gate_index = gate_index;
+    this->gateIndex = gateIndex;
 }
 
 bool ComMessage::getGrant() const
@@ -232,7 +232,7 @@ class ComMessageDescriptor : public omnetpp::cClassDescriptor
     mutable const char **propertyNames;
     enum FieldConstants {
         FIELD_B,
-        FIELD_gate_index,
+        FIELD_gateIndex,
         FIELD_grant,
     };
   public:
@@ -313,7 +313,7 @@ unsigned int ComMessageDescriptor::getFieldTypeFlags(int field) const
     }
     static unsigned int fieldTypeFlags[] = {
         FD_ISEDITABLE,    // FIELD_B
-        FD_ISEDITABLE,    // FIELD_gate_index
+        FD_ISEDITABLE,    // FIELD_gateIndex
         FD_ISEDITABLE,    // FIELD_grant
     };
     return (field >= 0 && field < 3) ? fieldTypeFlags[field] : 0;
@@ -329,7 +329,7 @@ const char *ComMessageDescriptor::getFieldName(int field) const
     }
     static const char *fieldNames[] = {
         "B",
-        "gate_index",
+        "gateIndex",
         "grant",
     };
     return (field >= 0 && field < 3) ? fieldNames[field] : nullptr;
@@ -340,7 +340,7 @@ int ComMessageDescriptor::findField(const char *fieldName) const
     omnetpp::cClassDescriptor *base = getBaseClassDescriptor();
     int baseIndex = base ? base->getFieldCount() : 0;
     if (strcmp(fieldName, "B") == 0) return baseIndex + 0;
-    if (strcmp(fieldName, "gate_index") == 0) return baseIndex + 1;
+    if (strcmp(fieldName, "gateIndex") == 0) return baseIndex + 1;
     if (strcmp(fieldName, "grant") == 0) return baseIndex + 2;
     return base ? base->findField(fieldName) : -1;
 }
@@ -355,7 +355,7 @@ const char *ComMessageDescriptor::getFieldTypeString(int field) const
     }
     static const char *fieldTypeStrings[] = {
         "int",    // FIELD_B
-        "int",    // FIELD_gate_index
+        "int",    // FIELD_gateIndex
         "bool",    // FIELD_grant
     };
     return (field >= 0 && field < 3) ? fieldTypeStrings[field] : nullptr;
@@ -442,7 +442,7 @@ std::string ComMessageDescriptor::getFieldValueAsString(omnetpp::any_ptr object,
     ComMessage *pp = omnetpp::fromAnyPtr<ComMessage>(object); (void)pp;
     switch (field) {
         case FIELD_B: return long2string(pp->getB());
-        case FIELD_gate_index: return long2string(pp->getGate_index());
+        case FIELD_gateIndex: return long2string(pp->getGateIndex());
         case FIELD_grant: return bool2string(pp->getGrant());
         default: return "";
     }
@@ -461,7 +461,7 @@ void ComMessageDescriptor::setFieldValueAsString(omnetpp::any_ptr object, int fi
     ComMessage *pp = omnetpp::fromAnyPtr<ComMessage>(object); (void)pp;
     switch (field) {
         case FIELD_B: pp->setB(string2long(value)); break;
-        case FIELD_gate_index: pp->setGate_index(string2long(value)); break;
+        case FIELD_gateIndex: pp->setGateIndex(string2long(value)); break;
         case FIELD_grant: pp->setGrant(string2bool(value)); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'ComMessage'", field);
     }
@@ -478,7 +478,7 @@ omnetpp::cValue ComMessageDescriptor::getFieldValue(omnetpp::any_ptr object, int
     ComMessage *pp = omnetpp::fromAnyPtr<ComMessage>(object); (void)pp;
     switch (field) {
         case FIELD_B: return pp->getB();
-        case FIELD_gate_index: return pp->getGate_index();
+        case FIELD_gateIndex: return pp->getGateIndex();
         case FIELD_grant: return pp->getGrant();
         default: throw omnetpp::cRuntimeError("Cannot return field %d of class 'ComMessage' as cValue -- field index out of range?", field);
     }
@@ -497,7 +497,7 @@ void ComMessageDescriptor::setFieldValue(omnetpp::any_ptr object, int field, int
     ComMessage *pp = omnetpp::fromAnyPtr<ComMessage>(object); (void)pp;
     switch (field) {
         case FIELD_B: pp->setB(omnetpp::checked_int_cast<int>(value.intValue())); break;
-        case FIELD_gate_index: pp->setGate_index(omnetpp::checked_int_cast<int>(value.intValue())); break;
+        case FIELD_gateIndex: pp->setGateIndex(omnetpp::checked_int_cast<int>(value.intValue())); break;
         case FIELD_grant: pp->setGrant(value.boolValue()); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'ComMessage'", field);
     }
