@@ -11,7 +11,13 @@
 // 
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see http://www.gnu.org/licenses/.
-// 
+//
+
+// schedule, as a counter of 64 slots
+// receiving packets from Satellite, must order by B desc -> while (schedule > 0) schedule -= B (desc. order) + grant=true + send back
+// ... (waiting for packets)
+// data anlalysis (signal and statistics)
+
 
 #include "../GS/GS.h"
 
