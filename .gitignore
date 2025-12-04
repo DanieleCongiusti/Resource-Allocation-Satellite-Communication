@@ -1,3 +1,5 @@
 *.o
 *.d
 /out/*
+.settings/language.settings.xml
+src/Resource_Allocator
