@@ -12,6 +12,7 @@
 
 #include "../Terminal/Terminal.h"
 #include <cmath>
+using namespace std;
 
 Define_Module(Terminal);
 
@@ -23,7 +24,7 @@ void Terminal::generateGrant(ComMessage* msg) {
     } 
 
     // IF NOT EMPTY: Pick a number among 2, 4, 8, 16 to set B with 
-    B = pow(2,par("B"));
+    B = pow(2,(int)par("B"));
     msg->setB(B); 
 }
 
@@ -41,9 +42,6 @@ Terminal::~Terminal()
         delete m;
         delete msg_queue;
     }
-
-    // Delete grant message
-    if (msg_grant)         cancelAndDelete(msg_grant); 
 }
 
 void Terminal::initialize()
@@ -51,7 +49,7 @@ void Terminal::initialize()
     //// FIELDS 
     // Timers 
     t_msg_to_q = new cMessage("contentMessage_timer");
-    t_time_frame = new cMessage("timeframe_timer"); 
+    t_time_frame = new cMessage("timeframe_timer");
     t_tx = new cMessage("transmission");
     
     // Message Queue
@@ -65,17 +63,14 @@ void Terminal::initialize()
     scheduleAt(simTime()+par("T"), t_msg_to_q);
     
     // "Protocol Loop (at every Time Frame)"
-    scheduleAt(simTime() + par("timeFrame_duration"), t_time_frame); 
-    msg_grant = new ComMessage("grant_request"); 
-    generateGrant(msg_grant);   // B is defined
-    send(msg_grant, "out");
+    scheduleAt(simTime() + par("timeFrame_duration"), t_time_frame);
 }
 
 void Terminal::handleMessage(cMessage *msg)
 {
     // [Create Packets]
     if(msg == t_msg_to_q) {
-        ContentMessage* new_msg = new ContentMessage();
+        ContentMessage* new_msg = new ContentMessage("bytes");
         new_msg->setSize(par("S"));
         msg_queue->addMessage(new_msg);
         EV_INFO << "Added New Message of Size: " << new_msg->getSize() << "\n";
@@ -86,14 +81,15 @@ void Terminal::handleMessage(cMessage *msg)
     // [Start of a New Time Frame (T)] 
     else if (msg == t_time_frame) {
         // Delete any previous Transmission Timer coming from the previous Time Frame
-        if (t_tx)   cancelAndDelete(t_tx);  
+        if (t_tx->isScheduled())  cancelEvent(t_tx);
         
         // Restart Timer for Time Frame as soon as possible
         scheduleAt(simTime() + par("timeFrame_duration"), t_time_frame);    
 
         // 1. Create ComMessage -> Save and Send B to GS (NB: call message "grant_request") 
+        ComMessage* msg_grant = new ComMessage("grant_request");
         generateGrant(msg_grant);   // B value saved
-        send(msg_grant, "out");     // B value sent
+        send(msg_grant, "t_io$o");     // B value sent
         EV_INFO << "Terminal " << this->getName() << " has sent Grant Request to GS w/ value B = " << msg_grant->getB() << "\n"; 
     }
 
@@ -104,7 +100,7 @@ void Terminal::handleMessage(cMessage *msg)
         if (!comMsg->getGrant()) return;
 
         // 2.b OTHERWISE => Compute M and Start Transmission Timer (t_tx), 
-        M = floor(100 * pow(par("K"), log2(B) - 1));      // M = 100*K^(log_2(B)-1)
+        M = floor(100 * pow((int)par("K"), log2(B) - 1));      // M = 100*K^(log_2(B)-1)
 
         scheduleAt(simTime(), t_tx);    // Begin Transmission Timer 
     }
@@ -119,21 +115,22 @@ void Terminal::handleMessage(cMessage *msg)
             //      the "scheduleAt()" takes as the delay time directly simTime() meaning that the module 
             //      receives the message immediately 
 
-            ContentMessage* byte_msg = new ContentMessage("bytes"); 
+            ContentMessage* byte_msg;
             
             // If there are still messages to send, extract them
-            // OTHERWISE stop the routine (return)
-            if (!msg_queue->getLast())
+            // OTHERWISE stop the rt_io$oine (return)
+            if (msg_queue->getLast())
                 byte_msg = msg_queue->extractMessage(); 
             else 
-                return; 
+                return;
 
             // If max amount M hasn't reached, send them 
-            // OTHERWISE stop the routine (return)
+            // OTHERWISE stop the rt_io$oine (return)
             int size = byte_msg->getSize();
             if (M > size) {
                 M -= size;
-                send(byte_msg, "out");  
+                send(byte_msg, "t_io$o");
+                EV_INFO << "Sent message." << endl;
             }
             else 
                 return; 

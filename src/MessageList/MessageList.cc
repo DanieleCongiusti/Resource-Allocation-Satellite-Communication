@@ -52,7 +52,10 @@ ContentMessage* MessageList::extractMessage(){
         return targetMessage;
     }
     else
+    {
+        last = nullptr;
         return nullptr;
+    }
 }
 
 scheduledMessage* MessageList::getLast(){

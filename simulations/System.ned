@@ -9,7 +9,7 @@ network System{
 	parameters:
 	    //number of Terminals
 	    int N;
-	    int K; 
+	    int K;
 
  	submodules:
  	    	gs: GS{
@@ -21,6 +21,8 @@ network System{
  			};
  			
  			t[N]: Terminal{
+ 			    parameters:
+ 			        K = parent.K;
  			};
  	
  	connections:

@@ -30,7 +30,6 @@ class Terminal : public cSimpleModule
     cMessage* t_time_frame = nullptr;
 
     int B = 0; 
-    ComMessage* msg_grant = nullptr; 
     
     int M = 0; 
     cMessage* t_tx = nullptr;

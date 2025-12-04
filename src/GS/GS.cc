@@ -42,6 +42,7 @@ void GS::handleMessage(cMessage *msg) {
     }
     else
     {
+        EV_INFO << "Message: " << msg->getName() << endl;
         throw cRuntimeError("Unrecognized message type. Abort");
     }
 }
