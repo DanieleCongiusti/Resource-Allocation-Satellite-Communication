@@ -69,7 +69,7 @@ void GS::handleComMessage(cMessage *msg) {
                 scheduler -= B;
                 send_msg->setGrant(true);
             }
-            send(send_msg, "io_gs");
+            send(send_msg, "gs_io$o");
             rcv_B.pop();
         }
         terminal_counter = par("terminal_counter");

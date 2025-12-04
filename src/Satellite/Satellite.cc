@@ -30,11 +30,11 @@ void Satellite::initialize()
 void Satellite::handleMessage(cMessage *msg)
 {
     //check if message comes from GS
-    if(strcmp(msg->getArrivalGate()->getName(),"s_iogs")==0){
+    if(strcmp(msg->getArrivalGate()->getName(),"s_iogs$i")==0){
         //check for destination terminal
         //check the gateIndex if it is comMessage
         ComMessage *comMsg = check_and_cast<ComMessage*>(msg);
-        send(comMsg,"s_iot",comMsg->getGateIndex());
+        send(comMsg,"s_iot$o",comMsg->getGateIndex());
     }
     else{
         //message from a terminal
@@ -42,10 +42,10 @@ void Satellite::handleMessage(cMessage *msg)
         if(msg->isName("grant_request")){
             ComMessage *comMsg=check_and_cast<ComMessage*>(msg);
             comMsg->setGateIndex(msg->getArrivalGate()->getIndex());
-            send(comMsg,"s_iogs");
+            send(comMsg,"s_iogs$o");
         }
         else
-            send(msg,"s_iogs"); //we're dealing with a ContMessage that terminal is sending
+            send(msg,"s_iogs$o"); //we're dealing with a ContMessage that terminal is sending
     }
 
 }
