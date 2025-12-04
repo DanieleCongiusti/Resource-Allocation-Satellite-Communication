@@ -11,18 +11,19 @@
 // read S of the packet (FIFO policy), while(M >= S && list is not empty), extract, M -= S and send to Satellite, otherwise finish
 
 #include "../Terminal/Terminal.h"
+#include <cmath>
 
 Define_Module(Terminal);
 
 void Terminal::generateGrant(ComMessage* msg) {
     // Check if Queue is Empty
-    if (!msg_queue->last) {
+    if (!msg_queue->getLast()) {
         msg->setB(-1);
         return;  
     } 
 
     // IF NOT EMPTY: Pick a number among 2, 4, 8, 16 to set B with 
-    B = 2^par("B"); 
+    B = pow(2,par("B"));
     msg->setB(B); 
 }
 
@@ -99,10 +100,11 @@ void Terminal::handleMessage(cMessage *msg)
     // [Receive 'Grant' (GS)]  
     else if (msg->isName("grant_request")) {
         // 2.a IF Grant is NOT given => DO NOTHING (return)
-        if (!msg->getGrant()) return; 
+        ComMessage *comMsg=check_and_cast<ComMessage*>(msg);
+        if (!comMsg->getGrant()) return;
 
         // 2.b OTHERWISE => Compute M and Start Transmission Timer (t_tx), 
-        M = floor(100 * pow(par("K"), logbase(B, 2) - 1));      // M = 100*K^(log_2(B)-1)
+        M = floor(100 * pow(par("K"), log2(B) - 1));      // M = 100*K^(log_2(B)-1)
 
         scheduleAt(simTime(), t_tx);    // Begin Transmission Timer 
     }
@@ -121,14 +123,14 @@ void Terminal::handleMessage(cMessage *msg)
             
             // If there are still messages to send, extract them
             // OTHERWISE stop the routine (return)
-            if (!msg_queue->last) 
+            if (!msg_queue->getLast())
                 byte_msg = msg_queue->extractMessage(); 
             else 
                 return; 
 
             // If max amount M hasn't reached, send them 
             // OTHERWISE stop the routine (return)
-            int size = byte_msg->getSize()
+            int size = byte_msg->getSize();
             if (M > size) {
                 M -= size;
                 send(byte_msg, "out");  
