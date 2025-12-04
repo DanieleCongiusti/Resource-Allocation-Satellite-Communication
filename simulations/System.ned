@@ -9,6 +9,7 @@ network System{
 	parameters:
 	    //number of Terminals
 	    int N;
+	    int K; 
 
  	submodules:
  	    	gs: GS{
