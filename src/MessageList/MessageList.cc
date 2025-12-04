@@ -57,4 +57,3 @@ ContentMessage* MessageList::extractMessage(){
 
 
 
-

@@ -17,17 +17,18 @@
 #define MESSAGELIST_MESSAGELIST_H_
 
 #include "../Message/contentMessage_m.h"
+#include "../Message/comMessage_m.h"
 
-struct scheduledMessage{
+struct scheduledMessage {
     ContentMessage *content;
     scheduledMessage *next;
 
-    scheduledMessage(ContentMessage* msg_content){
+    scheduledMessage(ContentMessage *msg_content) {
         content = msg_content;
         next = nullptr;
     }
 
-    ~scheduledMessage(){
+    ~scheduledMessage() {
     }
 };
 

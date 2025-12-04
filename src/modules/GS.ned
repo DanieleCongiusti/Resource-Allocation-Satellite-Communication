@@ -10,6 +10,7 @@ simple GS
 {
     parameters:
         //space for parameters
+        int terminal_counter;
 
     gates:
         inout gs_io;
