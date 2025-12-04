@@ -24,6 +24,13 @@
 
 Define_Module(GS);
 
+GS::~GS() {
+    while (!rcv_B.empty()) {
+        delete rcv_B.top();
+        rcv_B.pop();
+    }
+}
+
 void GS::initialize() {
     scheduler = par("scheduler_slots");
     terminal_counter = par("terminal_counter");
@@ -43,6 +50,7 @@ void GS::handleMessage(cMessage *msg) {
     else
     {
         EV_INFO << "Message: " << msg->getName() << endl;
+        delete msg; 
         throw cRuntimeError("Unrecognized message type. Abort");
     }
 }
@@ -58,6 +66,8 @@ void GS::handleComMessage(cMessage *msg) {
     {
         rcv_B.push(rcv_msg);
     }
+    else 
+        delete msg, rcv_msg; 
 
     if (terminal_counter == 0) { // GS received all the B values
         //Extract all messages and send grant or not
@@ -82,4 +92,5 @@ void GS::handleContMessage(cMessage *msg) {
     ContentMessage *rcv_bytes;
     rcv_bytes = check_and_cast<ContentMessage*>(msg);
     EV_INFO << "Received message of size " << rcv_bytes->getSize() << endl;
+    delete msg, rcv_bytes; 
 }

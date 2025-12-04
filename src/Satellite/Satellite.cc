@@ -24,7 +24,7 @@ Define_Module(Satellite);
 
 void Satellite::initialize()
 {
-        //NOTHING TO DO AT THE MOMENT
+        //NOTHING TO DO 
 }
 
 void Satellite::handleMessage(cMessage *msg)
@@ -34,6 +34,8 @@ void Satellite::handleMessage(cMessage *msg)
         //check for destination terminal
         //check the gateIndex if it is comMessage
         ComMessage *comMsg = check_and_cast<ComMessage*>(msg);
+        EV << "Sending to terminal index " << comMsg->getGateIndex()
+           << " (max: " << gateSize("s_iot$o") << ")" << endl;
         send(comMsg,"s_iot$o",comMsg->getGateIndex());
     }
     else{
@@ -44,8 +46,10 @@ void Satellite::handleMessage(cMessage *msg)
             comMsg->setGateIndex(msg->getArrivalGate()->getIndex());
             send(comMsg,"s_iogs$o");
         }
-        else
+        else if ("bytes")
             send(msg,"s_iogs$o"); //we're dealing with a ContMessage that terminal is sending
+        else
+            delete msg;
     }
 
 }

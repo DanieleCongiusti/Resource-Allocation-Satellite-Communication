@@ -40,7 +40,7 @@ class Terminal : public cSimpleModule
   public:
     Terminal() = default;
     virtual ~Terminal();
-
+    
   protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;

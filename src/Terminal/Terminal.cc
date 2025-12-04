@@ -24,7 +24,7 @@ void Terminal::generateGrant(ComMessage* msg) {
     } 
 
     // IF NOT EMPTY: Pick a number among 2, 4, 8, 16 to set B with 
-    B = pow(2,(int)par("B"));
+    B = pow(2,(int)par("B")); 
     msg->setB(B); 
 }
 
@@ -41,6 +41,7 @@ Terminal::~Terminal()
         while ((m = msg_queue->extractMessage()) != nullptr)
         delete m;
         delete msg_queue;
+        msg_queue = nullptr; 
     }
 }
 
@@ -66,8 +67,8 @@ void Terminal::initialize()
     scheduleAt(simTime() + par("timeFrame_duration"), t_time_frame);
 }
 
-void Terminal::handleMessage(cMessage *msg)
-{
+void Terminal::handleMessage(cMessage *msg) {
+
     // [Create Packets]
     if(msg == t_msg_to_q) {
         ContentMessage* new_msg = new ContentMessage("bytes");
@@ -76,6 +77,7 @@ void Terminal::handleMessage(cMessage *msg)
         EV_INFO << "Added New Message of Size: " << new_msg->getSize() << "\n";
 
         scheduleAt(simTime()+par("T"), t_msg_to_q); 
+        //delete new_msg;
     }
 
     // [Start of a New Time Frame (T)] 
@@ -97,12 +99,18 @@ void Terminal::handleMessage(cMessage *msg)
     else if (msg->isName("grant_request")) {
         // 2.a IF Grant is NOT given => DO NOTHING (return)
         ComMessage *comMsg=check_and_cast<ComMessage*>(msg);
-        if (!comMsg->getGrant()) return;
+        if (!comMsg->getGrant()) {
+            //delete msg;
+            delete comMsg; 
+            return;
+        }
 
         // 2.b OTHERWISE => Compute M and Start Transmission Timer (t_tx), 
         M = floor(100 * pow((int)par("K"), log2(B) - 1));      // M = 100*K^(log_2(B)-1)
 
         scheduleAt(simTime(), t_tx);    // Begin Transmission Timer 
+        //delete msg;
+        delete comMsg; 
     }
 
     // [Receive "Transmission Notification" (T)]
@@ -110,34 +118,38 @@ void Terminal::handleMessage(cMessage *msg)
         // 3. Transmit as much as 100*K^(log_2(B)-1) AND until the Queue is NOT empty 
         //      (NB: call message "bytes")
     
-            // NB: DON'T USE WHILE LOOP, instead create a new section (this one) in handleMessage to handle 
-            //      the transmission of packets so that it can be interruptable; the timer is "fake" as in 
-            //      the "scheduleAt()" takes as the delay time directly simTime() meaning that the module 
-            //      receives the message immediately 
+        // NB: DON'T USE WHILE LOOP, instead create a new section (this one) in handleMessage to handle 
+        //      the transmission of packets so that it can be interruptable; the timer is "fake" as in 
+        //      the "scheduleAt()" takes as the delay time directly simTime() meaning that the module 
+        //      receives the message immediately 
 
-            ContentMessage* byte_msg;
-            
-            // If there are still messages to send, extract them
-            // OTHERWISE stop the rt_io$oine (return)
-            if (msg_queue->getLast())
-                byte_msg = msg_queue->extractMessage(); 
-            else 
-                return;
+        ContentMessage* byte_msg = nullptr; 
+        
+        // If there are still messages to send AND the amount of bytes hasn't been reached yet, extract them
+        // OTHERWISE stop the routine (return)
+        if (msg_queue->getLast() && M > 0)
+            byte_msg = msg_queue->extractMessage(); 
+        else 
+            return;
 
-            // If max amount M hasn't reached, send them 
-            // OTHERWISE stop the rt_io$oine (return)
-            int size = byte_msg->getSize();
-            if (M > size) {
-                M -= size;
-                send(byte_msg, "t_io$o");
-                EV_INFO << "Sent message." << endl;
-            }
-            else 
-                return; 
+        // If max amount M hasn't reached, send them 
+        // OTHERWISE stop the routine (return)
+        int size = byte_msg->getSize();
+        if (M >= size) {
+            M -= size;
 
-            // Resend Transmission Notification to send next packet (OR to stop routine) 
-            scheduleAt(simTime(), t_tx); 
-        }     
+            send(byte_msg, "t_io$o");
+            EV_INFO << "Sent message." << endl;
+        }
+        else {
+            // Re-insert the message back in the queue if it goes beyond the max amount
+            msg_queue->addMessage(byte_msg); 
+            return; 
+        }
 
-
+        // Resend Transmission Notification to send next packet (OR to stop routine) 
+        // Continue only if both conditions hold
+        if (M > 0 && msg_queue->getLast() != nullptr)
+            scheduleAt(simTime(), t_tx);
+    }
 }

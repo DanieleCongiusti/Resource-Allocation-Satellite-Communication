@@ -46,7 +46,11 @@ private:
     int scheduler;
     int terminal_counter;
     priority_queue<ComMessage*, vector<ComMessage*>, Comp> rcv_B;
-protected:
+
+public: 
+    virtual ~GS(); 
+
+protected:    
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
     void handleComMessage(cMessage *msg);

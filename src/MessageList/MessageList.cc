@@ -48,14 +48,14 @@ ContentMessage* MessageList::extractMessage(){
     if(msg_list){
         ContentMessage* targetMessage=msg_list->content;
         //make advance the pointer of the list for eventually next messages
-        msg_list=msg_list->next;
+        msg_list = msg_list->next;
+
+        if (!msg_list)
+            last = nullptr; 
+
         return targetMessage;
     }
-    else
-    {
-        last = nullptr;
-        return nullptr;
-    }
+    return nullptr; 
 }
 
 scheduledMessage* MessageList::getLast(){

@@ -1,0 +1,70 @@
+version 3
+run General-0-20251204-20:48:56-13161
+attr configname General
+attr datetime 20251204-20:48:56
+attr datetimef 20251204-204856
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network System
+attr processid 13161
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config network System
+config sim-time-limit 0.8s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config **.N 2
+config **.K 1000
+config num-rngs 2
+config *.t[*].a 100KiB
+config *.t[*].b 1000KiB
+config *.t[*].lambda 0.05s
+config *.t[*].rng-0 index
+config *.t[*].rng-1 index
+config *.t[*].rng-2 index
+
+par System.gs typename "\"resource_allocator.modules.GS\""
+par System.gs scheduler_slots 64
+par System.gs terminal_counter 2
+par System.st typename "\"resource_allocator.modules.Satellite\""
+par System.t[0] typename "\"resource_allocator.modules.Terminal\""
+par System.t[0] timeFrame_duration 0.08s
+attr unit s
+par System.t[0] B "intuniform(1, 4, 0)"
+par System.t[0] K parent.K
+par System.t[0] a 102400bytes
+attr unit bytes
+par System.t[0] b 1024000bytes
+attr unit bytes
+par System.t[0] lambda 0.05s
+attr unit s
+par System.t[0] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[0] T "exponential(lambda, 2)"
+attr unit s
+par System.t[1] typename "\"resource_allocator.modules.Terminal\""
+par System.t[1] timeFrame_duration 0.08s
+attr unit s
+par System.t[1] B "intuniform(1, 4, 0)"
+par System.t[1] K parent.K
+par System.t[1] a 102400bytes
+attr unit bytes
+par System.t[1] b 1024000bytes
+attr unit bytes
+par System.t[1] lambda 0.05s
+attr unit s
+par System.t[1] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[1] T "exponential(lambda, 2)"
+attr unit s
+par System typename "\"resource_allocator.simulations.System\""
+par System N 2
+par System K 1000
+
