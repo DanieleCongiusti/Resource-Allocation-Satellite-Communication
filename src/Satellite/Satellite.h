@@ -20,9 +20,7 @@
 
 using namespace omnetpp;
 
-/**
- * TODO - Generated class
- */
+
 class Satellite : public cSimpleModule
 {
   protected:

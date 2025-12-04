@@ -17,17 +17,40 @@
 #define __RESOURCE_ALLOCATOR_GS_H_
 
 #include <omnetpp.h>
+#include <queue>
+#include <vector>
+#include "../Message/comMessage_m.h"
 
 using namespace omnetpp;
+using namespace std;
 
 /**
  * TODO - Generated class
  */
-class GS : public cSimpleModule
-{
-  protected:
+
+struct Comp {
+    bool operator()(ComMessage *a, ComMessage *b) {
+        if (a->getB() < b->getB())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+};
+
+class GS: public cSimpleModule {
+private:
+    int scheduler;
+    int terminal_counter;
+    priority_queue<ComMessage*, vector<ComMessage*>, Comp> rcv_B;
+protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
+    void handleComMessage(cMessage *msg);
+    void handleContMessage(cMessage *msg);
 };
 
 #endif
