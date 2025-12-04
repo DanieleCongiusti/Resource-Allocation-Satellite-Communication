@@ -12,6 +12,8 @@ network System{
 
  	submodules:
  	    	gs: GS{
+ 	    	    parameters:
+ 	    	        terminal_counter = N;
  	    	};
  	    	
  			st: Satellite{
