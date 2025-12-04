@@ -50,6 +50,7 @@ public:
     void addMessage(ContentMessage*);
     //function to extract msg from head of list
     ContentMessage* extractMessage();
+    scheduledMessage* getLast();
 };
 
 #endif /* MESSAGELIST_MESSAGELIST_H_ */

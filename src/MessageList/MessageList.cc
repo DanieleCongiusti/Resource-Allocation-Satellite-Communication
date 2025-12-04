@@ -55,5 +55,8 @@ ContentMessage* MessageList::extractMessage(){
         return nullptr;
 }
 
+scheduledMessage* MessageList::getLast(){
+    return last;
+}
 
 
