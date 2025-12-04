@@ -66,8 +66,11 @@ void GS::handleComMessage(cMessage *msg) {
     {
         rcv_B.push(rcv_msg);
     }
-    else 
-        delete msg, rcv_msg; 
+    else
+    {
+        delete msg;
+        delete rcv_msg;
+    }
 
     if (terminal_counter == 0) { // GS received all the B values
         //Extract all messages and send grant or not
@@ -92,5 +95,6 @@ void GS::handleContMessage(cMessage *msg) {
     ContentMessage *rcv_bytes;
     rcv_bytes = check_and_cast<ContentMessage*>(msg);
     EV_INFO << "Received message of size " << rcv_bytes->getSize() << endl;
-    delete msg, rcv_bytes; 
+    delete msg;
+    delete rcv_bytes;
 }
