@@ -4,13 +4,10 @@ This repository was created to support the development of the project assigned t
 
 
 
-**Group members:**  
-
-- @DanieleCongiusti 
-
-- @iacopo00  
-
-- @NotJO0301
+**Group members:**
+- @DanieleCongiusti
+- @iacopo00
+- @NotJOO301
 
 
 
