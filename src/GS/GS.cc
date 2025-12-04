@@ -25,7 +25,7 @@
 Define_Module(GS);
 
 void GS::initialize() {
-    scheduler = 64;
+    scheduler = par("scheduler_slots");
     terminal_counter = par("terminal_counter");
 }
 
@@ -73,6 +73,7 @@ void GS::handleComMessage(cMessage *msg) {
             rcv_B.pop();
         }
         terminal_counter = par("terminal_counter");
+        scheduler = par("scheduler_slots");
     }
 }
 
