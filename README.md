@@ -5,9 +5,9 @@ This repository was created to support the development of the project assigned t
 
 
 **Group members:**
-- @DanieleCongiusti
-- @iacopo00
-- @NotJOO301
+- [Daniele Congiusti](https://github.com/DanieleCongiusti)
+- [iacopo00](https://github.com/iacopo00)
+- [NotJOO301](https://github.com/NotJOO301)
 
 
 
