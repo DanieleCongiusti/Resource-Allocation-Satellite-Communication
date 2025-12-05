@@ -76,8 +76,7 @@ void Terminal::handleMessage(cMessage *msg) {
         msg_queue->addMessage(new_msg);
         EV_INFO << "Added New Message of Size: " << new_msg->getSize() << "\n";
 
-        scheduleAt(simTime()+par("T"), t_msg_to_q); 
-        //delete new_msg;
+        scheduleAt(simTime()+par("T"), t_msg_to_q);
     }
 
     // [Start of a New Time Frame (T)] 
@@ -100,7 +99,6 @@ void Terminal::handleMessage(cMessage *msg) {
         // 2.a IF Grant is NOT given => DO NOTHING (return)
         ComMessage *comMsg=check_and_cast<ComMessage*>(msg);
         if (!comMsg->getGrant()) {
-            //delete msg;
             delete comMsg; 
             return;
         }
@@ -108,8 +106,7 @@ void Terminal::handleMessage(cMessage *msg) {
         // 2.b OTHERWISE => Compute M and Start Transmission Timer (t_tx), 
         M = floor(100 * pow((int)par("K"), log2(B) - 1));      // M = 100*K^(log_2(B)-1)
 
-        scheduleAt(simTime(), t_tx);    // Begin Transmission Timer 
-        //delete msg;
+        scheduleAt(simTime(), t_tx);    // Begin Transmission Timer
         delete comMsg; 
     }
 

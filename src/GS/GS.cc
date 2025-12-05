@@ -68,7 +68,6 @@ void GS::handleComMessage(cMessage *msg) {
     }
     else
     {
-        delete msg;
         delete rcv_msg;
     }
 
@@ -95,6 +94,5 @@ void GS::handleContMessage(cMessage *msg) {
     ContentMessage *rcv_bytes;
     rcv_bytes = check_and_cast<ContentMessage*>(msg);
     EV_INFO << "Received message of size " << rcv_bytes->getSize() << endl;
-    delete msg;
     delete rcv_bytes;
 }
