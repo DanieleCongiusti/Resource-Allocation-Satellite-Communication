@@ -22,12 +22,14 @@ MessageList::MessageList() {
 }
 
 MessageList::~MessageList() {
+
+    last=nullptr;
     //some element in
-    //while(msg_list){
-      //  scheduledMessage app = *msg_list;
-      //  msg_list=msg_list->next;
-      //  delete(app);
-    //}
+    while(msg_list){
+        scheduledMessage *app=msg_list;
+        msg_list=msg_list->next;
+        delete app;
+    }
 }
 
 void MessageList::addMessage(ContentMessage* msg){
