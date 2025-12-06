@@ -17,9 +17,6 @@ This repository was created to support the development of the project assigned t
 
 ## Workflow
 
-
-## Workflow
-
 - [x] Objective of simulator  
 - [x] KPI (Key Performance Index) to evaluate  
 - [x] Model  
