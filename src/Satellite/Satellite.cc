@@ -18,15 +18,38 @@
 // if packet from GS, analyze gate_index and send to the gate
 
 #include "../Satellite/Satellite.h"
+#include "../Message/comMessage_m.h"
 
 Define_Module(Satellite);
 
 void Satellite::initialize()
 {
-    // TODO - Generated method body
+        //NOTHING TO DO 
 }
 
 void Satellite::handleMessage(cMessage *msg)
 {
-    // TODO - Generated method body
+    //check if message comes from GS
+    if(strcmp(msg->getArrivalGate()->getName(),"s_iogs$i")==0){
+        //check for destination terminal
+        //check the gateIndex if it is comMessage
+        ComMessage *comMsg = check_and_cast<ComMessage*>(msg);
+        EV << "Sending to terminal index " << comMsg->getGateIndex()
+           << " (max: " << gateSize("s_iot$o") << ")" << endl;
+        send(comMsg,"s_iot$o",comMsg->getGateIndex());
+    }
+    else{
+        //message from a terminal
+        //need to insert arrival gate
+        if(msg->isName("grant_request")){
+            ComMessage *comMsg=check_and_cast<ComMessage*>(msg);
+            comMsg->setGateIndex(msg->getArrivalGate()->getIndex());
+            send(comMsg,"s_iogs$o");
+        }
+        else if ("bytes")
+            send(msg,"s_iogs$o"); //we're dealing with a ContMessage that terminal is sending
+        else
+            delete msg;
+    }
+
 }

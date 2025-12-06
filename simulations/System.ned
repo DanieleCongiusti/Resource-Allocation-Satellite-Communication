@@ -9,24 +9,31 @@ network System{
 	parameters:
 	    //number of Terminals
 	    int N;
+	    int K;
 
  	submodules:
  	    	gs: GS{
+ 	    	    parameters:
+ 	    	        terminal_counter = parent.N;
  	    	};
  	    	
  			st: Satellite{
  			};
  			
  			t[N]: Terminal{
+ 			    parameters:
+ 			        K = parent.K;
  			};
  	
  	connections:
  		//connection between satellite and GS
- 		gs.gs_io <-->  st.s_iogs; 	
+ 		gs.gs_io$o --> st.s_iogs$i;
+		st.s_iogs$o --> gs.gs_io$i;	
  		
  		//connections between terminals and satellite
  		for i = 0 .. N-1{
- 			t[i].t_io <--> st.s_iot++;
+ 			t[i].t_io$o --> st.s_iot$i++;
+    		st.s_iot$o++ --> t[i].t_io$i;
  		}
 
 }

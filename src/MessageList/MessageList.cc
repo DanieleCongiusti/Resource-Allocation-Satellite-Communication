@@ -22,12 +22,14 @@ MessageList::MessageList() {
 }
 
 MessageList::~MessageList() {
+
+    last=nullptr;
     //some element in
-    //while(msg_list){
-      //  scheduledMessage app = *msg_list;
-      //  msg_list=msg_list->next;
-      //  delete(app);
-    //}
+    while(msg_list){
+        scheduledMessage *app=msg_list;
+        msg_list=msg_list->next;
+        delete app;
+    }
 }
 
 void MessageList::addMessage(ContentMessage* msg){
@@ -48,13 +50,18 @@ ContentMessage* MessageList::extractMessage(){
     if(msg_list){
         ContentMessage* targetMessage=msg_list->content;
         //make advance the pointer of the list for eventually next messages
-        msg_list=msg_list->next;
+        msg_list = msg_list->next;
+
+        if (!msg_list)
+            last = nullptr; 
+
         return targetMessage;
     }
-    else
-        return nullptr;
+    return nullptr; 
 }
 
-
+scheduledMessage* MessageList::getLast(){
+    return last;
+}
 
 

@@ -20,12 +20,10 @@
 
 using namespace omnetpp;
 
-/**
- * TODO - Generated class
- */
+
 class Satellite : public cSimpleModule
 {
-  protected:
+  protected:    
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
 };
