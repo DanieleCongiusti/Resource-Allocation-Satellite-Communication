@@ -19,27 +19,27 @@ This repository was created to support the development of the project assigned t
 
 
 
-- [x] Objective of simulator  
+-[x] Objective of simulator  
 
-- [x] KPI (Key Performance Index) to evaluate  
+-[x] KPI (Key Performance Index) to evaluate  
 
-- [x] Model  
+-[x] Model  
 
-- [x] Evaluation: the model represents correctly what I want to replicate  
+-[x] Evaluation: the model represents correctly what I want to replicate  
 
-- [x] Factors  
+-[x] Factors  
 
-- [x] Tool  
+-[x] Tool  
 
-- [x] Implementation  
+-[x] Implementation  
 
-- [x] Verify the code  
+-[x] Verify the code  
 
-- [ ] Calibrate your simulator: remember we want to simulate a system  
+-[ ] Calibrate your simulator: remember we want to simulate a system  
 
-- [ ] Experiment design  
+-[ ] Experiment design  
 
-- [ ] Run  
+-[ ] Run  
 
 
 
