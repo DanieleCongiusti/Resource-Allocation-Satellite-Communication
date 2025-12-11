@@ -19,6 +19,7 @@ MessageList::MessageList() {
     //create empty list
     msg_list = nullptr;
     last = nullptr;
+    qLength = 0;
 }
 
 MessageList::~MessageList() {
