@@ -42,6 +42,9 @@ private:
     //added pointer to last element of the list, done for improving performance of write op
     scheduledMessage *last;
 
+    //integer value used to count number of queued messages
+    int qLength;
+
 public:
     //constructor
     MessageList();
@@ -52,6 +55,8 @@ public:
     //function to extract msg from head of list
     ContentMessage* extractMessage();
     scheduledMessage* getLast();
+    //function to retrieve length of queue
+    int getQLength();
 };
 
 #endif /* MESSAGELIST_MESSAGELIST_H_ */
