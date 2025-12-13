@@ -12,15 +12,18 @@ network System{
 	    int K;
 
  	submodules:
+ 	    	oracle: Oracle {
+ 	    	};
+ 	
  	    	gs: GS{
  	    	    parameters:
  	    	        terminal_counter = parent.N;
  	    	};
  	    	
- 			st: Satellite{
+ 			st: Satellite {
  			};
  			
- 			t[N]: Terminal{
+ 			t[N]: Terminal {
  			    parameters:
  			        K = parent.K;
  			};
