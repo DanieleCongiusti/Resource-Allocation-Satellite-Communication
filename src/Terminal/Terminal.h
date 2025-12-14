@@ -11,6 +11,7 @@ using namespace omnetpp;
 /**
  * TODO - Generated class
  */
+
 class Terminal : public cSimpleModule
 {
   private: 
@@ -34,8 +35,8 @@ class Terminal : public cSimpleModule
     int M = 0; 
     cMessage* t_tx = nullptr;
 
-    // Signals for Statistics
-    // ...
+    // Fields for Data Collection
+    int byteSent = 0;
 
   public:
     Terminal() = default;
