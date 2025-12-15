@@ -82,18 +82,15 @@ void Terminal::handleMessage(cMessage *msg) {
 
     // [Start of a New Time Frame (T)] 
     else if (msg == t_time_frame) {
-        EV_INFO<<"Start time frame";
         // Delete any previous Transmission Timer coming from the previous Time Frame
         if (t_tx->isScheduled())  cancelEvent(t_tx);
         
         // Restart Timer for Time Frame as soon as possible
         scheduleAt(simTime() + par("timeFrame_duration"), t_time_frame);    
 
-        EV_INFO<<"Start phase for statistics";
         // Data Collection: Send #byteSent + #qLength from previous Time Frame to the Oracle
         cModule *oracle = getParentModule()->getSubmodule("oracle");
         //cGate *oracle_gate = oracle->gate("wirelessGate", 0);
-        EV_INFO<<"Send values for statistics";
         ContentMessage* byte_sent = new ContentMessage("byte_sent");
         byte_sent->setSize(byteSent);
         sendDirect(byte_sent, 0, 0, oracle, "wirelessGate");

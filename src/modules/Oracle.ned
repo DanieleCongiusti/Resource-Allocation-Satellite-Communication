@@ -8,11 +8,13 @@ package resource_allocator.modules;
 simple Oracle{
 
     parameters:
+        //timeframe duration
+        double timeframe_duration @unit(s) = 0.08s;
 
         //signal for collecting values in order to retrieve throughput
-		@signal[throughput](type = int);
+		@signal[throughput](type = double);
         //statistic for computing throughput
-		@statistic[throughputStat](source = "throughput"; record = timeavg;);
+		@statistic[throughputStat](source = "throughput"; record=mean);
 
 		//signal for collecting values in order to retrieve AvgQueueLength
 		@signal[avgQueueLength](type = int);

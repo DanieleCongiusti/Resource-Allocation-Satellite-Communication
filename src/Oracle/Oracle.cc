@@ -29,9 +29,14 @@ void Oracle::handleMessage(cMessage *msg){
         else{
                 ContentMessage *c_msg=check_and_cast<ContentMessage*>(msg);
                 if(msg->isName("byte_sent"))
-                    emit(throughputSignal,c_msg->getSize());
+                    totBytes += c_msg->getSize();
                 else
                     emit(avgQLSignal,c_msg->getSize());
                 delete c_msg;
              }
+}
+
+void Oracle::finish(){
+    double totTime = simTime().dbl();
+    emit(throughputSignal,totBytes/(totTime * 1000000 ));
 }

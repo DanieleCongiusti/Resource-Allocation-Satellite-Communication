@@ -13,6 +13,8 @@ class Oracle : public cSimpleModule {
         simsignal_t throughputSignal;
         //signal for AvgQueueLength
         simsignal_t avgQLSignal;
+        //total number of bytes recevied
+        int totBytes = 0;
 
     public:
         virtual ~Oracle();
@@ -20,6 +22,7 @@ class Oracle : public cSimpleModule {
     protected:
         virtual void initialize() override;
         virtual void handleMessage(cMessage *msg) override;
+        virtual void finish() override;
 };
 
 #endif
