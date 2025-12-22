@@ -12,6 +12,7 @@
 
 #include "../Terminal/Terminal.h"
 #include <cmath>
+#include <omnetpp.h>
 using namespace std;
 
 Define_Module(Terminal);
@@ -87,10 +88,23 @@ void Terminal::handleMessage(cMessage *msg) {
         // Restart Timer for Time Frame as soon as possible
         scheduleAt(simTime() + par("timeFrame_duration"), t_time_frame);    
 
+        // Data Collection: Send #byteSent + #qLength from previous Time Frame to the Oracle
+        cModule *oracle = getParentModule()->getSubmodule("oracle");
+        //cGate *oracle_gate = oracle->gate("wirelessGate", 0);
+        ContentMessage* byte_sent = new ContentMessage("byte_sent");
+        byte_sent->setSize(byteSent);
+        sendDirect(byte_sent, 0, 0, oracle, "wirelessGate");
+        // delete byte_sent; // DO IT ON THE ORACLE SIDE
+
+        ContentMessage* q_len = new ContentMessage("q_len");
+        q_len->setSize(msg_queue->getQLength());
+        sendDirect(q_len, 0, 0, oracle, "wirelessGate");
+        // delete q_len;    // DO IT ON THE ORACLE SIDE
+
         // 1. Create ComMessage -> Save and Send B to GS (NB: call message "grant_request") 
         ComMessage* msg_grant = new ComMessage("grant_request");
-        generateGrant(msg_grant);   // B value saved
-        send(msg_grant, "t_io$o");     // B value sent
+        generateGrant(msg_grant);       // B value saved
+        send(msg_grant, "t_io$o");      // B value sent
         EV_INFO << "Terminal " << this->getName() << " has sent Grant Request to GS w/ value B = " << msg_grant->getB() << "\n"; 
     }
 
@@ -134,6 +148,10 @@ void Terminal::handleMessage(cMessage *msg) {
         int size = byte_msg->getSize();
         if (M >= size) {
             M -= size;
+
+            EV_INFO<<"Prepare to count byte sent";
+            // Data Collection
+            byteSent += size;
 
             send(byte_msg, "t_io$o");
             EV_INFO << "Sent message." << endl;

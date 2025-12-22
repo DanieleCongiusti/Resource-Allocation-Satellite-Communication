@@ -19,6 +19,7 @@ MessageList::MessageList() {
     //create empty list
     msg_list = nullptr;
     last = nullptr;
+    qLength = 0;
 }
 
 MessageList::~MessageList() {
@@ -43,6 +44,7 @@ void MessageList::addMessage(ContentMessage* msg){
         msg_list=new scheduledMessage(msg);
         last=msg_list;
     }
+    qLength++;
 }
 
 ContentMessage* MessageList::extractMessage(){
@@ -55,6 +57,7 @@ ContentMessage* MessageList::extractMessage(){
         if (!msg_list)
             last = nullptr; 
 
+        qLength--;
         return targetMessage;
     }
     return nullptr; 
@@ -62,6 +65,11 @@ ContentMessage* MessageList::extractMessage(){
 
 scheduledMessage* MessageList::getLast(){
     return last;
+}
+
+
+int MessageList::getQLength(){
+    return qLength;
 }
 
 

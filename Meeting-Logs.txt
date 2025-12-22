@@ -60,24 +60,34 @@ Question to professor about time of propagation and time delay: We don't need to
 				-> Collect Statistical Data:
 					- Packets Received (either here or at the terminals) 
 -------------------------------------------------
+[2025-11-12]
+- Implement Oracle [NED], [C++], [NED (Network)] to Compute "Throughput" (1) e "QueueLength" (2)
+	
+	- NED file: 
+		."directIn" input (to receive from Terminals) 
+		.signal+statistic for "Throughput"  
+		.signal+statistic for "QueueLength"  
+		
+	- Modify "Network" NED 
+		.just add to the network without connections 
+	
+	- Implement Logic in C++ file: 	
+		- Receive from Terminals, at the end of timeframe:
+			1) 	.Size of ComMessages and once it receives from all Terminals
+		 		.Divide for 80ms and emit Signal to an "avg" recorder
 
+			2) 	.qLength ("MessageList" field) from all Terminals 
+				.Divide for Total #Terminals and emit Signal to an "avg" recorder
 
+	- Modify Terminal [C++]
+		1) 	.Add 'totByteSent' field to count byte sent (increment by contentMessage->size)
+			.At the "Send Message" routine, increment "totByteSent"
+			.At the "Timeframe" routine, *direct send* to oracle of Terminal's "totByteSent"
+	
+		2) 	.At the "Timeframe" routine, *direct send* to oracle of Terminal's "messageList->qLength"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				
-			
+________________
+- For next time: 
+	.Define N, K, T, S distribution Intervals for testing
+	.Define "testing workflow"
+		- How to analyze test results?
