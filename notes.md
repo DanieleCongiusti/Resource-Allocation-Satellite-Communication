@@ -19,15 +19,15 @@ Consistency:
 
  
 
- 	Values tested (x5 Tests each) for Throughput:
+ 	Values tested (x30 Tests each) for Throughput:
 
- 	- N = 2, 6, 18
+ 	- N = 2, 4, 8, 16, 32
 
- 	- K = "Large Number" (10^6)	-> To have NO MAX CEILING for any B value, except for B = 2
+ 	- K = "Large Number" (100)	-> To have NO MAX CEILING for any B value, except for B = 2
 
  	- T = 80/5 (16) ms
 
- 	- S between \[4, 1036]B
+ 	- S between \[4, 100]B
 
  
 
@@ -41,7 +41,7 @@ Consistency:
 
  	Values tested ("") for Queue Length:
 
- 	- T = (16, 8, 4)ms
+ 	- T = (16, 8, 4, 2, 1)ms
 
  	- N = 18
 
@@ -51,17 +51,49 @@ Consistency:
 
 
 
+\_\_\_\_\_\_\_\_\_\_\_
+
 Degeneracy:
+
+&nbsp;	The process should not crash if setting factors and parameters at extreme values 
+
+&nbsp;	
+
+&nbsp;	Values tested: 
+
+&nbsp;	- N = 0
+
+&nbsp;	- K = 0
+
+&nbsp;	- T = 0
+
+&nbsp;	- S = \[10^6, 10^7]
 
  
 
+&nbsp;	These are "absurd values" for each case to see if the the program still works 
 
+\_\_\_\_\_\_\_\_\_\_\_\_
 
 Continuinty:
 
+&nbsp;	Results should not vary much if the values for each factor and parameter vary little
+
+&nbsp;	
+
+&nbsp;	Values tested: 
+
+&nbsp;	- N = 2, 3, 4, 5, 6
+
+&nbsp;	- K = 10, 11, 12, 13, 14
+
+&nbsp;	- T = (10, 11, 12, 13, 14)ms
+
+&nbsp;	- S between \[4, 100]B
 
 
-\*\*\*TO BE DEFINED (help with Prof's Slides) AND DONE\*\*\*
+
+&nbsp;	These are increment gradually to verify that the output results do not change drastically from each configuration
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
@@ -84,9 +116,11 @@ Factors:
 Parameters:
 
 * B, this has been provided to us by the project's specs
-* S, took inspiration by M2M/IoT networks used in "remote monitoring" that connect devices in remote areas that rely over satellite communications
+* S, this has been choses based on the project's specific for M, where M = 100\*K^(log\_2(B)-1), in particular: 
 
- 	SOURCE: https://iris.cnr.it/bitstream/20.500.14243/339013/1/prod\_380288-doc\_133133.pdf		\[PG. 3/9, CoAP Protocol]
+&nbsp;	when B=2 the M is ALWAYS M=100 because the exponent will be 0, therefore it doesn't matter what K is, M will be this constant value
+
+&nbsp;	and since we want the packets to always be transmittable at any B
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
