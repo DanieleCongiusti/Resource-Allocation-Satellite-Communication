@@ -34,6 +34,7 @@ O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 OBJS = \
     $O/GS/GS.o \
     $O/MessageList/MessageList.o \
+    $O/Oracle/Oracle.o \
     $O/Satellite/Satellite.o \
     $O/Terminal/Terminal.o \
     $O/Message/comMessage_m.o \

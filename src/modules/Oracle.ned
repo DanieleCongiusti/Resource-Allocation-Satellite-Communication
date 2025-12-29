@@ -14,7 +14,7 @@ simple Oracle{
         //signal for collecting values in order to retrieve throughput
 		@signal[throughput](type = double);
         //statistic for computing throughput
-		@statistic[throughputStat](source = "throughput"; record=mean);
+		@statistic[throughputStat](source = "throughput"; record = last;);
 
 		//signal for collecting values in order to retrieve AvgQueueLength
 		@signal[avgQueueLength](type = int);
