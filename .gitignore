@@ -5,3 +5,6 @@
 src/Resource_Allocator
 simulations/.qtenvrc
 *.Identifier
+src/Makefile
+src/Makefile
+src/Resource_Allocator
