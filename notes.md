@@ -49,8 +49,6 @@ Consistency:
 
  	- S ...
 
-
-
 \_\_\_\_\_\_\_\_\_\_\_
 
 Degeneracy:
@@ -81,19 +79,37 @@ Continuinty:
 
 &nbsp;	
 
-&nbsp;	Values tested: 
+&nbsp;	Values tested (x30 Tests each) for Throughput:
 
-&nbsp;	- N = 2, 3, 4, 5, 6
+ 	- N = 2, 3, 4, 5, 6
 
-&nbsp;	- K = 10, 11, 12, 13, 14
+ 	- K = "Large Number" (100)	-> To have NO MAX CEILING for any B value, except for B = 2
 
-&nbsp;	- T = (10, 11, 12, 13, 14)ms
+ 	- T = 80/5 (16) ms
 
-&nbsp;	- S between \[4, 100]B
+ 	- S between \[4, 100]B
+
+ 
+
+  	-----------------------
+
+ 	Values tested ("") for Queue Length:
+
+ 	- T = (16, 15, 14, 13, 12)ms
+
+ 	- N = 18
+
+ 	- K = "Small Number" (1)	-> To have a VERY LOW CEILING for any B value to focus on the queuing aspect
+
+ 	- S ...
 
 
 
 &nbsp;	These are increment gradually to verify that the output results do not change drastically from each configuration
+
+
+
+**NB**: *The test results are saved in a specific folder separate from "simulation results"*
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
