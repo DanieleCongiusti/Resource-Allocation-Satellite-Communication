@@ -88,7 +88,7 @@ void Terminal::handleMessage(cMessage *msg) {
     else if (msg == t_time_frame) {
         // to highlight in the console output the start of a new time frame
         EV_INFO << endl;
-        EV_INFO << "time frame counter: " << time_frame_counter++ << endl;
+        //EV_INFO << "time frame counter: " << time_frame_counter++ << endl;
 
         // Delete any previous Transmission Timer coming from the previous Time Frame
         if (t_tx->isScheduled())  cancelEvent(t_tx);

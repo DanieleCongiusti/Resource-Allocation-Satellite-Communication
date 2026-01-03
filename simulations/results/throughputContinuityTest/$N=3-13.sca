@@ -1,0 +1,106 @@
+version 3
+run throughputContinuityTest-43-20251230-10:34:23-27155
+attr configname throughputContinuityTest
+attr datetime 20251230-10:34:23
+attr datetimef 20251230-103423
+attr experiment throughputContinuityTest
+attr inifile omnetpp.ini
+attr iterationvars $N=3
+attr iterationvarsd N=3
+attr iterationvarsf N=3-
+attr measurement $N=3
+attr network System
+attr processid 27155
+attr repetition 13
+attr replication #13
+attr resultdir results
+attr runnumber 43
+attr seedset 13
+itervar N 3
+config repeat 30
+config seed-set 13
+config output-scalar-file results/throughputContinuityTest/$N=3-13.sca
+config **.N 3
+config num-rngs 3
+config **.K 100
+config *.t[*].mean_T 0.016s
+config *.t[*].a 4B
+config *.t[*].b 100B
+config network System
+config sim-time-limit 1.6s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config **.N 2
+config **.K 100
+config num-rngs 2
+config *.t[*].a 10000KiB
+config *.t[*].b 100000KiB
+config *.t[*].mean_T 0.026s
+config *.t[*].rng-0 index
+config *.t[*].rng-1 index
+config *.t[*].rng-2 index
+
+par System.oracle typename "\"resource_allocator.modules.Oracle\""
+par System.oracle timeframe_duration 0.08s
+attr unit s
+scalar System.oracle AvgQLStat:mean 0.53333333333333
+attr "" ""
+attr recordingmode mean
+attr source avgQueueLength
+scalar System.oracle throughputStat:last 121591.25
+attr "" ""
+attr recordingmode last
+attr source throughput
+par System.gs typename "\"resource_allocator.modules.GS\""
+par System.gs scheduler_slots 64
+par System.gs terminal_counter 3
+par System.st typename "\"resource_allocator.modules.Satellite\""
+par System.t[0] typename "\"resource_allocator.modules.Terminal\""
+par System.t[0] timeFrame_duration 0.08s
+attr unit s
+par System.t[0] B "intuniform(1, 4, 0)"
+par System.t[0] K parent.K
+par System.t[0] a 4bytes
+attr unit bytes
+par System.t[0] b 100bytes
+attr unit bytes
+par System.t[0] mean_T 0.016s
+attr unit s
+par System.t[0] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[0] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[1] typename "\"resource_allocator.modules.Terminal\""
+par System.t[1] timeFrame_duration 0.08s
+attr unit s
+par System.t[1] B "intuniform(1, 4, 0)"
+par System.t[1] K parent.K
+par System.t[1] a 4bytes
+attr unit bytes
+par System.t[1] b 100bytes
+attr unit bytes
+par System.t[1] mean_T 0.016s
+attr unit s
+par System.t[1] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[1] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[2] typename "\"resource_allocator.modules.Terminal\""
+par System.t[2] timeFrame_duration 0.08s
+attr unit s
+par System.t[2] B "intuniform(1, 4, 0)"
+par System.t[2] K parent.K
+par System.t[2] a 4bytes
+attr unit bytes
+par System.t[2] b 100bytes
+attr unit bytes
+par System.t[2] mean_T 0.016s
+attr unit s
+par System.t[2] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[2] T "exponential(mean_T, 2)"
+attr unit s
+par System typename "\"resource_allocator.simulations.System\""
+par System N 3
+par System K 100
+

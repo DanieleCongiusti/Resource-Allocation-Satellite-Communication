@@ -38,5 +38,5 @@ void Oracle::handleMessage(cMessage *msg){
 
 void Oracle::finish(){
     double totTime = simTime().dbl();
-    emit(throughputSignal,totBytes/(totTime * 1000000 ));
+    emit(throughputSignal,totBytes/totTime);
 }

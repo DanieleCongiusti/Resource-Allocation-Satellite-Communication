@@ -1,0 +1,57 @@
+version 3
+run degeneracyTest-0-20251230-10:24:47-26956
+attr configname degeneracyTest
+attr datetime 20251230-10:24:47
+attr datetimef 20251230-102447
+attr experiment degeneracyTest
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network System
+attr processid 26956
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config output-scalar-file results/degeneracyTest/degeneracy.sca
+config **.N 0
+config **.K 0
+config *.t[*].mean_T 0s
+config *.t[*].a 10^6
+config *.t[*].b 10^7
+config network System
+config sim-time-limit 1.6s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config **.N 2
+config **.K 100
+config num-rngs 2
+config *.t[*].a 10000KiB
+config *.t[*].b 100000KiB
+config *.t[*].mean_T 0.026s
+config *.t[*].rng-0 index
+config *.t[*].rng-1 index
+config *.t[*].rng-2 index
+
+par System.oracle typename "\"resource_allocator.modules.Oracle\""
+par System.oracle timeframe_duration 0.08s
+attr unit s
+scalar System.oracle AvgQLStat:mean nan
+attr "" ""
+attr recordingmode mean
+attr source avgQueueLength
+scalar System.oracle throughputStat:last 0
+attr "" ""
+attr recordingmode last
+attr source throughput
+par System.gs typename "\"resource_allocator.modules.GS\""
+par System.gs scheduler_slots 64
+par System.gs terminal_counter 0
+par System.st typename "\"resource_allocator.modules.Satellite\""
+par System typename "\"resource_allocator.simulations.System\""
+par System N 0
+par System K 0
+
