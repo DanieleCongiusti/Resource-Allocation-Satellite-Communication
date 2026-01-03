@@ -117,13 +117,12 @@ Continuinty:
 
 Factors:
 
-* N,
-* K,
-* T,
+* N: { 8, 16, 24, 32, 48 }
+* K: { 10, 20, 50, 100, 1000 }
 
 
 
-\*\*\*TO BE DEFINED THROUGH TESTING\*\*\*
+\*\*\*WRITE THE LOGIC BEHIND THE VALUES OF EACH FACTOR\*\*\*
 
 
 
@@ -138,25 +137,49 @@ Parameters:
 
  	and since we want the packets to always be transmittable at any B
 
-* T, this has been computed in function of S and the possible Throughput that our system could have in the context of M2M/IoT systems. 
+* T, this has been computed in function of S and the possible Throughput that our system could have in the context of M2M/IoT systems.
 
-&nbsp;	We used the following sources to take an example for the Throughput: 
+ 	We used the following sources to take an example for the Throughput:
 
-&nbsp;		- https://www.iotitaly.net/wp-content/uploads/2017/07/TEC\_Communication\_Technologies\_M2M\_IoT\_Ver\_12\_0\_-3rd-July-2017.pdf 	\[pg 32, Table2 -> LTE Cat-M1]
+ 		- https://www.iotitaly.net/wp-content/uploads/2017/07/TEC\_Communication\_Technologies\_M2M\_IoT\_Ver\_12\_0\_-3rd-July-2017.pdf 	\[pg 32, Table2 -> LTE Cat-M1]
 
-&nbsp;		- https://www.1nce.com/it-it/risorse/iot-knowledge-base/cos-e-lte-cat-1 							\[LTE Cat-M2, used for IoT operations -> Data Rate: 2Mbps=0.25MBps=250KBps]
+ 		- https://www.1nce.com/it-it/risorse/iot-knowledge-base/cos-e-lte-cat-1 							\[LTE Cat-M2, used for IoT operations -> Data Rate: 2Mbps=0.25MBps=250KBps]
 
-&nbsp;	Since these values represent peak physical-layer capabilities, and not the effective throughput experienced by M2M/IoT applications, 
+ 	Since these values represent peak physical-layer capabilities, and not the effective throughput experienced by M2M/IoT applications,
 
-&nbsp;	a margin was assumed between the maximum data rate supported by the technology and the achievable system throughput.
+ 	a margin was assumed between the maximum data rate supported by the technology and the achievable system throughput.
 
-&nbsp;	Considering the small packet sizes of typical of M2M/IoT systems, the modeled system throughput 
+ 	Considering the small packet sizes of typical of M2M/IoT systems, the modeled system throughput
 
-&nbsp;	was therefore set to 200 KBps.
+ 	was therefore set to 200 KBps.
 
-&nbsp;	
+ 
 
-&nbsp;	We then used this possible Throughput value and S's range to then compute the average of T, the rate of packet generation
+ 	We then used this possible Throughput value and S's range to then compute the average of T, the rate of packet generation
+
+---
+
+.Warm-Up Duration:
+
+&nbsp;	- Add the Statistics to collect the "Moving Average" for Throughput and Queue Length values 
+
+&nbsp;	- Gather Test results 
+
+&nbsp;	- Infer from the results how much Warm-Up time we need to consider before collecting the proper results 
+
+&nbsp;		NB: IF the "Moving Average" is constant from the start, NO warm up period needed	
+
+
+
+.Simulation Time Duration:
+
+&nbsp;	The simulation time was selected to ensure a sufficiently large sample size, allowing the application of the Central Limit Theorem for the statistical analysis of aggregated metrics.
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+
+
+
+
+
 
