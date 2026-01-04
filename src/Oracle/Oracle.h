@@ -9,12 +9,19 @@ using namespace omnetpp;
 class Oracle : public cSimpleModule {
 
     private:
-        //singal for throughput
+        //signals for throughput
         simsignal_t throughputSignal;
+        simsignal_t throughputWarmUpSignal;
         //signal for AvgQueueLength
         simsignal_t avgQLSignal;
         //total number of bytes recevied
         int totBytes = 0;
+        //interval of emit for warmup
+        double interval = 0.25;
+        //total number of bytes received in an interval
+        double currentBytes = 0;
+        //timer for warmup-period
+        cMessage *throughputTimer;
 
     public:
         virtual ~Oracle();

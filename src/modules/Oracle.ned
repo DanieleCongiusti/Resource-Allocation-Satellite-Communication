@@ -13,13 +13,17 @@ simple Oracle{
 
         //signal for collecting values in order to retrieve throughput
 		@signal[throughput](type = double);
+		//signal for collecting values in order to retrieve the warmup-period
+		@signal[throughputWarmUp](type = double);
         //statistic for computing throughput
 		@statistic[throughputStat](source = "throughput"; record = last;);
+		//statistic for computing warmup period
+		@statistic[throughputWarmUpStat](source = "throughputWarmUp"; record = vector;);
 
 		//signal for collecting values in order to retrieve AvgQueueLength
 		@signal[avgQueueLength](type = int);
         //statistic for computing AvgQueueLength
-		@statistic[AvgQLStat](source = "avgQueueLength"; record = mean;);
+		@statistic[AvgQLStat](source = "avgQueueLength"; record = mean, vector;);
 
     gates:
         //gate that receives data from other nodes

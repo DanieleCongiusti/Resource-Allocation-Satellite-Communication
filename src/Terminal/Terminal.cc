@@ -102,6 +102,7 @@ void Terminal::handleMessage(cMessage *msg) {
         ContentMessage* byte_sent = new ContentMessage("byte_sent");
         byte_sent->setSize(byteSent);
         sendDirect(byte_sent, 0, 0, oracle, "wirelessGate");
+        byteSent = 0;
         // delete byte_sent; // DO IT ON THE ORACLE SIDE
 
         ContentMessage* q_len = new ContentMessage("q_len");
