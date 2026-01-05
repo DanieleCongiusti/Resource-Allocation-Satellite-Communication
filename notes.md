@@ -169,6 +169,7 @@ Parameters:
 
 &nbsp;		NB: IF the "Moving Average" is constant from the start, NO warm up period needed	
 
+        - About 7s of warmup for the throughput (as N >= 12 is about 3s) and  3s for queue length
 
 
 .Simulation Time Duration:

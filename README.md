@@ -24,7 +24,8 @@ This repository was created to support the development of the project assigned t
 - [x] Factors  
 - [x] Tool  
 - [x] Implementation  
-- [x] Verify the code  
+- [x] Verify the code
+- [x] Consistency, Coherence and Degeneracy test  
 - [ ] Calibrate your simulator: remember we want to simulate a system  
 - [ ] Experiment design  
 - [ ] Run

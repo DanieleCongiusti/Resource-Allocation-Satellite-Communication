@@ -1,8 +1,8 @@
 version 3
-run warmupTest-132-20260104-20:21:31-69120
+run warmupTest-232-20260105-12:06:56-78019
 attr configname warmupTest
-attr datetime 20260104-20:21:31
-attr datetimef 20260104-202131
+attr datetime 20260105-12:06:56
+attr datetimef 20260105-120656
 attr experiment warmupTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=100"
@@ -10,17 +10,17 @@ attr iterationvarsd N=24/K=100
 attr iterationvarsf N=24,K=100-
 attr measurement "$N=24, $K=100"
 attr network System
-attr processid 69120
+attr processid 78019
 attr repetition 2
 attr replication #2
 attr resultdir results
-attr runnumber 132
+attr runnumber 232
 attr seedset 2
 itervar K 100
 itervar N 24
 config repeat 10
 config seed-set 2
-config sim-time-limit 8s
+config sim-time-limit 20s
 config output-vector-file "results/warmupTest/$N=24, $K=100-2.vec"
 config output-scalar-file "results/warmupTest/$N=24, $K=100-2.sca"
 config **.N 24
@@ -45,11 +45,11 @@ config *.t[*].rng-2 index
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 0.24333333333333
+scalar System.oracle AvgQLStat:mean 0.097833333333333
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 50062.375
+scalar System.oracle throughputStat:last 50172.75
 attr "" ""
 attr recordingmode last
 attr source throughput
