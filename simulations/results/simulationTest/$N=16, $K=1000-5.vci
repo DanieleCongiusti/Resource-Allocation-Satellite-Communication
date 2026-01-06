@@ -1,4 +1,4 @@
-file 85603 1767636905                                           
+file 85603 1767647635                                           
 version 3
 run simulationTest-145-20260105-19:15:05-3089
 attr configname simulationTest
@@ -47,10 +47,9 @@ vector 0 System.oracle throughputWarmUpStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source throughputWarmUp
+0	1351 1998 813 96992 0.25 27 108 0 53988 3593828 123320440208
 vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1351 1998 813 96992 0.25 27 108 0 53988 3593828 123320440208
-1	3349 82253 132 96858 0.08 26.96 5392 0 35 964 16748
-
+1	3349 82254 132 96858 0.08 26.96 5392 0 35 964 16748
