@@ -153,9 +153,11 @@ Parameters:
 
  	was therefore set to 200 KBps.
 
- 
 
- 	We then used this possible Throughput value and S's range to then compute the average of T, the rate of packet generation
+
+ 	We then used this possible Throughput value as a reference to then determine the value for T by checking the value of the Throughput through simple testing 
+
+	and came to the value of T by which is closest to the reference value chosen (200KBps): T = 0.0025s
 
 ---
 
