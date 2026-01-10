@@ -1,0 +1,52 @@
+file 1397 1767811717                                            
+version 3
+run queueLengthConsistencyTest-80-20260107-19:48:36-29676
+attr configname queueLengthConsistencyTest
+attr datetime 20260107-19:48:36
+attr datetimef 20260107-194836
+attr experiment queueLengthConsistencyTest
+attr inifile omnetpp.ini
+attr iterationvars $T=0.001s
+attr iterationvarsd T=0.001s
+attr iterationvarsf T=0.001s-
+attr measurement $T=0.001s
+attr network System
+attr processid 29676
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 80
+attr seedset 0
+itervar T 0.001s
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config **.vector-recording false
+config **.N 18
+config **.K 1
+config *.t[*].mean_T 0.001s
+config num-rngs 18
+config network System
+config sim-time-limit 20s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config repeat 20
+config seed-set 0
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
+config *.t[*].rng-0 index
+config *.t[*].rng-1 index
+config *.t[*].rng-2 index
+config output-vector-file results/queueLengthConsistencyTest/$T=0.001s-0.vec
+config output-scalar-file results/queueLengthConsistencyTest/$T=0.001s-0.sca
+
+vector 0 System.oracle throughputWarmUpStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source throughputWarmUp
+vector 1 System.oracle AvgQLStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source avgQueueLength
+

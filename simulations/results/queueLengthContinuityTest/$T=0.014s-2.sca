@@ -1,8 +1,8 @@
 version 3
-run queueLengthContinuityTest-62-20251230-10:44:48-27501
+run queueLengthContinuityTest-42-20260108-11:50:47-50202
 attr configname queueLengthContinuityTest
-attr datetime 20251230-10:44:48
-attr datetimef 20251230-104448
+attr datetime 20260108-11:50:47
+attr datetimef 20260108-115047
 attr experiment queueLengthContinuityTest
 attr inifile omnetpp.ini
 attr iterationvars $T=0.014s
@@ -10,44 +10,44 @@ attr iterationvarsd T=0.014s
 attr iterationvarsf T=0.014s-
 attr measurement $T=0.014s
 attr network System
-attr processid 27501
+attr processid 50202
 attr repetition 2
 attr replication #2
 attr resultdir results
-attr runnumber 62
+attr runnumber 42
 attr seedset 2
 itervar T 0.014s
-config repeat 30
-config seed-set 2
-config output-scalar-file results/queueLengthContinuityTest/$T=0.014s-2.sca
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config **.vector-recording false
 config **.N 18
-config num-rngs 18
 config **.K 1
 config *.t[*].mean_T 0.014s
-config *.t[*].a 4B
-config *.t[*].b 100B
+config num-rngs 18
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
-config *.t[*].a 10000KiB
-config *.t[*].b 100000KiB
-config *.t[*].mean_T 0.026s
+config repeat 20
+config seed-set 2
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
+config output-vector-file results/queueLengthContinuityTest/$T=0.014s-2.vec
+config output-scalar-file results/queueLengthContinuityTest/$T=0.014s-2.sca
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 55.177777777778
+scalar System.oracle AvgQLStat:mean 647.11466666667
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 47390.625
+scalar System.oracle throughputStat:last 5007.65
 attr "" ""
 attr recordingmode last
 attr source throughput

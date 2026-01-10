@@ -1,0 +1,99 @@
+version 3
+run throughputConsistencyTest-6-20260107-13:16:18-5914
+attr configname throughputConsistencyTest
+attr datetime 20260107-13:16:18
+attr datetimef 20260107-131618
+attr experiment throughputConsistencyTest
+attr inifile omnetpp.ini
+attr iterationvars $N=2
+attr iterationvarsd N=2
+attr iterationvarsf N=2-
+attr measurement $N=2
+attr network System
+attr processid 5914
+attr repetition 6
+attr replication #6
+attr resultdir results
+attr runnumber 6
+attr seedset 6
+itervar N 2
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config repeat 20
+config seed-set 6
+config **.N 2
+config num-rngs 2
+config **.K 100
+config *.t[*].mean_T 0.016s
+config network System
+config sim-time-limit 1.6s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config **.N 2
+config **.K 100
+config num-rngs 2
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.0025s
+config *.t[*].rng-0 index
+config *.t[*].rng-1 index
+config *.t[*].rng-2 index
+config output-vector-file results/throughputConsistencyTest/$N=2-6.vec
+config output-scalar-file results/throughputConsistencyTest/$N=2-6.sca
+
+vector 0 System.oracle throughputWarmUpStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source throughputWarmUp
+vector 1 System.oracle AvgQLStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source avgQueueLength
+0	135	0.25	2740
+0	288	0.5	8620
+0	465	0.75	6996
+0	614	1	3012
+0	765	1.25	7076
+0	961	1.5	7248
+1	12	0.08	5
+1	15	0.08	3
+1	78	0.16	0
+1	81	0.16	0
+1	96	0.24	4
+1	99	0.24	4
+1	183	0.32	0
+1	186	0.32	0
+1	204	0.4	5
+1	207	0.4	6
+1	279	0.48	0
+1	282	0.48	0
+1	302	0.56	7
+1	305	0.56	5
+1	373	0.64	7
+1	376	0.64	0
+1	445	0.72	0
+1	448	0.72	3
+1	476	0.8	5
+1	479	0.8	0
+1	523	0.88	0
+1	526	0.88	4
+1	562	0.96	6
+1	565	0.96	9
+1	628	1.04	8
+1	631	1.04	0
+1	661	1.12	10
+1	664	1.12	6
+1	751	1.2	0
+1	754	1.2	0
+1	775	1.28	6
+1	778	1.28	7
+1	838	1.36	11
+1	841	1.36	0
+1	921	1.44	0
+1	924	1.44	6
+1	967	1.52	7
+1	970	1.52	0
+1	1029	1.6	0
+1	1032	1.6	9
+

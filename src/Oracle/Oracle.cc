@@ -26,8 +26,8 @@ void Oracle::handleMessage(cMessage *msg) {
 
     if (msg->isSelfMessage() && msg->isName("throughputTimer")) {
         double throuhgput = currentBytes/interval;
-        EV_INFO << "Throughput: " << throuhgput << endl;
-        EV_INFO << "Bytes: " << currentBytes << endl;
+        //EV_INFO << "Throughput: " << throuhgput << endl;
+        //EV_INFO << "Bytes: " << currentBytes << endl;
         emit(throughputWarmUpSignal, currentBytes/interval);
         currentBytes = 0;
         scheduleAt(simTime() + interval, throughputTimer);

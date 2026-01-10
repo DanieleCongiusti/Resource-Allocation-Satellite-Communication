@@ -75,10 +75,10 @@ void Terminal::handleMessage(cMessage *msg) {
         ContentMessage* new_msg = new ContentMessage("bytes");
         new_msg->setSize(par("S"));
         msg_queue->addMessage(new_msg);
-        EV_INFO << "Added New Message of Size "<< new_msg->getSize() << " at simtime: " << simTime() << endl;
+        //EV_INFO << "Added New Message of Size "<< new_msg->getSize() << endl;
 
         // If the Terminal has received a Grant and the Time Frame hasn't yet ended, it resumes transmission
-        if (B != -1) scheduleAt(simTime(), t_tx);
+        if (G) scheduleAt(simTime(), t_tx);
 
         // Timer for next packet to be generated
         scheduleAt(simTime()+par("T"), t_msg_to_q);
@@ -87,9 +87,10 @@ void Terminal::handleMessage(cMessage *msg) {
     // [Start of a New Time Frame (T)] 
     else if (msg == t_time_frame) {
         // to highlight in the console output the start of a new time frame
-        EV_INFO << endl;
-        //EV_INFO << "time frame counter: " << time_frame_counter++ << endl;
+        //EV_INFO << endl;
+        //EV_INFO << "time frame counter: " << ++time_frame_counter << endl;
 
+        G = false;
         // Delete any previous Transmission Timer coming from the previous Time Frame
         if (t_tx->isScheduled())  cancelEvent(t_tx);
         
@@ -107,14 +108,19 @@ void Terminal::handleMessage(cMessage *msg) {
 
         ContentMessage* q_len = new ContentMessage("q_len");
         q_len->setSize(msg_queue->getQLength());
+
+        //EV_INFO << "Queue length: " << q_len->getSize() << endl;
+
         sendDirect(q_len, 0, 0, oracle, "wirelessGate");
         // delete q_len;    // DO IT ON THE ORACLE SIDE
 
         // 1. Create ComMessage -> Save and Send B to GS (NB: call message "grant_request") 
         ComMessage* msg_grant = new ComMessage("grant_request");
+        //EV_INFO << "Previous bearer index: " << B << endl;
         generateGrant(msg_grant);       // B value saved
+        //EV_INFO << "Bearer index: " << msg_grant->getB() << endl;
         send(msg_grant, "t_io$o");      // B value sent
-        if (msg_grant->getB() != -1) EV_INFO << "Terminal " << this->getName() << " has sent Grant Request to GS w/ value B = " << msg_grant->getB() << " at simtime: " << simTime()  << endl;
+        //if (msg_grant->getB() != -1) ////EV_INFO << "Terminal " << this->getName() << " has sent Grant Request to GS w/ value B = " << msg_grant->getB() << " at simtime: " << simTime()  << endl;
     }
 
     // [Receive 'Grant' (GS)]  
@@ -126,9 +132,10 @@ void Terminal::handleMessage(cMessage *msg) {
             return;
         }
 
+        G = true;
         // 2.b OTHERWISE => Compute M and Start Transmission Timer (t_tx), 
         M = floor(100 * pow((int)par("K"), log2(B) - 1));      // M = 100*K^(log_2(B)-1)
-        EV_INFO << "Setting M(ax Output) for Terminal " << this->getName() << " at " << M << " at simtime " << simTime() << endl;
+        //////EV_INFO << "Setting M(ax Output) for Terminal " << this->getName() << " at " << M << " at simtime " << simTime() << endl;
 
         scheduleAt(simTime(), t_tx);    // Begin Transmission Timer
         delete comMsg; 
@@ -160,12 +167,12 @@ void Terminal::handleMessage(cMessage *msg) {
         if (M >= size) {
             M -= size;
 
-            EV_INFO<<"Prepare to count byte sent";
+            //////EV_INFO<<"Prepare to count byte sent";
             // Data Collection
             byteSent += size;
 
             send(byte_msg, "t_io$o");
-            EV_INFO << "Sent message at simtime: " << simTime() << endl;
+            ////EV_INFO << "Sent message at simtime: " << simTime() << endl;
         }
         else {
             // Re-insert the message back in the queue if it goes beyond the max amount

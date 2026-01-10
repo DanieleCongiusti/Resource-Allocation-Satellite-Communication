@@ -1,0 +1,139 @@
+version 3
+run throughputConsistencyTest-30-20260107-13:16:23-5949
+attr configname throughputConsistencyTest
+attr datetime 20260107-13:16:23
+attr datetimef 20260107-131623
+attr experiment throughputConsistencyTest
+attr inifile omnetpp.ini
+attr iterationvars $N=4
+attr iterationvarsd N=4
+attr iterationvarsf N=4-
+attr measurement $N=4
+attr network System
+attr processid 5949
+attr repetition 10
+attr replication #10
+attr resultdir results
+attr runnumber 30
+attr seedset 10
+itervar N 4
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config repeat 20
+config seed-set 10
+config **.N 4
+config num-rngs 4
+config **.K 100
+config *.t[*].mean_T 0.016s
+config network System
+config sim-time-limit 1.6s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config **.N 2
+config **.K 100
+config num-rngs 2
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.0025s
+config *.t[*].rng-0 index
+config *.t[*].rng-1 index
+config *.t[*].rng-2 index
+config output-vector-file results/throughputConsistencyTest/$N=4-10.vec
+config output-scalar-file results/throughputConsistencyTest/$N=4-10.sca
+
+vector 0 System.oracle throughputWarmUpStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source throughputWarmUp
+vector 1 System.oracle AvgQLStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source avgQueueLength
+0	421	0.25	16104
+0	702	0.5	7904
+0	1067	0.75	15008
+0	1412	1	13616
+0	1694	1.25	11052
+0	2102	1.5	13872
+1	29	0.08	7
+1	32	0.08	6
+1	35	0.08	3
+1	38	0.08	7
+1	209	0.16	0
+1	212	0.16	0
+1	215	0.16	10
+1	218	0.16	12
+1	352	0.24	6
+1	355	0.24	7
+1	358	0.24	0
+1	361	0.24	0
+1	455	0.32	0
+1	458	0.32	0
+1	461	0.32	5
+1	464	0.32	2
+1	542	0.4	6
+1	545	0.4	0
+1	548	0.4	0
+1	551	0.4	10
+1	607	0.48	8
+1	610	0.48	4
+1	613	0.48	8
+1	616	0.48	9
+1	769	0.56	0
+1	772	0.56	6
+1	775	0.56	10
+1	778	0.56	0
+1	882	0.64	3
+1	885	0.64	0
+1	888	0.64	0
+1	891	0.64	6
+1	966	0.72	4
+1	969	0.72	7
+1	972	0.72	7
+1	975	0.72	0
+1	1125	0.8	0
+1	1128	0.8	0
+1	1131	0.8	14
+1	1134	0.8	5
+1	1234	0.88	3
+1	1237	0.88	5
+1	1240	0.88	0
+1	1243	0.88	9
+1	1315	0.96	3
+1	1318	0.96	0
+1	1321	0.96	2
+1	1324	0.96	9
+1	1444	1.04	0
+1	1447	1.04	4
+1	1450	1.04	0
+1	1453	1.04	0
+1	1510	1.12	3
+1	1513	1.12	0
+1	1516	1.12	3
+1	1519	1.12	2
+1	1624	1.2	0
+1	1627	1.2	12
+1	1630	1.2	8
+1	1633	1.2	0
+1	1712	1.28	6
+1	1715	1.28	17
+1	1718	1.28	0
+1	1721	1.28	0
+1	1835	1.36	10
+1	1838	1.36	0
+1	1841	1.36	8
+1	1844	1.36	10
+1	1996	1.44	0
+1	1999	1.44	6
+1	2002	1.44	0
+1	2005	1.44	16
+1	2116	1.52	4
+1	2119	1.52	0
+1	2122	1.52	9
+1	2125	1.52	0
+1	2217	1.6	12
+1	2220	1.6	7
+1	2223	1.6	0
+1	2226	1.6	3
+

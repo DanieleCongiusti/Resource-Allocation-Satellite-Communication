@@ -1,8 +1,8 @@
 version 3
-run throughputConsistencyTest-64-20251230-09:43:30-25551
+run throughputConsistencyTest-44-20260107-13:16:26-5963
 attr configname throughputConsistencyTest
-attr datetime 20251230-09:43:30
-attr datetimef 20251230-094330
+attr datetime 20260107-13:16:26
+attr datetimef 20260107-131626
 attr experiment throughputConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $N=8
@@ -10,23 +10,22 @@ attr iterationvarsd N=8
 attr iterationvarsf N=8-
 attr measurement $N=8
 attr network System
-attr processid 25551
+attr processid 5963
 attr repetition 4
 attr replication #4
 attr resultdir results
-attr runnumber 64
+attr runnumber 44
 attr seedset 4
 itervar N 8
-config repeat 30
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config repeat 20
 config seed-set 4
-config output-scalar-file results/throughputConsistencyTest/$N=8-4.sca
-config output-vector-file results/throughputConsistencyTest/$N=8-4.vec
 config **.N 8
 config num-rngs 8
 config **.K 100
 config *.t[*].mean_T 0.016s
-config *.t[*].a 4B
-config *.t[*].b 100B
 config network System
 config sim-time-limit 1.6s
 config cmdenv-express-mode false
@@ -34,21 +33,23 @@ config cmdenv-event-banners false
 config **.N 2
 config **.K 100
 config num-rngs 2
-config *.t[*].a 10000KiB
-config *.t[*].b 100000KiB
-config *.t[*].mean_T 0.026s
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.0025s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
+config output-vector-file results/throughputConsistencyTest/$N=8-4.vec
+config output-scalar-file results/throughputConsistencyTest/$N=8-4.sca
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 0.35
+scalar System.oracle AvgQLStat:mean 3.3125
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 272789.375
+scalar System.oracle throughputStat:last 26045.625
 attr "" ""
 attr recordingmode last
 attr source throughput
