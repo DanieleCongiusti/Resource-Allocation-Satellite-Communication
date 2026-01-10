@@ -1,8 +1,8 @@
 version 3
-run throughputConsistencyTest-102-20251230-09:43:38-25604
+run throughputConsistencyTest-72-20260107-13:16:32-5996
 attr configname throughputConsistencyTest
-attr datetime 20251230-09:43:38
-attr datetimef 20251230-094338
+attr datetime 20260107-13:16:32
+attr datetimef 20260107-131632
 attr experiment throughputConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $N=16
@@ -10,23 +10,22 @@ attr iterationvarsd N=16
 attr iterationvarsf N=16-
 attr measurement $N=16
 attr network System
-attr processid 25604
+attr processid 5996
 attr repetition 12
 attr replication #12
 attr resultdir results
-attr runnumber 102
+attr runnumber 72
 attr seedset 12
 itervar N 16
-config repeat 30
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config repeat 20
 config seed-set 12
-config output-scalar-file results/throughputConsistencyTest/$N=16-12.sca
-config output-vector-file results/throughputConsistencyTest/$N=16-12.vec
 config **.N 16
 config num-rngs 16
 config **.K 100
 config *.t[*].mean_T 0.016s
-config *.t[*].a 4B
-config *.t[*].b 100B
 config network System
 config sim-time-limit 1.6s
 config cmdenv-express-mode false
@@ -34,21 +33,23 @@ config cmdenv-event-banners false
 config **.N 2
 config **.K 100
 config num-rngs 2
-config *.t[*].a 10000KiB
-config *.t[*].b 100000KiB
-config *.t[*].mean_T 0.026s
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.0025s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
+config output-vector-file results/throughputConsistencyTest/$N=16-12.vec
+config output-scalar-file results/throughputConsistencyTest/$N=16-12.sca
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 0.69375
+scalar System.oracle AvgQLStat:mean 4.84375
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 509858.75
+scalar System.oracle throughputStat:last 46000
 attr "" ""
 attr recordingmode last
 attr source throughput

@@ -5,7 +5,7 @@
 // (at your option) any later version.
 // 
 // This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// but WITHOUT ANY WARRANTY; without //EVen the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Lesser General Public License for more details.
 // 
@@ -34,8 +34,8 @@ void Satellite::handleMessage(cMessage *msg)
         //check for destination terminal
         //check the gateIndex if it is comMessage
         ComMessage *comMsg = check_and_cast<ComMessage*>(msg);
-        EV << "Sending to terminal index " << comMsg->getGateIndex()
-           << " (max: " << gateSize("s_iot$o") << ")" << endl;
+        //EV << "Sending to terminal index " << comMsg->getGateIndex()
+           //<< " (max: " << gateSize("s_iot$o") << ")" << endl;
         send(comMsg,"s_iot$o",comMsg->getGateIndex());
     }
     else{
