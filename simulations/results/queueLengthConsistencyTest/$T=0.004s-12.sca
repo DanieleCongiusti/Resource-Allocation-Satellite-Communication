@@ -1,8 +1,8 @@
 version 3
-run queueLengthConsistencyTest-72-20251230-10:00:50-26308
+run queueLengthConsistencyTest-52-20260107-19:48:26-29647
 attr configname queueLengthConsistencyTest
-attr datetime 20251230-10:00:50
-attr datetimef 20251230-100050
+attr datetime 20260107-19:48:26
+attr datetimef 20260107-194826
 attr experiment queueLengthConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $T=0.004s
@@ -10,45 +10,44 @@ attr iterationvarsd T=0.004s
 attr iterationvarsf T=0.004s-
 attr measurement $T=0.004s
 attr network System
-attr processid 26308
+attr processid 29647
 attr repetition 12
 attr replication #12
 attr resultdir results
-attr runnumber 72
+attr runnumber 52
 attr seedset 12
 itervar T 0.004s
-config repeat 30
-config seed-set 12
-config output-scalar-file results/queueLengthConsistencyTest/$T=0.004s-12.sca
-config output-vector-file results/queueLengthConsistencyTest/$T=0.004s-12.vec
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config **.vector-recording false
 config **.N 18
-config num-rngs 18
 config **.K 1
 config *.t[*].mean_T 0.004s
-config *.t[*].a 4B
-config *.t[*].b 100B
+config num-rngs 18
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
-config *.t[*].a 10000KiB
-config *.t[*].b 100000KiB
-config *.t[*].mean_T 0.026s
+config repeat 20
+config seed-set 12
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
+config output-vector-file results/queueLengthConsistencyTest/$T=0.004s-12.vec
+config output-scalar-file results/queueLengthConsistencyTest/$T=0.004s-12.sca
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 204.28333333333
+scalar System.oracle AvgQLStat:mean 2396.722
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 51454.375
+scalar System.oracle throughputStat:last 5452.45
 attr "" ""
 attr recordingmode last
 attr source throughput

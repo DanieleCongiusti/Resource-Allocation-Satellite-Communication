@@ -38,6 +38,10 @@ class Terminal : public cSimpleModule
     // Fields for Data Collection
     int byteSent = 0;
 
+    int time_frame_counter = 0;
+
+    bool G = false;
+
   public:
     Terminal() = default;
     virtual ~Terminal();

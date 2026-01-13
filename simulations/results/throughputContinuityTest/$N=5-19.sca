@@ -1,8 +1,8 @@
 version 3
-run throughputContinuityTest-109-20251230-10:34:37-27227
+run throughputContinuityTest-79-20260107-20:02:36-31062
 attr configname throughputContinuityTest
-attr datetime 20251230-10:34:37
-attr datetimef 20251230-103437
+attr datetime 20260107-20:02:36
+attr datetimef 20260107-200236
 attr experiment throughputContinuityTest
 attr inifile omnetpp.ini
 attr iterationvars $N=5
@@ -10,44 +10,44 @@ attr iterationvarsd N=5
 attr iterationvarsf N=5-
 attr measurement $N=5
 attr network System
-attr processid 27227
+attr processid 31062
 attr repetition 19
 attr replication #19
 attr resultdir results
-attr runnumber 109
+attr runnumber 79
 attr seedset 19
 itervar N 5
-config repeat 30
-config seed-set 19
-config output-scalar-file results/throughputContinuityTest/$N=5-19.sca
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config **.vector-recording false
 config **.N 5
-config num-rngs 5
 config **.K 100
 config *.t[*].mean_T 0.016s
-config *.t[*].a 4B
-config *.t[*].b 100B
+config num-rngs 5
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
-config *.t[*].a 10000KiB
-config *.t[*].b 100000KiB
-config *.t[*].mean_T 0.026s
+config repeat 20
+config seed-set 19
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
+config output-vector-file results/throughputContinuityTest/$N=5-19.vec
+config output-scalar-file results/throughputContinuityTest/$N=5-19.sca
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 0.49
+scalar System.oracle AvgQLStat:mean 3.3712
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 158716.875
+scalar System.oracle throughputStat:last 15737.5
 attr "" ""
 attr recordingmode last
 attr source throughput

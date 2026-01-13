@@ -49,7 +49,7 @@ void GS::handleMessage(cMessage *msg) {
     }
     else
     {
-        EV_INFO << "Message: " << msg->getName() << endl;
+        //EV_INFO << "Message: " << msg->getName() << endl;
         delete msg; 
         throw cRuntimeError("Unrecognized message type. Abort");
     }
@@ -93,6 +93,6 @@ void GS::handleComMessage(cMessage *msg) {
 void GS::handleContMessage(cMessage *msg) {
     ContentMessage *rcv_bytes;
     rcv_bytes = check_and_cast<ContentMessage*>(msg);
-    EV_INFO << "Received message of size " << rcv_bytes->getSize() << endl;
+    //EV_INFO << "Received message of size " << rcv_bytes->getSize() << endl;
     delete rcv_bytes;
 }
