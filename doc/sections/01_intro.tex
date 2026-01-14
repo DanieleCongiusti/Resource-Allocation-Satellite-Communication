@@ -1,0 +1,11 @@
+\chapter{Introduction}
+The project consists of analyze the performance of a communication system with N terminals that send packets to a Ground Station (GS) via satellite, which acts as a relay node, 
+following the specifications provided. Each terminal generates packets of size \emph{S} bytes, which is a uniform distributed IID random variable between 4 and 100, every 
+\emph{T} seconds, where T is an exponentially distributed IID random variable with mean value of \qty{2e-3}{s}. Every \qty{80e-3}{s} a transmission frame, during which each active 
+terminal (i.e., the ones that have at least one packet to send) generates a bearer index \emph{B} between 2, 4, 8 and 16, and transmits to the satellite (otherwise it will transmit -1). 
+The satellite forwards everything to the GS, which uses a priority queue to collect all the values received from the terminals (discarding the -1 ones) and serves them according to 
+the highest bearer index first (if two or more packets have the same bearer index, they are served in FIFO order). The GS sends a grant to each terminal that can transmit and, after
+receiving the grant, the terminal sends up to \emph{M} bytes, where \emph{M} is based on \emph{B} as follows:
+\begin{equation}
+M = 100 \times K^{\log_2(B) - 1}
+\end{equation}

@@ -8,3 +8,14 @@ simulations/.qtenvrc
 src/Makefile
 src/Makefile
 src/Resource_Allocator
+/doc/*.aux
+/doc/*.log
+/doc/*.toc
+/doc/*.out
+/doc/*.lof
+/doc/*.lot
+/doc/*.blg
+/doc/*.bbl
+/doc/*.fls
+/doc/*.fdb_latexmk
+/doc/*.synctex.gz
