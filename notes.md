@@ -122,37 +122,37 @@ Factors:
 
 
 
-For N, we initially started by looking at the max and min possible terminals that can transmit considering B and C (Scheduling Capacity). From this we obtained that the range of possible transmittable Terminals is between \[4, 32]
+For ***N***, we initially started by looking at the max and min possible terminals that can transmit considering B and C (Scheduling Capacity). From this we obtained that the range of possible transmittable Terminals is between \[4, 32]
 
-&nbsp;	But the likeliness of how many terminals will transmit isn't uniformally distributed since, just an example, the likeliness of having 4 terminals generating B = 16 (4x16 = 64 => Max Capacity reached, no more space for other 
+ 	But the likeliness of how many terminals will transmit isn't uniformally distributed since, just an example, the likeliness of having 4 terminals generating B = 16 (4x16 = 64 => Max Capacity reached, no more space for other
 
-&nbsp;	terminals to transmit) is much more likely than 32 B = 2. Also, the B get ordered in decresing order when received, therefore it's sufficient that out of N terminals 4 random ones generate B = 16 and all the rest would be
+ 	terminals to transmit) is much more likely than 32 B = 2. Also, the B get ordered in decresing order when received, therefore it's sufficient that out of N terminals 4 random ones generate B = 16 and all the rest would be
 
-&nbsp;	irrelevant. 
+ 	irrelevant.
 
-&nbsp;	So, we studied the probability of having the same value of B multiple times (an RV with Binomial Distribution) and quickly demonstrated that as N grows the most dominant case would eventually become 4 B = b, where b can be 
+ 	So, we studied the probability of having the same value of B multiple times (an RV with Binomial Distribution) and quickly demonstrated that as N grows the most dominant case would eventually become 4 B = b, where b can be
 
-&nbsp;	any of { 2, 4, 8, 16 }, therefore the ones transmitting would be those with b = 16. 
+ 	any of { 2, 4, 8, 16 }, therefore the ones transmitting would be those with b = 16.
 
-&nbsp;	From this, we determined the upper limit for our values, 24, since the probability of having 4 B = b is approximately 1, so anything above it didn't make sense testing. And from there we picked the rest of the values decreasing 
+ 	From this, we determined the upper limit for our values, 24, since the probability of having 4 B = b is approximately 1, so anything above it didn't make sense testing. And from there we picked the rest of the values decreasing
 
-&nbsp;	by a factor of 4 each time since the likeliness of the dominant case decreased enough to hope for meaningful results to prove our conclusions on N.
-
-
-
-&nbsp;	CGPT: "Since the GS allocates bearers starting from the largest B and the schedule has capacity 64 slots, the schedule is filled by four B=16 bearers whenever at least four active terminals report B=16. 
-
-&nbsp;		Under uniform B, the probability of this event increases rapidly with N; therefore, for sufficiently large N, the typical number of transmitting terminals per timeframe approaches 4."
+ 	by a factor of 4 each time since the likeliness of the dominant case decreased enough to hope for meaningful results to prove our conclusions on N.
 
 
 
-For K, we picked values for it based on the expected bytes generated per timeframe (Btf) given S and T. From that, we picked the values for K by which M would be large enough that ALL Btf from a terminal would pass for a given 
+ 	CGPT: "Since the GS allocates bearers starting from the largest B and the schedule has capacity 64 slots, the schedule is filled by four B=16 bearers whenever at least four active terminals report B=16.
 
-&nbsp;	value of B, which is one of the factors that determines M. We start from a value of K which would compute M by which it would never suffice for the Btf and from there picked those which would give an M that would suffice
+ 		Under uniform B, the probability of this event increases rapidly with N; therefore, for sufficiently large N, the typical number of transmitting terminals per timeframe approaches 4."
 
-&nbsp;	for B = 16, B >= 8 and so forth. Then we also picked some larger values to demonstrate how increasing K does not provide any meaningful improvements after K is large enough so that even for the case B = 4 M would suffice 
 
-&nbsp;	for Btf. (We do not consider B = 2 since in this case for any value of K, M = 100).
+
+For ***K***, we picked values for it based on the expected bytes generated per timeframe (Btf) given S and T. From that, we picked the values for K by which M would be large enough that ALL Btf from a terminal would pass for a given
+
+ 	value of B, which is one of the factors that determines M. We start from a value of K which would compute M by which it would never suffice for the Btf and from there picked those which would give an M that would suffice
+
+ 	for B = 16, B >= 8 and so forth. Then we also picked some larger values to demonstrate how increasing K does not provide any meaningful improvements after K is large enough so that even for the case B = 4 M would suffice
+
+ 	for Btf. (We do not consider B = 2 since in this case for any value of K, M = 100).
 
 
 
@@ -169,7 +169,7 @@ Parameters:
 
 * T, this has been chosen after testing different values for it in order to have enough bytes generated per timeframe (Btf) to have enough of a change for K; BUT not too small to have Btf so large that would create persistent backlog, 	so terminals that are not scheduled for several frames accumulate packets and then transmit in large bursts up to M(B) when granted, producing high variance in per-frame per-terminal throughput. We select T in an intermediae
 
-&nbsp;	range so that the impact of K on throughput can be observed while keeping backlog-induced burstiness within reasonable bounds.
+ 	range so that the impact of K on throughput can be observed while keeping backlog-induced burstiness within reasonable bounds.
 
 
 
@@ -185,7 +185,8 @@ Parameters:
 
  		NB: IF the "Moving Average" is constant from the start, NO warm up period needed
 
-&nbsp;       - About 7s of warmup for the throughput (as N >= 12 is about 3s) and 3s for queue length
+        - About 7s of warmup for the throughput (as N >= 12 is about 3s) and 3s for queue length
+
 
 
 .Simulation Time Duration:
