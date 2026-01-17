@@ -1,9 +1,9 @@
-file 1971 1767788178                                            
+file 1385 1768649389                                            
 version 3
-run throughputConsistencyTest-6-20260107-13:16:18-5914
+run throughputConsistencyTest-6-20260117-12:29:49-3801
 attr configname throughputConsistencyTest
-attr datetime 20260107-13:16:18
-attr datetimef 20260107-131618
+attr datetime 20260117-12:29:49
+attr datetimef 20260117-122949
 attr experiment throughputConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $N=2
@@ -11,7 +11,7 @@ attr iterationvarsd N=2
 attr iterationvarsf N=2-
 attr measurement $N=2
 attr network System
-attr processid 5914
+attr processid 3801
 attr repetition 6
 attr replication #6
 attr resultdir results
@@ -21,22 +21,21 @@ itervar N 2
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
 config record-eventlog false
-config repeat 20
-config seed-set 6
+config **.scalar-recording true
+config **.vector-recording false
 config **.N 2
-config num-rngs 2
 config **.K 100
 config *.t[*].mean_T 0.016s
+config num-rngs 2
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
+config repeat 35
+config seed-set 6
 config *.t[*].a 4B
 config *.t[*].b 100B
-config *.t[*].mean_T 0.0025s
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
@@ -51,6 +50,4 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1369 91 135 961 0.25 1.5 6 2740 8620 35692 242431440
-1	1460 510 12 1032 0.08 1.6 40 0 11 143 989
 

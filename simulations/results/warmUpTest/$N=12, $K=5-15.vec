@@ -1,8 +1,8 @@
 version 3
-run warmUpTest-135-20260108-13:20:39-53480
+run warmUpTest-225-20260117-13:26:36-7812
 attr configname warmUpTest
-attr datetime 20260108-13:20:39
-attr datetimef 20260108-132039
+attr datetime 20260117-13:26:36
+attr datetimef 20260117-132636
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=12, $K=5"
@@ -10,11 +10,11 @@ attr iterationvarsd N=12/K=5
 attr iterationvarsf N=12,K=5-
 attr measurement "$N=12, $K=5"
 attr network System
-attr processid 53480
+attr processid 7812
 attr repetition 15
 attr replication #15
 attr resultdir results
-attr runnumber 135
+attr runnumber 225
 attr seedset 15
 itervar K 5
 itervar N 12
@@ -31,7 +31,7 @@ config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config repeat 20
+config repeat 35
 config seed-set 15
 config *.t[*].a 4B
 config *.t[*].b 100B

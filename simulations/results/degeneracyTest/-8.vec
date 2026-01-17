@@ -1,0 +1,53 @@
+version 3
+run degeneracyTest-8-20260117-13:04:08-7108
+attr configname degeneracyTest
+attr datetime 20260117-13:04:08
+attr datetimef 20260117-130408
+attr experiment degeneracyTest
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network System
+attr processid 7108
+attr repetition 8
+attr replication #8
+attr resultdir results
+attr runnumber 8
+attr seedset 8
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config **.scalar-recording true
+config **.vector-recording false
+config output-scalar-file results/degeneracyTest/degeneracy.sca
+config **.N 0
+config **.K 0
+config *.t[*].mean_T 0s
+config *.t[*].a 10^6
+config *.t[*].b 10^7
+config network System
+config sim-time-limit 20s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config repeat 35
+config seed-set 8
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
+config *.t[*].rng-0 index
+config *.t[*].rng-1 index
+config *.t[*].rng-2 index
+config output-vector-file results/degeneracyTest/-8.vec
+config output-scalar-file results/degeneracyTest/-8.sca
+
+vector 0 System.oracle throughputWarmUpStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source throughputWarmUp
+vector 1 System.oracle AvgQLStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source avgQueueLength
+

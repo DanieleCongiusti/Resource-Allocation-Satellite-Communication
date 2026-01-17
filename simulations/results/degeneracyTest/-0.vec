@@ -1,8 +1,8 @@
 version 3
-run degeneracyTest-0-20260107-20:01:18-30909
+run degeneracyTest-0-20260117-13:04:06-7098
 attr configname degeneracyTest
-attr datetime 20260107-20:01:18
-attr datetimef 20260107-200118
+attr datetime 20260117-13:04:06
+attr datetimef 20260117-130406
 attr experiment degeneracyTest
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,18 +10,17 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network System
-attr processid 30909
+attr processid 7098
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
-attr seedset 1
+attr seedset 0
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
 config record-eventlog false
+config **.scalar-recording true
 config **.vector-recording false
-config repeat 1
-config seed-set 1
 config output-scalar-file results/degeneracyTest/degeneracy.sca
 config **.N 0
 config **.K 0
@@ -32,7 +31,7 @@ config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config repeat 20
+config repeat 35
 config seed-set 0
 config *.t[*].a 4B
 config *.t[*].b 100B
