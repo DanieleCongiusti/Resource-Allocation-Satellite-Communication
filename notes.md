@@ -22,11 +22,11 @@
 **IMPLEMENTATION**  
 **NtS**: *Make an overview of the project by describing the organization of the Directory showcasing the content of each of the following folders:*
 - NED File (Modules) -> *Contain the NED Declaration of each of the following modules implemented...*
-- Terminal -> ** 
-- Ground Station -> ** 
-- Oracle -> ** 
-- MessageList -> **
-- New Message Type (CommMsg, ContentMsg) -> **
+- Terminal -> *Describe the contents of the .h file (not necessary to go into details because the code is already commented for that) and the .cc file and the purpose of this module in function of the project's specs* 
+- Ground Station -> *Same as before* 
+- Oracle -> *Same as before* 
+- MessageList -> *Same as before*
+- New Message Type (CommMsg, ContentMsg) -> *Same as before*
   
 *Describing the .h files for each module implemented is redudant since their implementation is already commented in the code.*
 
