@@ -1,8 +1,8 @@
 version 3
-run throughputConsistencyTest-44-20260107-13:16:26-5963
+run throughputConsistencyTest-74-20260117-12:30:04-3880
 attr configname throughputConsistencyTest
-attr datetime 20260107-13:16:26
-attr datetimef 20260107-131626
+attr datetime 20260117-12:30:04
+attr datetimef 20260117-123004
 attr experiment throughputConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $N=8
@@ -10,32 +10,31 @@ attr iterationvarsd N=8
 attr iterationvarsf N=8-
 attr measurement $N=8
 attr network System
-attr processid 5963
+attr processid 3880
 attr repetition 4
 attr replication #4
 attr resultdir results
-attr runnumber 44
+attr runnumber 74
 attr seedset 4
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
 config record-eventlog false
-config repeat 20
-config seed-set 4
+config **.scalar-recording true
+config **.vector-recording false
 config **.N 8
-config num-rngs 8
 config **.K 100
 config *.t[*].mean_T 0.016s
+config num-rngs 8
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
+config repeat 35
+config seed-set 4
 config *.t[*].a 4B
 config *.t[*].b 100B
-config *.t[*].mean_T 0.0025s
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
@@ -50,170 +49,4 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	622	0.25	15488
-0	1283	0.5	28256
-0	1959	0.75	27444
-0	2641	1	31332
-0	3276	1.25	17940
-0	3921	1.5	26264
-1	47	0.08	3
-1	50	0.08	7
-1	53	0.08	7
-1	56	0.08	7
-1	59	0.08	3
-1	62	0.08	2
-1	65	0.08	2
-1	68	0.08	6
-1	328	0.16	0
-1	331	0.16	0
-1	334	0.16	0
-1	337	0.16	0
-1	340	0.16	0
-1	343	0.16	0
-1	346	0.16	6
-1	349	0.16	6
-1	453	0.24	7
-1	456	0.24	3
-1	459	0.24	4
-1	462	0.24	3
-1	465	0.24	11
-1	468	0.24	6
-1	471	0.24	0
-1	474	0.24	7
-1	741	0.32	0
-1	744	0.32	4
-1	747	0.32	9
-1	750	0.32	0
-1	753	0.32	0
-1	756	0.32	0
-1	759	0.32	5
-1	762	0.32	0
-1	908	0.4	9
-1	911	0.4	0
-1	914	0.4	0
-1	917	0.4	7
-1	920	0.4	1
-1	923	0.4	5
-1	926	0.4	7
-1	929	0.4	6
-1	1135	0.48	0
-1	1138	0.48	2
-1	1141	0.48	3
-1	1144	0.48	0
-1	1147	0.48	0
-1	1150	0.48	8
-1	1153	0.48	7
-1	1156	0.48	7
-1	1362	0.56	8
-1	1365	0.56	0
-1	1368	0.56	0
-1	1371	0.56	4
-1	1374	0.56	3
-1	1377	0.56	0
-1	1380	0.56	0
-1	1383	0.56	0
-1	1548	0.64	0
-1	1551	0.64	9
-1	1554	0.64	5
-1	1557	0.64	0
-1	1560	0.64	0
-1	1563	0.64	2
-1	1566	0.64	6
-1	1569	0.64	9
-1	1786	0.72	8
-1	1789	0.72	0
-1	1792	0.72	5
-1	1795	0.72	2
-1	1798	0.72	8
-1	1801	0.72	0
-1	1804	0.72	0
-1	1807	0.72	0
-1	2055	0.8	0
-1	2058	0.8	5
-1	2061	0.8	0
-1	2064	0.8	6
-1	2067	0.8	0
-1	2070	0.8	2
-1	2073	0.8	8
-1	2076	0.8	8
-1	2274	0.88	7
-1	2277	0.88	6
-1	2280	0.88	5
-1	2283	0.88	0
-1	2286	0.88	7
-1	2289	0.88	5
-1	2292	0.88	0
-1	2295	0.88	0
-1	2543	0.96	0
-1	2546	0.96	0
-1	2549	0.96	0
-1	2552	0.96	5
-1	2555	0.96	0
-1	2558	0.96	0
-1	2561	0.96	4
-1	2564	0.96	4
-1	2701	1.04	4
-1	2704	1.04	7
-1	2707	1.04	4
-1	2710	1.04	0
-1	2713	1.04	3
-1	2716	1.04	6
-1	2719	1.04	0
-1	2722	1.04	0
-1	2889	1.12	0
-1	2892	1.12	0
-1	2895	1.12	0
-1	2898	1.12	2
-1	2901	1.12	0
-1	2904	1.12	7
-1	2907	1.12	5
-1	2910	1.12	4
-1	3089	1.2	2
-1	3092	1.2	8
-1	3095	1.2	4
-1	3098	1.2	8
-1	3101	1.2	3
-1	3104	1.2	0
-1	3107	1.2	0
-1	3110	1.2	0
-1	3340	1.28	0
-1	3343	1.28	0
-1	3346	1.28	0
-1	3349	1.28	0
-1	3352	1.28	0
-1	3355	1.28	8
-1	3358	1.28	9
-1	3361	1.28	8
-1	3521	1.36	9
-1	3524	1.36	5
-1	3527	1.36	5
-1	3530	1.36	3
-1	3533	1.36	5
-1	3536	1.36	0
-1	3539	1.36	0
-1	3542	1.36	13
-1	3784	1.44	0
-1	3787	1.44	0
-1	3790	1.44	0
-1	3793	1.44	0
-1	3796	1.44	0
-1	3799	1.44	4
-1	3802	1.44	5
-1	3805	1.44	18
-1	3959	1.52	4
-1	3962	1.52	3
-1	3965	1.52	2
-1	3968	1.52	3
-1	3971	1.52	7
-1	3974	1.52	0
-1	3977	1.52	0
-1	3980	1.52	24
-1	4252	1.6	0
-1	4255	1.6	8
-1	4258	1.6	0
-1	4261	1.6	6
-1	4264	1.6	0
-1	4267	1.6	2
-1	4270	1.6	1
-1	4273	1.6	0
 

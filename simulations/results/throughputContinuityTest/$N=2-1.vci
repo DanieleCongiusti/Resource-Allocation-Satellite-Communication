@@ -1,9 +1,9 @@
-file 1350 1767812539                                            
+file 1380 1768650896                                            
 version 3
-run throughputContinuityTest-1-20260107-20:02:19-30966
+run throughputContinuityTest-1-20260117-12:54:56-6051
 attr configname throughputContinuityTest
-attr datetime 20260107-20:02:19
-attr datetimef 20260107-200219
+attr datetime 20260117-12:54:56
+attr datetimef 20260117-125456
 attr experiment throughputContinuityTest
 attr inifile omnetpp.ini
 attr iterationvars $N=2
@@ -11,7 +11,7 @@ attr iterationvarsd N=2
 attr iterationvarsf N=2-
 attr measurement $N=2
 attr network System
-attr processid 30966
+attr processid 6051
 attr repetition 1
 attr replication #1
 attr resultdir results
@@ -21,6 +21,7 @@ itervar N 2
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
 config record-eventlog false
+config **.scalar-recording true
 config **.vector-recording false
 config **.N 2
 config **.K 100
@@ -30,7 +31,7 @@ config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config repeat 20
+config repeat 35
 config seed-set 1
 config *.t[*].a 4B
 config *.t[*].b 100B
