@@ -6,30 +6,48 @@
 
 **KPI**
 
-1. Determine **throughput** based on N, K values
+1. Determine **average throughput** based on N, K values
 2. Determine **average queue length** based on "" "" ""
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-**IMPLEMENTATION -> VERIFICATION TESTS**
+**MODELING**
+**NtS**: *Screenshot of the Design from the NED file of the System and from the QTEnv at run time. Describe the elements in the images referencing the specs from the Project's Documentation and their behaviour that is going to be implemented in the next step.*
 
-Consistency:
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+**IMPLEMENTATION**  
+**NtS**: *Make an overview of the project by describing the organization of the Directory showcasing the content of each of the following folders:*
+- NED File (Modules) -> *Contain the NED Declaration of each of the following modules implemented...*
+- Terminal -> ** 
+- Ground Station -> ** 
+- Oracle -> ** 
+- MessageList -> **
+- New Message Type (CommMsg, ContentMsg) -> **
+  
+*Describing the .h files for each module implemented is redudant since their implementation is already commented in the code.*
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+**VERIFICATION && VALIDATION TESTS**
+**NtS**: *For **Verification** show an image of the running simulation of a "simple scenario" from QTEnv and associated to it the event traces that occur between the beginning of two timeframes. From the event traces describe the phases of the protocol:*
+- Sending Grant Requests to Satellite and then to GS  
+- Sending Grant Responses to Satellite and then to Terminal 
+- Terminals with Grant start Transmitting to GS through Satellite
+
+*For **Validation** show the results from the Consistency, Degeneracy, Continuity tests and describe how each test was conducted:*
+- Consistency & Continuity -> Show the graphs obtained from the tested configuration for N and K 
+- Degeneracy -> Show the Terminal's message to prove that the configuration does not crash and ends run correctly
+
+**Consistency**:
 
  	Results should scale in accordance to the increase of the values of each Factor/Parameter
 
- 
-
  	Values tested (x30 Tests each) for Throughput:
-
  	- N = 2, 4, 8, 16, 32
-
  	- K = "Large Number" (100)	-> To have NO MAX CEILING for any B value, except for B = 2
-
  	- T = 80/5 (16) ms
-
  	- S between \[4, 100]B
-
- 
 
  	We are focusing on N because it's an important factor in determining the overall throughput of the system, more so than the others
 
@@ -40,74 +58,46 @@ Consistency:
  	-----------------------
 
  	Values tested ("") for Queue Length:
-
  	- T = (16, 8, 4, 2, 1)ms
-
  	- N = 18
-
  	- K = "Small Number" (1)	-> To have a VERY LOW CEILING for any B value to focus on the queuing aspect
-
  	- S ...
 
 \_\_\_\_\_\_\_\_\_\_\_
 
-Degeneracy:
+**Degeneracy**:
 
  	The process should not crash if setting factors and parameters at extreme values
 
- 
-
  	Values tested:
-
  	- N = 0
-
  	- K = 0
-
  	- T = 0
-
  	- S = \[10^6, 10^7]
-
- 
 
  	These are "absurd values" for each case to see if the the program still works
 
 \_\_\_\_\_\_\_\_\_\_\_\_
 
-Continuinty:
+**Continuinty**:
 
  	Results should not vary much if the values for each factor and parameter vary little
 
- 
-
  	Values tested (x30 Tests each) for Throughput:
-
  	- N = 2, 3, 4, 5, 6
-
  	- K = "Large Number" (100)	-> To have NO MAX CEILING for any B value, except for B = 2
-
  	- T = 80/5 (16) ms
-
  	- S between \[4, 100]B
-
- 
 
   	-----------------------
 
  	Values tested ("") for Queue Length:
-
  	- T = (16, 15, 14, 13, 12)ms
-
  	- N = 18
-
  	- K = "Small Number" (1)	-> To have a VERY LOW CEILING for any B value to focus on the queuing aspect
-
  	- S ...
 
-
-
  	These are increment gradually to verify that the output results do not change drastically from each configuration
-
-
 
 **NB**: *The test results are saved in a specific folder separate from "simulation results"*
 
@@ -118,85 +108,38 @@ Continuinty:
 Factors:
 
 * N: { 8, 12, 16, 20, 24 }
-* K: { 10, 20, 50, 100, 1000 }
-
-
+* K: { 2, 5, 20, 50, 1000 }
 
 For ***N***, we initially started by looking at the max and min possible terminals that can transmit considering B and C (Scheduling Capacity). From this we obtained that the range of possible transmittable Terminals is between \[4, 32]
-
- 	But the likeliness of how many terminals will transmit isn't uniformally distributed since, just an example, the likeliness of having 4 terminals generating B = 16 (4x16 = 64 => Max Capacity reached, no more space for other
-
- 	terminals to transmit) is much more likely than 32 B = 2. Also, the B get ordered in decresing order when received, therefore it's sufficient that out of N terminals 4 random ones generate B = 16 and all the rest would be
-
- 	irrelevant.
-
- 	So, we studied the probability of having the same value of B multiple times (an RV with Binomial Distribution) and quickly demonstrated that as N grows the most dominant case would eventually become 4 B = b, where b can be
-
- 	any of { 2, 4, 8, 16 }, therefore the ones transmitting would be those with b = 16.
-
+ 	But the likeliness of how many terminals will transmit isn't uniformally distributed since, just an example, the likeliness of having 4 terminals generating B = 16 (4x16 = 64 => Max Capacity reached, no more space for other terminals to transmit) is much more likely than 32 B = 2. Also, the series of B requests get ordered in decresing order when received, therefore it's sufficient that out of N terminals 4 random ones generate B = 16 and all the rest would be irrelevant.
+ 	So, we studied the probability of having the same value of B multiple times (an RV with Binomial Distribution) and quickly demonstrated that as N grows the most dominant case would eventually become 4 B = b, where b can be any of { 2, 4, 8, 16 }, therefore the ones transmitting would be those with b = 16.
  	From this, we determined the upper limit for our values, 24, since the probability of having 4 B = b is approximately 1, so anything above it didn't make sense testing. And from there we picked the rest of the values decreasing
-
  	by a factor of 4 each time since the likeliness of the dominant case decreased enough to hope for meaningful results to prove our conclusions on N.
 
 
-
- 	CGPT: "Since the GS allocates bearers starting from the largest B and the schedule has capacity 64 slots, the schedule is filled by four B=16 bearers whenever at least four active terminals report B=16.
-
- 		Under uniform B, the probability of this event increases rapidly with N; therefore, for sufficiently large N, the typical number of transmitting terminals per timeframe approaches 4."
-
-
-
-For ***K***, we picked values for it based on the expected bytes generated per timeframe (Btf) given S and T. From that, we picked the values for K by which M would be large enough that ALL Btf from a terminal would pass for a given
-
- 	value of B, which is one of the factors that determines M. We start from a value of K which would compute M by which it would never suffice for the Btf and from there picked those which would give an M that would suffice
-
- 	for B = 16, B >= 8 and so forth. Then we also picked some larger values to demonstrate how increasing K does not provide any meaningful improvements after K is large enough so that even for the case B = 4 M would suffice
-
- 	for Btf. (We do not consider B = 2 since in this case for any value of K, M = 100).
-
-
+For ***K***, we picked values for it based on the expected bytes generated per timeframe (Btf) given S and T. From that, we picked the values for K by which M would be large enough that ALL Btf from a terminal would pass for a given value of B, which is one of the factors that determines M. We start from a value of K which would compute M by which it would never suffice for the Btf and from there picked those which would give an M that would suffice for B = 16, B >= 8 and so forth. Then we also picked some larger values to demonstrate how increasing K does not provide any meaningful improvements after K is large enough so that even for the case B = 4 M would suffice for Btf. (We do not consider B = 2 since in this case for any value of K, M = 100).
 
 ---
 
 Parameters:
 
-* B, this has been provided to us by the project's specs
-* S, this has been choses based on the project's specific for M, where M = 100\*K^(log\_2(B)-1), in particular:
+* B, this has been provided to us by the project's specs.
+* S, this has been choses based on the project's specific for M, where M = 100\*K^(log\_2(B)-1), in particular: when B=2 the M is ALWAYS M=100 because the exponent will be 0, therefore it doesn't matter what K is, M will be this constant value and since we want the packets to always be transmittable at any B.
 
- 	when B=2 the M is ALWAYS M=100 because the exponent will be 0, therefore it doesn't matter what K is, M will be this constant value
-
- 	and since we want the packets to always be transmittable at any B
-
-* T, this has been computed in function of S and the possible Throughput that our system could have in the context of M2M/IoT systems.
-
- 	range so that the impact of K on throughput can be observed while keeping backlog-induced burstiness within reasonable bounds.
-
-
-
- 	We then used this possible Throughput value as a reference to then determine the value for T by checking the value of the Throughput through simple testing 
-
-	and came to the value of T by which is closest to the reference value chosen (200KBps): T = 0.0025s
+* T, this has been chosen after testing different values for it in order to have enough bytes generated per timeframe (Btf) to have enough of a change for K; BUT not too small to have Btf so large that would create persistent backlog, so terminals that are not scheduled for several frames accumulate packets and then transmit in large bursts up to M(B) when granted, producing high variance in per-frame per-terminal throughput. We select T in an intermediae range so that the impact of K on throughput can be observed while keeping backlog-induced burstiness within reasonable bounds.
 
 ---
 
-.Warm-Up Duration:
-
+Warm-Up Duration:
 &nbsp;	- Add the Statistics to collect the "Moving Average" for Throughput and Queue Length values 
-
-&nbsp;	- Gather Test results 
-
+&nbsp;	- Gather Test results
 &nbsp;	- Infer from the results how much Warm-Up time we need to consider before collecting the proper results 
-
 &nbsp;		NB: IF the "Moving Average" is constant from the start, NO warm up period needed	
-
         - About 7s of warmup for the throughput (as N >= 12 is about 3s) and 3s for queue length -> Decided on 10s to add a little margin 
 
 
-
-.Simulation Time Duration:
-
+Simulation Time Duration:
 &nbsp;	The simulation time was selected to ensure a sufficiently large sample size, allowing the application of the Central Limit Theorem for the statistical analysis of aggregated metrics.
-
 &nbsp;	Since the recorded samples per run are done at every frame and a frame lasts 80ms, we picked a simulation time of 20s to have a large amount of data to compute the average Throughput and Queue Length 
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
@@ -205,23 +148,15 @@ Parameters:
 
 For each configuration of N, K (which are |N|\*|K|=5\*5=25 distinct configurations) we ran the experiment for >30 times in order to have a sufficient amount of results from Indipendent Identically Distributed RVs and also verified at the same time that the Sample Variance is finite for each KPI to assume the Mean of each KPI to be Normally distributed. This way we can use the Standardized Sample Mean, an RV normally distributed defined as Z=(X-mu/S\*sqrt(n)), to compute the Confidence Intervals of the true mean of our experiments. 
 
-
-
 We also computed the Sample Width for different confidence levels (90, 95, 99) by computing the Sample Mean (X^bar) and the Sample Variance (S) from a total of (around 35 to 50) samples to verify that this amount of samples were enough for our estimate. We found that we had enough samples for 90 and 95% but not for the last 99, we needed many more samples. So we went for a Confidence Level of 95%.
 
 We then had to gather many more samples to properly assert that the Sample Variance was limited, for the Queue Length in particular, since it starts with an upward trend (not good) but then stabilizes around a fixed value for a large sample width of at least 200. 
 
-
-
 Given X^bar and S and verified that the sample width is correct, we then proceeded with computing the CI for 95% certainty. Under it's shown the histograms of our results at different configurations of N and K:	
 
 ...
-
 ...	"Showing the graph resuls"
-
 ...
-
-
 
 "Continue with Comments on Graphs" 
 
@@ -230,26 +165,3 @@ Given X^bar and S and verified that the sample width is correct, we then proceed
 **CONCLUSIONS** 
 
 "Conclusions provided by recapping most relevant comments on graphs"
-
-
-
-
-
-&nbsp;		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

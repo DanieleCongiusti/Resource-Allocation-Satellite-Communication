@@ -26,7 +26,7 @@ This repository was created to support the development of the project assigned t
 - [x] Implementation
 - [x] Verify the code
 - [x] Consistency, Coherence and Degeneracy test
-- [x] Calibrate your simulator: remember we want to simulate a system
+- [x] Calibrate your simulator: remember what we want to simulate a system
 - [x] Experiment design
 - [x] Run
 - [ ] Data Analysis
