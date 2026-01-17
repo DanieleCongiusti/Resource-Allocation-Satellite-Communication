@@ -12,7 +12,10 @@
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 **MODELING**
-**NtS**: *Screenshot of the Design from the NED file of the System and from the QTEnv at run time. Describe the elements in the images referencing the specs from the Project's Documentation and their behaviour that is going to be implemented in the next step.*
+**NtS**: *Describing the Model consists in:* 
+- Describe how it will work (tied to Implementation step) -> *Show a Screenshot of the Design from the NED file of the System and from the QTEnv at run time. Describe the elements in the images referencing the specs from the Project's Documentation and their behaviour that is going to be implemented in the next step.*
+
+- What we expect from it in the results, OUR CLAIM (tied to Data Analysis) -> *Describe what we expect from varying N and K respectively as our claim to demonstrate in the final results*
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
@@ -131,16 +134,18 @@ Parameters:
 ---
 
 Warm-Up Duration:
+**NtS**: *Describe how the Warm-up duration has been determined (copy description below) and add the graphs of the Moving Average for Throughput and Queue Length of the worst cases (QLen: any N,K=5 | Throup.: N24, any K).*
+
 &nbsp;	- Add the Statistics to collect the "Moving Average" for Throughput and Queue Length values 
 &nbsp;	- Gather Test results
 &nbsp;	- Infer from the results how much Warm-Up time we need to consider before collecting the proper results 
 &nbsp;		NB: IF the "Moving Average" is constant from the start, NO warm up period needed	
-        - About 7s of warmup for the throughput (as N >= 12 is about 3s) and 3s for queue length -> Decided on 10s to add a little margin 
+        - About 7s of warmup for the throughput and 3s for queue length -> Decided on 10s to add a little margin 
 
 
 Simulation Time Duration:
 &nbsp;	The simulation time was selected to ensure a sufficiently large sample size, allowing the application of the Central Limit Theorem for the statistical analysis of aggregated metrics.
-&nbsp;	Since the recorded samples per run are done at every frame and a frame lasts 80ms, we picked a simulation time of 20s to have a large amount of data to compute the average Throughput and Queue Length 
+&nbsp;	Since the recorded samples per run are done at every timeframe and a timeframe lasts 80ms, we picked a simulation time of 30s to have a large amount of data to compute the average Throughput and Queue Length after the Warm-Up period ((30-10)/0.08=250 timeframes total from which we gather samples for the final computation of the Avg Throughput and Avg Queue Length at the end of one run). 
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
@@ -148,14 +153,14 @@ Simulation Time Duration:
 
 For each configuration of N, K (which are |N|\*|K|=5\*5=25 distinct configurations) we ran the experiment for >30 times in order to have a sufficient amount of results from Indipendent Identically Distributed RVs and also verified at the same time that the Sample Variance is finite for each KPI to assume the Mean of each KPI to be Normally distributed. This way we can use the Standardized Sample Mean, an RV normally distributed defined as Z=(X-mu/S\*sqrt(n)), to compute the Confidence Intervals of the true mean of our experiments. 
 
-We also computed the Sample Width for different confidence levels (90, 95, 99) by computing the Sample Mean (X^bar) and the Sample Variance (S) from a total of (around 35 to 50) samples to verify that this amount of samples were enough for our estimate. We found that we had enough samples for 90 and 95% but not for the last 99, we needed many more samples. So we went for a Confidence Level of 95%.
+We also computed the Sample Width for different confidence levels (90, 95, 99) by computing the Sample Mean (X^bar) and the Sample Variance (S) from a total of (around 35 to 400) samples to verify that this amount of samples were enough for our estimate. We found that we had enough samples for 90 and 95% but not for the last 99, we needed many more samples. So we went for a Confidence Level of 95%.
 
-We then had to gather many more samples to properly assert that the Sample Variance was limited, for the Queue Length in particular, since it starts with an upward trend (not good) but then stabilizes around a fixed value for a large sample width of at least 200. 
+We then had to gather many more samples to properly assert that the Sample Variance was limited, for the Queue Length in particular, since it starts with an upward trend (not good) but then stabilizes around a fixed value for a large sample width of at least 200 to 400. 
 
-Given X^bar and S and verified that the sample width is correct, we then proceeded with computing the CI for 95% certainty. Under it's shown the histograms of our results at different configurations of N and K:	
+Given X^bar and S and verified that the sample width is sufficiently large enough and the variance is indeed limited, we then proceeded with computing the CI for 90, 95% certainty. Under it's shown the histograms of our results at different configurations of N and K:	
 
 ...
-...	"Showing the graph resuls"
+...	"Showing the graph results"
 ...
 
 "Continue with Comments on Graphs" 
