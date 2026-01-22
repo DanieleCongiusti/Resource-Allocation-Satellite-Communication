@@ -159,14 +159,23 @@ We then had to gather many more samples to properly assert that the Sample Varia
 
 Given X^bar and S and verified that the sample width is sufficiently large enough and the variance is indeed limited, we then proceeded with computing the CI for 90, 95% certainty. Under it's shown the histograms of our results at different configurations of N and K:	
 
-...
-...	"Showing the graph results"
+"Showing the graph results"
+1) Grafico sul throughput al variare di N (throughput_N.png)
+    - si nota un aumento lineare del throughput al variare di N, mentre K ha un impatto maggiore per N più grande
+
+2) Grafico sulla queue length al variare di N (queueLength_N.png)
+    - allo stesso tempo, se si aumentasse N, avremmo un aumento della coda poiché il numero di terminali che non trasmettono aumenta
+
+Come mai allora non avete provato ad aumentare il numero di N ulteriormente per verificare questo andamento?
+
+3) Grafico sul ratio (ratio.png)
+    - Volevamo trovare la migliore configurazione di N e K affinché il massimo throughput e la minima queue length e, dal grafico, vediamo come il rapporto ottimo si ha per N = 12 ed aumentando N la queue length crescerebbe molto di più rispetto al throughput
 ...
 
 "Continue with Comments on Graphs" 
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-**CONCLUSIONS** 
+**CONCLUSIONS**
 
 "Conclusions provided by recapping most relevant comments on graphs"
