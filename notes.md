@@ -162,17 +162,16 @@ Given X^bar and S and verified that the sample width is sufficiently large enoug
 "Showing the graph results"
 1) Grafico sul throughput al variare di N (throughput_N.png)
     - si nota un aumento lineare del throughput al variare di N, mentre K ha un impatto maggiore per N più grande
+    - vogliamo evidenziare come K sia irrilevante per un certo range di N e cominci ad impattare maggiormente all'aumentare del numero dei terminali dato che la queue length aumenta sempre di più
 
 2) Grafico sulla queue length al variare di N (queueLength_N.png)
     - allo stesso tempo, se si aumentasse N, avremmo un aumento della coda poiché il numero di terminali che non trasmettono aumenta
+    - si può notare come, anche aumentando K (teoricamente dovrebbe diminuire la coda), ciò non succeda poiché la capacità massima della GS è di 64 slot e quindi il numero massimo di terminali che possono trasmettere sarà pari a 4 (con probabilità vicina a 1), causando comunque un aumento delle dimensioni delle code 
 
-Come mai allora non avete provato ad aumentare il numero di N ulteriormente per verificare questo andamento?
+Come mai allora non avete provato ad aumentare il numero di N ulteriormente per verificare questo andamento? -> max 64 slots
 
 3) Grafico sul ratio (ratio.png)
-    - Volevamo trovare la migliore configurazione di N e K affinché il massimo throughput e la minima queue length e, dal grafico, vediamo come il rapporto ottimo si ha per N = 12 ed aumentando N la queue length crescerebbe molto di più rispetto al throughput
-...
-
-"Continue with Comments on Graphs" 
+    - Volevamo trovare la migliore configurazione di N e K per avere il massimo throughput e la minima queue length e, dal grafico, vediamo come il rapporto ottimo si ha per N = 16 ed aumentando N la queue length crescerebbe molto di più rispetto al throughput
 
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 

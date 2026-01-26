@@ -1,8 +1,8 @@
 version 3
-run simulationTest-62-20260110-11:30:49-84211
+run simulationTest-97-20260126-10:47:33-7599
 attr configname simulationTest
-attr datetime 20260110-11:30:49
-attr datetimef 20260110-113049
+attr datetime 20260126-10:47:33
+attr datetimef 20260126-104733
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -10,22 +10,22 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 84211
+attr processid 7599
 attr repetition 27
 attr replication #27
 attr resultdir results
-attr runnumber 62
+attr runnumber 97
 attr seedset 27
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording true
 config **.vector-recording false
 config extends warmUpTest
 config warmup-period 10s
-config repeat 35
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
@@ -34,7 +34,7 @@ config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config repeat 20
+config repeat 35
 config seed-set 27
 config *.t[*].a 4B
 config *.t[*].b 100B
