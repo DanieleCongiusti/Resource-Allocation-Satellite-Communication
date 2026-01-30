@@ -1,8 +1,8 @@
 version 3
-run throughputConsistencyTest-40-20260107-13:16:25-5959
+run throughputConsistencyTest-70-20260117-12:30:03-3876
 attr configname throughputConsistencyTest
-attr datetime 20260107-13:16:25
-attr datetimef 20260107-131625
+attr datetime 20260117-12:30:03
+attr datetimef 20260117-123003
 attr experiment throughputConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $N=8
@@ -10,32 +10,31 @@ attr iterationvarsd N=8
 attr iterationvarsf N=8-
 attr measurement $N=8
 attr network System
-attr processid 5959
+attr processid 3876
 attr repetition 0
 attr replication #0
 attr resultdir results
-attr runnumber 40
+attr runnumber 70
 attr seedset 0
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
 config record-eventlog false
-config repeat 20
-config seed-set 0
+config **.scalar-recording true
+config **.vector-recording false
 config **.N 8
-config num-rngs 8
 config **.K 100
 config *.t[*].mean_T 0.016s
+config num-rngs 8
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
+config repeat 35
+config seed-set 0
 config *.t[*].a 4B
 config *.t[*].b 100B
-config *.t[*].mean_T 0.0025s
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
@@ -45,11 +44,11 @@ config output-scalar-file results/throughputConsistencyTest/$N=8-0.sca
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 3.71875
+scalar System.oracle AvgQLStat:mean 3.4795
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 25666.25
+scalar System.oracle throughputStat:last 25648.9
 attr "" ""
 attr recordingmode last
 attr source throughput

@@ -1,9 +1,9 @@
-file 1397 1767811705                                            
+file 1427 1768649850                                            
 version 3
-run queueLengthConsistencyTest-48-20260107-19:48:25-29643
+run queueLengthConsistencyTest-78-20260117-12:37:30-4672
 attr configname queueLengthConsistencyTest
-attr datetime 20260107-19:48:25
-attr datetimef 20260107-194825
+attr datetime 20260117-12:37:30
+attr datetimef 20260117-123730
 attr experiment queueLengthConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $T=0.004s
@@ -11,16 +11,17 @@ attr iterationvarsd T=0.004s
 attr iterationvarsf T=0.004s-
 attr measurement $T=0.004s
 attr network System
-attr processid 29643
+attr processid 4672
 attr repetition 8
 attr replication #8
 attr resultdir results
-attr runnumber 48
+attr runnumber 78
 attr seedset 8
 itervar T 0.004s
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
 config record-eventlog false
+config **.scalar-recording true
 config **.vector-recording false
 config **.N 18
 config **.K 1
@@ -30,7 +31,7 @@ config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config repeat 20
+config repeat 35
 config seed-set 8
 config *.t[*].a 4B
 config *.t[*].b 100B

@@ -1,8 +1,8 @@
 version 3
-run throughputConsistencyTest-12-20260107-13:16:19-5931
+run throughputConsistencyTest-12-20260117-12:29:50-3809
 attr configname throughputConsistencyTest
-attr datetime 20260107-13:16:19
-attr datetimef 20260107-131619
+attr datetime 20260117-12:29:50
+attr datetimef 20260117-122950
 attr experiment throughputConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $N=2
@@ -10,7 +10,7 @@ attr iterationvarsd N=2
 attr iterationvarsf N=2-
 attr measurement $N=2
 attr network System
-attr processid 5931
+attr processid 3809
 attr repetition 12
 attr replication #12
 attr resultdir results
@@ -20,22 +20,21 @@ itervar N 2
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
 config record-eventlog false
-config repeat 20
-config seed-set 12
+config **.scalar-recording true
+config **.vector-recording false
 config **.N 2
-config num-rngs 2
 config **.K 100
 config *.t[*].mean_T 0.016s
+config num-rngs 2
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
+config repeat 35
+config seed-set 12
 config *.t[*].a 4B
 config *.t[*].b 100B
-config *.t[*].mean_T 0.0025s
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
@@ -50,50 +49,4 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	123	0.25	3340
-0	275	0.5	5140
-0	436	0.75	3336
-0	589	1	6320
-0	803	1.25	4048
-0	963	1.5	11124
-1	11	0.08	2
-1	14	0.08	5
-1	53	0.16	0
-1	56	0.16	8
-1	110	0.24	1
-1	113	0.24	0
-1	144	0.32	0
-1	147	0.32	6
-1	182	0.4	6
-1	185	0.4	8
-1	266	0.48	0
-1	269	0.48	0
-1	286	0.56	5
-1	289	0.56	4
-1	359	0.64	0
-1	362	0.64	0
-1	379	0.72	6
-1	382	0.72	4
-1	464	0.8	0
-1	467	0.8	0
-1	485	0.88	5
-1	488	0.88	6
-1	548	0.96	7
-1	551	0.96	0
-1	608	1.04	0
-1	611	1.04	6
-1	652	1.12	9
-1	655	1.12	12
-1	704	1.2	9
-1	707	1.2	15
-1	835	1.28	0
-1	838	1.28	0
-1	857	1.36	6
-1	860	1.36	6
-1	951	1.44	0
-1	954	1.44	0
-1	968	1.52	5
-1	971	1.52	1
-1	1056	1.6	0
-1	1059	1.6	0
 
