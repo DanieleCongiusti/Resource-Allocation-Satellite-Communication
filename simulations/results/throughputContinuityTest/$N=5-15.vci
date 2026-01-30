@@ -1,0 +1,53 @@
+file 1390 1768650921                                            
+version 3
+run throughputContinuityTest-120-20260117-12:55:21-6191
+attr configname throughputContinuityTest
+attr datetime 20260117-12:55:21
+attr datetimef 20260117-125521
+attr experiment throughputContinuityTest
+attr inifile omnetpp.ini
+attr iterationvars $N=5
+attr iterationvarsd N=5
+attr iterationvarsf N=5-
+attr measurement $N=5
+attr network System
+attr processid 6191
+attr repetition 15
+attr replication #15
+attr resultdir results
+attr runnumber 120
+attr seedset 15
+itervar N 5
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config **.scalar-recording true
+config **.vector-recording false
+config **.N 5
+config **.K 100
+config *.t[*].mean_T 0.016s
+config num-rngs 5
+config network System
+config sim-time-limit 20s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config repeat 35
+config seed-set 15
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
+config *.t[*].rng-0 index
+config *.t[*].rng-1 index
+config *.t[*].rng-2 index
+config output-vector-file results/throughputContinuityTest/$N=5-15.vec
+config output-scalar-file results/throughputContinuityTest/$N=5-15.sca
+
+vector 0 System.oracle throughputWarmUpStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source throughputWarmUp
+vector 1 System.oracle AvgQLStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source avgQueueLength
+

@@ -1,9 +1,9 @@
-file 130390 1767647635                                          
+file 1505 1769421186                                            
 version 3
-run simulationTest-244-20260105-19:15:45-3345
+run simulationTest-704-20260126-10:53:06-9098
 attr configname simulationTest
-attr datetime 20260105-19:15:45
-attr datetimef 20260105-191545
+attr datetime 20260126-10:53:06
+attr datetimef 20260126-105306
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=1000"
@@ -11,45 +11,47 @@ attr iterationvarsd N=24/K=1000
 attr iterationvarsf N=24,K=1000-
 attr measurement "$N=24, $K=1000"
 attr network System
-attr processid 3345
+attr processid 9098
 attr repetition 4
 attr replication #4
 attr resultdir results
-attr runnumber 244
+attr runnumber 704
 attr seedset 4
 itervar K 1000
 itervar N 24
-config repeat 10
-config seed-set 4
-config sim-time-limit 27s
-config output-vector-file "results/simulationTest/$N=24, $K=1000-4.vec"
-config output-scalar-file "results/simulationTest/$N=24, $K=1000-4.sca"
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
+config record-eventlog false
+config **.scalar-recording true
+config **.vector-recording false
+config extends warmUpTest
+config warmup-period 10s
+config sim-time-limit 30s
 config **.N 24
-config num-rngs 24
 config **.K 1000
-config *.t[*].a 4B
-config *.t[*].b 100B
+config num-rngs 24
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
-config *.t[*].a 10000KiB
-config *.t[*].b 100000KiB
-config *.t[*].mean_T 0.025s
+config repeat 35
+config seed-set 4
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
+config output-vector-file "results/simulationTest/$N=24, $K=1000-4.vec"
+config output-scalar-file "results/simulationTest/$N=24, $K=1000-4.sca"
 
 vector 0 System.oracle throughputWarmUpStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source throughputWarmUp
-0	1351 2031 1017 149098 0.25 27 108 0 264712 5434540 362032954288
 vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-1	3382 127008 196 148872 0.08 26.96 8088 0 134 43504 3325408
+

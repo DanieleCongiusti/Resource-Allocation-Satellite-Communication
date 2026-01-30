@@ -1,8 +1,8 @@
 version 3
-run simulationTest-112-20260105-19:14:55-3008
+run simulationTest-387-20260126-10:50:01-8685
 attr configname simulationTest
-attr datetime 20260105-19:14:55
-attr datetimef 20260105-191455
+attr datetime 20260126-10:50:01
+attr datetimef 20260126-105001
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=20"
@@ -10,46 +10,49 @@ attr iterationvarsd N=16/K=20
 attr iterationvarsf N=16,K=20-
 attr measurement "$N=16, $K=20"
 attr network System
-attr processid 3008
+attr processid 8685
 attr repetition 2
 attr replication #2
 attr resultdir results
-attr runnumber 112
+attr runnumber 387
 attr seedset 2
 itervar K 20
 itervar N 16
-config repeat 10
-config seed-set 2
-config sim-time-limit 27s
-config output-vector-file "results/simulationTest/$N=16, $K=20-2.vec"
-config output-scalar-file "results/simulationTest/$N=16, $K=20-2.sca"
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
+config record-eventlog false
+config **.scalar-recording true
+config **.vector-recording false
+config extends warmUpTest
+config warmup-period 10s
+config sim-time-limit 30s
 config **.N 16
-config num-rngs 16
 config **.K 20
-config *.t[*].a 4B
-config *.t[*].b 100B
+config num-rngs 16
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
-config *.t[*].a 10000KiB
-config *.t[*].b 100000KiB
-config *.t[*].mean_T 0.025s
+config repeat 35
+config seed-set 2
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
+config output-vector-file "results/simulationTest/$N=16, $K=20-2.vec"
+config output-scalar-file "results/simulationTest/$N=16, $K=20-2.sca"
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 0.044324925816024
+scalar System.oracle AvgQLStat:mean 66.674800796813
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 33410.962962963
+scalar System.oracle throughputStat:last 415302.7
 attr "" ""
 attr recordingmode last
 attr source throughput
@@ -66,7 +69,7 @@ par System.t[0] a 4bytes
 attr unit bytes
 par System.t[0] b 100bytes
 attr unit bytes
-par System.t[0] mean_T 0.025s
+par System.t[0] mean_T 0.002s
 attr unit s
 par System.t[0] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -81,7 +84,7 @@ par System.t[1] a 4bytes
 attr unit bytes
 par System.t[1] b 100bytes
 attr unit bytes
-par System.t[1] mean_T 0.025s
+par System.t[1] mean_T 0.002s
 attr unit s
 par System.t[1] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -96,7 +99,7 @@ par System.t[2] a 4bytes
 attr unit bytes
 par System.t[2] b 100bytes
 attr unit bytes
-par System.t[2] mean_T 0.025s
+par System.t[2] mean_T 0.002s
 attr unit s
 par System.t[2] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -111,7 +114,7 @@ par System.t[3] a 4bytes
 attr unit bytes
 par System.t[3] b 100bytes
 attr unit bytes
-par System.t[3] mean_T 0.025s
+par System.t[3] mean_T 0.002s
 attr unit s
 par System.t[3] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -126,7 +129,7 @@ par System.t[4] a 4bytes
 attr unit bytes
 par System.t[4] b 100bytes
 attr unit bytes
-par System.t[4] mean_T 0.025s
+par System.t[4] mean_T 0.002s
 attr unit s
 par System.t[4] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -141,7 +144,7 @@ par System.t[5] a 4bytes
 attr unit bytes
 par System.t[5] b 100bytes
 attr unit bytes
-par System.t[5] mean_T 0.025s
+par System.t[5] mean_T 0.002s
 attr unit s
 par System.t[5] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -156,7 +159,7 @@ par System.t[6] a 4bytes
 attr unit bytes
 par System.t[6] b 100bytes
 attr unit bytes
-par System.t[6] mean_T 0.025s
+par System.t[6] mean_T 0.002s
 attr unit s
 par System.t[6] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -171,7 +174,7 @@ par System.t[7] a 4bytes
 attr unit bytes
 par System.t[7] b 100bytes
 attr unit bytes
-par System.t[7] mean_T 0.025s
+par System.t[7] mean_T 0.002s
 attr unit s
 par System.t[7] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -186,7 +189,7 @@ par System.t[8] a 4bytes
 attr unit bytes
 par System.t[8] b 100bytes
 attr unit bytes
-par System.t[8] mean_T 0.025s
+par System.t[8] mean_T 0.002s
 attr unit s
 par System.t[8] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -201,7 +204,7 @@ par System.t[9] a 4bytes
 attr unit bytes
 par System.t[9] b 100bytes
 attr unit bytes
-par System.t[9] mean_T 0.025s
+par System.t[9] mean_T 0.002s
 attr unit s
 par System.t[9] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -216,7 +219,7 @@ par System.t[10] a 4bytes
 attr unit bytes
 par System.t[10] b 100bytes
 attr unit bytes
-par System.t[10] mean_T 0.025s
+par System.t[10] mean_T 0.002s
 attr unit s
 par System.t[10] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -231,7 +234,7 @@ par System.t[11] a 4bytes
 attr unit bytes
 par System.t[11] b 100bytes
 attr unit bytes
-par System.t[11] mean_T 0.025s
+par System.t[11] mean_T 0.002s
 attr unit s
 par System.t[11] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -246,7 +249,7 @@ par System.t[12] a 4bytes
 attr unit bytes
 par System.t[12] b 100bytes
 attr unit bytes
-par System.t[12] mean_T 0.025s
+par System.t[12] mean_T 0.002s
 attr unit s
 par System.t[12] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -261,7 +264,7 @@ par System.t[13] a 4bytes
 attr unit bytes
 par System.t[13] b 100bytes
 attr unit bytes
-par System.t[13] mean_T 0.025s
+par System.t[13] mean_T 0.002s
 attr unit s
 par System.t[13] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -276,7 +279,7 @@ par System.t[14] a 4bytes
 attr unit bytes
 par System.t[14] b 100bytes
 attr unit bytes
-par System.t[14] mean_T 0.025s
+par System.t[14] mean_T 0.002s
 attr unit s
 par System.t[14] S "intuniform(a, b, 1)"
 attr unit bytes
@@ -291,7 +294,7 @@ par System.t[15] a 4bytes
 attr unit bytes
 par System.t[15] b 100bytes
 attr unit bytes
-par System.t[15] mean_T 0.025s
+par System.t[15] mean_T 0.002s
 attr unit s
 par System.t[15] S "intuniform(a, b, 1)"
 attr unit bytes

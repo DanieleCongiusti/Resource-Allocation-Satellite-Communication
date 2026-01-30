@@ -1,8 +1,8 @@
 version 3
-run throughputConsistencyTest-89-20251230-09:43:35-25582
+run throughputConsistencyTest-99-20260117-12:30:09-3909
 attr configname throughputConsistencyTest
-attr datetime 20251230-09:43:35
-attr datetimef 20251230-094335
+attr datetime 20260117-12:30:09
+attr datetimef 20260117-123009
 attr experiment throughputConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $N=8
@@ -10,45 +10,45 @@ attr iterationvarsd N=8
 attr iterationvarsf N=8-
 attr measurement $N=8
 attr network System
-attr processid 25582
+attr processid 3909
 attr repetition 29
 attr replication #29
 attr resultdir results
-attr runnumber 89
+attr runnumber 99
 attr seedset 29
 itervar N 8
-config repeat 30
-config seed-set 29
-config output-scalar-file results/throughputConsistencyTest/$N=8-29.sca
-config output-vector-file results/throughputConsistencyTest/$N=8-29.vec
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config record-eventlog false
+config **.scalar-recording true
+config **.vector-recording false
 config **.N 8
-config num-rngs 8
 config **.K 100
 config *.t[*].mean_T 0.016s
-config *.t[*].a 4B
-config *.t[*].b 100B
+config num-rngs 8
 config network System
-config sim-time-limit 1.6s
+config sim-time-limit 20s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
-config **.N 2
-config **.K 100
-config num-rngs 2
-config *.t[*].a 10000KiB
-config *.t[*].b 100000KiB
-config *.t[*].mean_T 0.026s
+config repeat 35
+config seed-set 29
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
 config *.t[*].rng-0 index
 config *.t[*].rng-1 index
 config *.t[*].rng-2 index
+config output-vector-file results/throughputConsistencyTest/$N=8-29.vec
+config output-scalar-file results/throughputConsistencyTest/$N=8-29.sca
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 0.43125
+scalar System.oracle AvgQLStat:mean 3.4645
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 255160
+scalar System.oracle throughputStat:last 25916.65
 attr "" ""
 attr recordingmode last
 attr source throughput

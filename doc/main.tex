@@ -1,0 +1,33 @@
+\documentclass[12pt, a4paper]{report}
+
+% Packets
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{siunitx}
+
+
+\geometry{top=3cm, bottom=3cm, left=3cm, right=3cm}
+
+\begin{document}
+
+    % Title page
+    \input{title_page}
+
+    \clearpage
+    
+    % Index
+    \pagenumbering{roman}
+    \tableofcontents
+
+    % Main content
+    \clearpage
+    \pagenumbering{arabic}
+    \input{./sections/01_intro.tex}
+    \input{./sections/02_workflow.tex}
+    \input{./sections/03_results.tex}
+    \input{./sections/04_conclusion.tex}
+
+\end{document}
