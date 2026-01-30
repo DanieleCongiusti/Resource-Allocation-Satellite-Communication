@@ -29,4 +29,4 @@ This repository was created to support the development of the project assigned t
 - [x] Calibrate your simulator: remember what we want to simulate a system
 - [x] Experiment design
 - [x] Run
-- [ ] Data Analysis
+- [x] Data Analysis
