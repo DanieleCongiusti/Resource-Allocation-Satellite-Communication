@@ -1,9 +1,9 @@
-file 54241 1768652756                                           
+file 54354 1769787881                                           
 version 3
-run warmUpTest-139-20260117-13:25:55-7714
+run warmUpTest-209-20260130-16:44:41-93499
 attr configname warmUpTest
-attr datetime 20260117-13:25:55
-attr datetimef 20260117-132555
+attr datetime 20260130-16:44:41
+attr datetimef 20260130-164441
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7714
+attr processid 93499
 attr repetition 34
 attr replication #34
 attr resultdir results
-attr runnumber 139
+attr runnumber 209
 attr seedset 34
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 34
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-34.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-34.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 4039 519454 0.25 30 120 125152 312320 24883172 5300746282896
-1	3831 50409 324 519485 0.08 30 3000 0 236 92733 6072195
+0	1481 2455 3705 517693 0.25 30 120 85728 310720 24760876 5289674709712
+1	3936 50417 317 517724 0.08 30 3000 0 276 94306 6322182
 

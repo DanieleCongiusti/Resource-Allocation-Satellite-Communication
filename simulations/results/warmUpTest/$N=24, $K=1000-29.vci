@@ -1,9 +1,9 @@
-file 165387 1768653221                                          
+file 165564 1769788189                                          
 version 3
-run warmUpTest-869-20260117-13:33:41-8594
+run warmUpTest-729-20260130-16:49:49-94248
 attr configname warmUpTest
-attr datetime 20260117-13:33:41
-attr datetimef 20260117-133341
+attr datetime 20260130-16:49:49
+attr datetimef 20260130-164949
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=1000"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=1000
 attr iterationvarsf N=24,K=1000-
 attr measurement "$N=24, $K=1000"
 attr network System
-attr processid 8594
+attr processid 94248
 attr repetition 29
 attr replication #29
 attr resultdir results
-attr runnumber 869
+attr runnumber 729
 attr seedset 29
 itervar K 1000
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 1000
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 29
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=1000-29.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=1000-29.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1400 2517 7629 1492427 0.25 30 120 158980 1129308 73820752 48695092805024
-1	3917 161469 991 1492522 0.08 30 9000 0 1368 1349388 458742848
+0	1506 2515 7520 1495535 0.25 30 120 163264 1052192 74511024 49054314407552
+1	4021 161542 1031 1495630 0.08 30 9000 0 2352 1400001 568635719
 

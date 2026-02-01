@@ -1,9 +1,9 @@
-file 54699 1768652741                                           
+file 54699 1769787866                                           
 version 3
-run warmUpTest-103-20260117-13:25:40-7675
+run warmUpTest-173-20260130-16:44:26-93455
 attr configname warmUpTest
-attr datetime 20260117-13:25:40
-attr datetimef 20260117-132540
+attr datetime 20260130-16:44:26
+attr datetimef 20260130-164426
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7675
+attr processid 93455
 attr repetition 33
 attr replication #33
 attr resultdir results
-attr runnumber 103
+attr runnumber 173
 attr seedset 33
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 33
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-33.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-33.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2457 4105 539492 0.25 30 120 120764 338304 24889324 5376175862288
-1	3832 50866 331 539523 0.08 30 3000 0 419 128020 11535638
+0	1481 2457 4014 534253 0.25 30 120 113320 320100 24692860 5251211989360
+1	3938 50760 324 534284 0.08 30 3000 0 370 118502 9684322
 

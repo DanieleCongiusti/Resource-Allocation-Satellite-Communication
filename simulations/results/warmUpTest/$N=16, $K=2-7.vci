@@ -1,9 +1,9 @@
-file 119545 1768652866                                          
+file 119616 1769787899                                          
 version 3
-run warmUpTest-357-20260117-13:27:46-7964
+run warmUpTest-252-20260130-16:44:59-93547
 attr configname warmUpTest
-attr datetime 20260117-13:27:46
-attr datetimef 20260117-132746
+attr datetime 20260130-16:44:59
+attr datetimef 20260130-164459
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=16/K=2
 attr iterationvarsf N=16,K=2-
 attr measurement "$N=16, $K=2"
 attr network System
-attr processid 7964
+attr processid 93547
 attr repetition 7
 attr replication #7
 attr resultdir results
-attr runnumber 357
+attr runnumber 252
 attr seedset 7
 itervar K 2
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 16
 config **.K 2
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 7
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=16, $K=2-7.vec"
 config output-scalar-file "results/warmUpTest/$N=16, $K=2-7.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2332 3226 434208 0.25 30 120 25516 51140 4754624 190594453888
-1	3702 115842 673 434271 0.08 30 6000 26 13973 40307720 361101805358
+0	1476 2332 3277 432701 0.25 30 120 25452 51072 4753852 190540103824
+1	3808 115807 688 432764 0.08 30 6000 32 14111 40104828 357994219418
 

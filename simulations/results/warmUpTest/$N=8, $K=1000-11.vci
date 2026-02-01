@@ -1,9 +1,9 @@
-file 54213 1768652761                                           
+file 54301 1769787886                                           
 version 3
-run warmUpTest-151-20260117-13:26:00-7728
+run warmUpTest-221-20260130-16:44:46-93512
 attr configname warmUpTest
-attr datetime 20260117-13:26:00
-attr datetimef 20260117-132600
+attr datetime 20260130-16:44:46
+attr datetimef 20260130-164446
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=1000"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=1000
 attr iterationvarsf N=8,K=1000-
 attr measurement "$N=8, $K=1000"
 attr network System
-attr processid 7728
+attr processid 93512
 attr repetition 11
 attr replication #11
 attr resultdir results
-attr runnumber 151
+attr runnumber 221
 attr seedset 11
 itervar K 1000
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 1000
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 11
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=1000-11.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=1000-11.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1391 2456 3985 513084 0.25 30 120 113412 330664 24796448 5278064894368
-1	3847 50365 309 513115 0.08 30 3000 0 246 91083 6044973
+0	1497 2456 3935 516318 0.25 30 120 117456 330492 24972704 5378035205344
+1	3953 50347 334 516349 0.08 30 3000 0 244 90713 5879605
 

@@ -1,9 +1,9 @@
-file 54288 1768652752                                           
+file 54389 1769787878                                           
 version 3
-run warmUpTest-131-20260117-13:25:52-7706
+run warmUpTest-201-20260130-16:44:37-93491
 attr configname warmUpTest
-attr datetime 20260117-13:25:52
-attr datetimef 20260117-132552
+attr datetime 20260130-16:44:37
+attr datetimef 20260130-164437
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7706
+attr processid 93491
 attr repetition 26
 attr replication #26
 attr resultdir results
-attr runnumber 131
+attr runnumber 201
 attr seedset 26
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 26
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-26.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-26.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 4016 520450 0.25 30 120 113788 320052 24788076 5277382329232
-1	3831 50456 349 520481 0.08 30 3000 0 274 96352 6731858
+0	1481 2457 4446 517977 0.25 30 120 113896 302924 24783952 5252111401888
+1	3938 50450 331 518008 0.08 30 3000 0 204 96121 6570773
 

@@ -1,9 +1,9 @@
-file 165564 1768653215                                          
+file 165611 1769788184                                          
 version 3
-run warmUpTest-860-20260117-13:33:34-8584
+run warmUpTest-720-20260130-16:49:43-94238
 attr configname warmUpTest
-attr datetime 20260117-13:33:34
-attr datetimef 20260117-133334
+attr datetime 20260130-16:49:43
+attr datetimef 20260130-164943
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=1000"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=1000
 attr iterationvarsf N=24,K=1000-
 attr measurement "$N=24, $K=1000"
 attr network System
-attr processid 8584
+attr processid 94238
 attr repetition 20
 attr replication #20
 attr resultdir results
-attr runnumber 860
+attr runnumber 720
 attr seedset 20
 itervar K 1000
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 1000
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 20
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=1000-20.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=1000-20.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1400 2515 7326 1480415 0.25 30 120 191396 1209008 73490524 47938586385744
-1	3915 161648 910 1480510 0.08 30 9000 0 1968 1436779 561601895
+0	1506 2516 7220 1485225 0.25 30 120 189556 1228296 73671272 48484926713088
+1	4022 161588 993 1485320 0.08 30 9000 0 1727 1406873 533069749
 

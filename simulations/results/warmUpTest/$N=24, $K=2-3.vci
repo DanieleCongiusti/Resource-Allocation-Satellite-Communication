@@ -1,9 +1,9 @@
-file 178356 1768653090                                          
+file 178415 1769788032                                          
 version 3
-run warmUpTest-703-20260117-13:31:30-8396
+run warmUpTest-493-20260130-16:47:11-93930
 attr configname warmUpTest
-attr datetime 20260117-13:31:30
-attr datetimef 20260117-133130
+attr datetime 20260130-16:47:11
+attr datetimef 20260130-164711
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=2
 attr iterationvarsf N=24,K=2-
 attr measurement "$N=24, $K=2"
 attr network System
-attr processid 8396
+attr processid 93930
 attr repetition 3
 attr replication #3
 attr resultdir results
-attr runnumber 703
+attr runnumber 493
 attr seedset 3
 itervar K 2
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 2
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 3
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=2-3.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=2-3.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2338 4539 563475 0.25 30 120 25468 51108 4758572 190914876016
-1	3708 174647 998 563570 0.08 30 9000 26 14881 63079304 589892849762
+0	1476 2338 4391 562743 0.25 30 120 25532 51096 4758256 190895291328
+1	3814 174600 986 562838 0.08 30 9000 24 14999 63105251 590179290505
 

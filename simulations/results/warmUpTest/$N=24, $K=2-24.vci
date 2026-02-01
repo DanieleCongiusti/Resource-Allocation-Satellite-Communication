@@ -1,9 +1,9 @@
-file 178370 1768653106                                          
+file 178457 1769788045                                          
 version 3
-run warmUpTest-724-20260117-13:31:46-8422
+run warmUpTest-514-20260130-16:47:24-93955
 attr configname warmUpTest
-attr datetime 20260117-13:31:46
-attr datetimef 20260117-133146
+attr datetime 20260130-16:47:24
+attr datetimef 20260130-164724
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=2
 attr iterationvarsf N=24,K=2-
 attr measurement "$N=24, $K=2"
 attr network System
-attr processid 8422
+attr processid 93955
 attr repetition 24
 attr replication #24
 attr resultdir results
-attr runnumber 724
+attr runnumber 514
 attr seedset 24
 itervar K 2
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 2
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 24
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=2-24.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=2-24.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1376 2338 4577 563361 0.25 30 120 25528 51080 4758232 190888446176
-1	3714 174655 1011 563456 0.08 30 9000 29 14823 62978140 587722927706
+0	1482 2338 4669 561761 0.25 30 120 25560 51104 4758616 190913015424
+1	3820 174636 1052 561856 0.08 30 9000 34 14791 62903062 585576116530
 

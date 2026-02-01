@@ -14,6 +14,13 @@ class Oracle : public cSimpleModule {
         simsignal_t throughputWarmUpSignal;
         //signal for AvgQueueLength
         simsignal_t avgQLSignal;
+        //signal for number of time frame between 2 grants
+        simsignal_t waitingTimeFrameSignal;
+        //signal for the queue length accumulated between 2 grants
+        simsignal_t accumulatedQueueLengthSignal;
+        //signal for the B value at grant
+        simsignal_t bGrantSignal;
+
         //total number of bytes recevied
         int totBytes = 0;
         //interval of emit for warmup

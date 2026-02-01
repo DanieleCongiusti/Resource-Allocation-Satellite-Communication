@@ -1,9 +1,9 @@
-file 178345 1768653088                                          
+file 178397 1769788030                                          
 version 3
-run warmUpTest-700-20260117-13:31:27-8392
+run warmUpTest-490-20260130-16:47:09-93927
 attr configname warmUpTest
-attr datetime 20260117-13:31:27
-attr datetimef 20260117-133127
+attr datetime 20260130-16:47:09
+attr datetimef 20260130-164709
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=2
 attr iterationvarsf N=24,K=2-
 attr measurement "$N=24, $K=2"
 attr network System
-attr processid 8392
+attr processid 93927
 attr repetition 0
 attr replication #0
 attr resultdir results
-attr runnumber 700
+attr runnumber 490
 attr seedset 0
 itervar K 2
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 2
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 0
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=2-0.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=2-0.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2338 4549 562861 0.25 30 120 25564 51096 4758496 190903479168
-1	3708 174636 1001 562956 0.08 30 9000 30 14829 63038643 588956764257
+0	1476 2338 4374 562472 0.25 30 120 25496 51092 4757468 190834805136
+1	3814 174582 1003 562567 0.08 30 9000 28 14708 62852877 585404270387
 

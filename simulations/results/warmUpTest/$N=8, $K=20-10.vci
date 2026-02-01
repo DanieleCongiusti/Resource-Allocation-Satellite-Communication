@@ -1,9 +1,9 @@
-file 54582 1768652731                                           
+file 54709 1769787855                                           
 version 3
-run warmUpTest-80-20260117-13:25:31-7650
+run warmUpTest-150-20260130-16:44:15-93420
 attr configname warmUpTest
-attr datetime 20260117-13:25:31
-attr datetimef 20260117-132531
+attr datetime 20260130-16:44:15
+attr datetimef 20260130-164415
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7650
+attr processid 93420
 attr repetition 10
 attr replication #10
 attr resultdir results
-attr runnumber 80
+attr runnumber 150
 attr seedset 10
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 10
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-10.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-10.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1373 2457 3976 538972 0.25 30 120 130612 316068 25088160 5396632741664
-1	3830 50751 371 539003 0.08 30 3000 0 237 117016 8902742
+0	1481 2457 3906 539410 0.25 30 120 128064 290532 24865344 5284286785728
+1	3938 50770 339 539441 0.08 30 3000 0 246 119050 9280664
 

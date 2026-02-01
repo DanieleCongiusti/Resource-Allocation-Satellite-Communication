@@ -1,9 +1,9 @@
-file 165518 1768653215                                          
+file 165676 1769788184                                          
 version 3
-run warmUpTest-861-20260117-13:33:35-8585
+run warmUpTest-721-20260130-16:49:44-94239
 attr configname warmUpTest
-attr datetime 20260117-13:33:35
-attr datetimef 20260117-133335
+attr datetime 20260130-16:49:44
+attr datetimef 20260130-164944
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=1000"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=1000
 attr iterationvarsf N=24,K=1000-
 attr measurement "$N=24, $K=1000"
 attr network System
-attr processid 8585
+attr processid 94239
 attr repetition 21
 attr replication #21
 attr resultdir results
-attr runnumber 861
+attr runnumber 721
 attr seedset 21
 itervar K 1000
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 1000
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 21
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=1000-21.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=1000-21.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1400 2515 7456 1495840 0.25 30 120 206196 1279244 74328076 49490672179376
-1	3915 161602 992 1495935 0.08 30 9000 0 1735 1473875 630166315
+0	1506 2515 6908 1489195 0.25 30 120 168300 1532412 74037280 49185853626592
+1	4021 161654 958 1489290 0.08 30 9000 0 2578 1564299 795289829
 

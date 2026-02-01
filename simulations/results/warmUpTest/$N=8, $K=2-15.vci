@@ -1,9 +1,9 @@
-file 61069 1768652704                                           
+file 61122 1769787798                                           
 version 3
-run warmUpTest-15-20260117-13:25:04-7578
+run warmUpTest-15-20260130-16:43:18-93249
 attr configname warmUpTest
-attr datetime 20260117-13:25:04
-attr datetimef 20260117-132504
+attr datetime 20260130-16:43:18
+attr datetimef 20260130-164318
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=2"
@@ -11,7 +11,7 @@ attr iterationvarsd N=8/K=2
 attr iterationvarsf N=8,K=2-
 attr measurement "$N=8, $K=2"
 attr network System
-attr processid 7578
+attr processid 93249
 attr repetition 15
 attr replication #15
 attr resultdir results
@@ -21,13 +21,14 @@ itervar K 2
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 2
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 15
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=2-15.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=2-15.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2320 2205 316002 0.25 30 120 22444 50944 4092948 142401485872
-1	3685 57383 359 316033 0.08 30 3000 31 12297 18261457 148432633423
+0	1471 2319 2175 316102 0.25 30 120 23460 47304 4111356 143358359152
+1	3790 57331 349 316133 0.08 30 3000 33 12324 17947731 143553822081
 

@@ -1,9 +1,9 @@
-file 55871 1768652724                                           
+file 55920 1769787833                                           
 version 3
-run warmUpTest-64-20260117-13:25:24-7632
+run warmUpTest-99-20260130-16:43:53-93342
 attr configname warmUpTest
-attr datetime 20260117-13:25:24
-attr datetimef 20260117-132524
+attr datetime 20260130-16:43:53
+attr datetimef 20260130-164353
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7632
+attr processid 93342
 attr repetition 29
 attr replication #29
 attr resultdir results
-attr runnumber 64
+attr runnumber 99
 attr seedset 29
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 29
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-29.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-29.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2457 4112 569055 0.25 30 120 91644 467716 24810524 5415258458992
-1	3822 52048 301 569086 0.08 30 3000 0 693 283212 55547572
+0	1471 2455 3189 566981 0.25 30 120 78100 315036 24745348 5373433282000
+1	3926 51993 300 567012 0.08 30 3000 0 691 274767 52743311
 

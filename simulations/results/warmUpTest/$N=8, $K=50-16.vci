@@ -1,9 +1,9 @@
-file 54217 1768652748                                           
+file 54352 1769787873                                           
 version 3
-run warmUpTest-121-20260117-13:25:48-7695
+run warmUpTest-191-20260130-16:44:33-93480
 attr configname warmUpTest
-attr datetime 20260117-13:25:48
-attr datetimef 20260117-132548
+attr datetime 20260130-16:44:33
+attr datetimef 20260130-164433
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7695
+attr processid 93480
 attr repetition 16
 attr replication #16
 attr resultdir results
-attr runnumber 121
+attr runnumber 191
 attr seedset 16
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 16
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-16.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-16.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 3780 518605 0.25 30 120 134848 287900 24888236 5289434936240
-1	3831 50385 330 518636 0.08 30 3000 0 218 91514 5982228
+0	1481 2456 3952 522045 0.25 30 120 121388 320624 25000772 5351334679376
+1	3937 50414 315 522076 0.08 30 3000 0 226 93111 6110423
 

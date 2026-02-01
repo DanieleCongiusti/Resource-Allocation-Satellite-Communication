@@ -1,0 +1,57 @@
+file 232451 1769788261                                          
+version 3
+run warmUpTest-812-20260130-16:51:01-94372
+attr configname warmUpTest
+attr datetime 20260130-16:51:01
+attr datetimef 20260130-165101
+attr experiment warmUpTest
+attr inifile omnetpp.ini
+attr iterationvars "$N=32, $K=5"
+attr iterationvarsd N=32/K=5
+attr iterationvarsf N=32,K=5-
+attr measurement "$N=32, $K=5"
+attr network System
+attr processid 94372
+attr repetition 7
+attr replication #7
+attr resultdir results
+attr runnumber 812
+attr seedset 7
+itervar K 5
+itervar N 32
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
+config record-eventlog false
+config **.scalar-recording false
+config **.vector-recording true
+config sim-time-limit 30s
+config **.N 32
+config **.K 5
+config num-rngs 32*3
+config network System
+config sim-time-limit 20s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config repeat 35
+config seed-set 7
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
+config output-vector-file "results/warmUpTest/$N=32, $K=5-7.vec"
+config output-scalar-file "results/warmUpTest/$N=32, $K=5-7.sca"
+
+vector 0 System.oracle throughputWarmUpStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source throughputWarmUp
+vector 1 System.oracle AvgQLStat:vector ETV
+attr "" ""
+attr recordingmode vector
+attr source avgQueueLength
+0	1476 2514 8191 1539767 0.25 30 120 146972 785264 64689756 35589521012880
+1	3990 228460 1257 1539894 0.08 30 12000 0 14220 32594133 219232619429
+

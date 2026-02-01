@@ -1,9 +1,9 @@
-file 54253 1768652753                                           
+file 54349 1769787878                                           
 version 3
-run warmUpTest-133-20260117-13:25:53-7708
+run warmUpTest-203-20260130-16:44:38-93493
 attr configname warmUpTest
-attr datetime 20260117-13:25:53
-attr datetimef 20260117-132553
+attr datetime 20260130-16:44:38
+attr datetimef 20260130-164438
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7708
+attr processid 93493
 attr repetition 28
 attr replication #28
 attr resultdir results
-attr runnumber 133
+attr runnumber 203
 attr seedset 28
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 28
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-28.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-28.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 4128 518969 0.25 30 120 143240 295880 24851512 5287237911072
-1	3831 50421 336 519000 0.08 30 3000 0 305 94858 6593414
+0	1481 2456 3957 516779 0.25 30 120 125544 325244 24822732 5291221480784
+1	3937 50411 315 516810 0.08 30 3000 0 225 92325 6095327
 

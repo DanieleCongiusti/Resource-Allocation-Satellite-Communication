@@ -1,9 +1,9 @@
-file 165339 1768653210                                          
+file 165605 1769788178                                          
 version 3
-run warmUpTest-854-20260117-13:33:29-8575
+run warmUpTest-714-20260130-16:49:38-94224
 attr configname warmUpTest
-attr datetime 20260117-13:33:29
-attr datetimef 20260117-133329
+attr datetime 20260130-16:49:38
+attr datetimef 20260130-164938
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=1000"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=1000
 attr iterationvarsf N=24,K=1000-
 attr measurement "$N=24, $K=1000"
 attr network System
-attr processid 8575
+attr processid 94224
 attr repetition 14
 attr replication #14
 attr resultdir results
-attr runnumber 854
+attr runnumber 714
 attr seedset 14
 itervar K 1000
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 1000
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 14
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=1000-14.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=1000-14.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1400 2517 7659 1485446 0.25 30 120 212652 1357024 73684720 49081842444672
-1	3917 161421 1022 1485541 0.08 30 9000 0 1348 1349051 461209375
+0	1506 2516 7453 1489287 0.25 30 120 173692 1174056 73966952 48411658365536
+1	4022 161582 955 1489382 0.08 30 9000 0 2191 1427090 562056322
 

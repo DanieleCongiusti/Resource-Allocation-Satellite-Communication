@@ -1,9 +1,9 @@
-file 54263 1768652746                                           
+file 54345 1769787871                                           
 version 3
-run warmUpTest-116-20260117-13:25:46-7690
+run warmUpTest-186-20260130-16:44:31-93474
 attr configname warmUpTest
-attr datetime 20260117-13:25:46
-attr datetimef 20260117-132546
+attr datetime 20260130-16:44:31
+attr datetimef 20260130-164431
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7690
+attr processid 93474
 attr repetition 11
 attr replication #11
 attr resultdir results
-attr runnumber 116
+attr runnumber 186
 attr seedset 11
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 11
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-11.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-11.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 3985 519148 0.25 30 120 135704 320044 24852652 5298976185584
-1	3831 50431 309 519179 0.08 30 3000 0 191 94324 6177696
+0	1481 2456 3935 520395 0.25 30 120 117456 342872 24942724 5304040360208
+1	3937 50407 334 520426 0.08 30 3000 0 242 92336 5931638
 

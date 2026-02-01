@@ -1,9 +1,9 @@
-file 54240 1768652742                                           
+file 54362 1769787868                                           
 version 3
-run warmUpTest-107-20260117-13:25:42-7679
+run warmUpTest-177-20260130-16:44:28-93462
 attr configname warmUpTest
-attr datetime 20260117-13:25:42
-attr datetimef 20260117-132542
+attr datetime 20260130-16:44:28
+attr datetimef 20260130-164428
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7679
+attr processid 93462
 attr repetition 2
 attr replication #2
 attr resultdir results
-attr runnumber 107
+attr runnumber 177
 attr seedset 2
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 2
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-2.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-2.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1369 2456 4074 520608 0.25 30 120 133416 306524 24901456 5294702185824
-1	3825 50414 324 520639 0.08 30 3000 0 238 92912 6028876
+0	1475 2456 4232 519919 0.25 30 120 105884 329576 24908644 5337330061776
+1	3931 50430 335 519950 0.08 30 3000 0 219 95182 6456800
 

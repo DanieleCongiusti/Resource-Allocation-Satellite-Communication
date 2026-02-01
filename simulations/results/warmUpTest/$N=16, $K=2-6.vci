@@ -1,9 +1,9 @@
-file 119560 1768652865                                          
+file 119680 1769787898                                          
 version 3
-run warmUpTest-356-20260117-13:27:45-7962
+run warmUpTest-251-20260130-16:44:58-93546
 attr configname warmUpTest
-attr datetime 20260117-13:27:45
-attr datetimef 20260117-132745
+attr datetime 20260130-16:44:58
+attr datetimef 20260130-164458
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=16/K=2
 attr iterationvarsf N=16,K=2-
 attr measurement "$N=16, $K=2"
 attr network System
-attr processid 7962
+attr processid 93546
 attr repetition 6
 attr replication #6
 attr resultdir results
-attr runnumber 356
+attr runnumber 251
 attr seedset 6
 itervar K 2
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 16
 config **.K 2
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 6
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=16, $K=2-6.vec"
 config output-scalar-file "results/warmUpTest/$N=16, $K=2-6.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2332 3425 431027 0.25 30 120 25484 51108 4755812 190694017200
-1	3702 115857 709 431090 0.08 30 6000 33 14241 40321835 361280252027
+0	1476 2332 3545 433609 0.25 30 120 25416 51068 4754888 190610641216
+1	3808 115871 658 433672 0.08 30 6000 28 14125 40459228 363597732686
 

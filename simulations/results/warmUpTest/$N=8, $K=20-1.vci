@@ -1,9 +1,9 @@
-file 54584 1768652727                                           
+file 54689 1769787851                                           
 version 3
-run warmUpTest-71-20260117-13:25:27-7639
+run warmUpTest-141-20260130-16:44:11-93407
 attr configname warmUpTest
-attr datetime 20260117-13:25:27
-attr datetimef 20260117-132527
+attr datetime 20260130-16:44:11
+attr datetimef 20260130-164411
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7639
+attr processid 93407
 attr repetition 1
 attr replication #1
 attr resultdir results
-attr runnumber 71
+attr runnumber 141
 attr seedset 1
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 1
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-1.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-1.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1367 2456 4651 538984 0.25 30 120 94836 321496 24893200 5389891226336
-1	3823 50760 353 539015 0.08 30 3000 0 266 118441 9093887
+0	1475 2457 4027 532482 0.25 30 120 138252 300392 24746472 5271254084064
+1	3932 50756 338 532513 0.08 30 3000 0 280 116864 8956362
 

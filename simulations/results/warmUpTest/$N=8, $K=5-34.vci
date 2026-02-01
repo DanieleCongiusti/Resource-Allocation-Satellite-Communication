@@ -1,9 +1,9 @@
-file 55909 1768652727                                           
+file 55958 1769787835                                           
 version 3
-run warmUpTest-69-20260117-13:25:26-7637
+run warmUpTest-104-20260130-16:43:55-93347
 attr configname warmUpTest
-attr datetime 20260117-13:25:26
-attr datetimef 20260117-132526
+attr datetime 20260130-16:43:55
+attr datetimef 20260130-164355
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7637
+attr processid 93347
 attr repetition 34
 attr replication #34
 attr resultdir results
-attr runnumber 69
+attr runnumber 104
 attr seedset 34
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 34
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-34.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-34.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2457 3798 572219 0.25 30 120 97252 342456 24872052 5494111271792
-1	3822 52086 324 572250 0.08 30 3000 0 522 265976 44819990
+0	1473 2457 3689 568598 0.25 30 120 73912 314408 24682636 5339933357872
+1	3930 52027 317 568629 0.08 30 3000 0 470 256278 40099706
 

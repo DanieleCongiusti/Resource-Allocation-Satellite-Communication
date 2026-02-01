@@ -1,9 +1,9 @@
-file 54630 1768652738                                           
+file 54716 1769787863                                           
 version 3
-run warmUpTest-97-20260117-13:25:38-7669
+run warmUpTest-167-20260130-16:44:23-93445
 attr configname warmUpTest
-attr datetime 20260117-13:25:38
-attr datetimef 20260117-132538
+attr datetime 20260130-16:44:23
+attr datetimef 20260130-164423
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7669
+attr processid 93445
 attr repetition 27
 attr replication #27
 attr resultdir results
-attr runnumber 97
+attr runnumber 167
 attr seedset 27
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 27
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-27.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-27.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1373 2457 4119 539190 0.25 30 120 129360 335900 24987612 5391200209552
-1	3830 50799 344 539221 0.08 30 3000 0 313 121303 9950811
+0	1481 2457 4124 537754 0.25 30 120 133148 321812 24901080 5344386664512
+1	3938 50777 332 537785 0.08 30 3000 0 275 119477 9351029
 

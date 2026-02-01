@@ -1,9 +1,9 @@
-file 110656 1768652887                                          
+file 110708 1769787937                                          
 version 3
-run warmUpTest-391-20260117-13:28:07-8003
+run warmUpTest-321-20260130-16:45:36-93642
 attr configname warmUpTest
-attr datetime 20260117-13:28:07
-attr datetimef 20260117-132807
+attr datetime 20260130-16:45:36
+attr datetimef 20260130-164536
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=16/K=5
 attr iterationvarsf N=16,K=5-
 attr measurement "$N=16, $K=5"
 attr network System
-attr processid 8003
+attr processid 93642
 attr repetition 6
 attr replication #6
 attr resultdir results
-attr runnumber 391
+attr runnumber 321
 attr seedset 6
 itervar K 5
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 16
 config **.K 5
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 6
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=16, $K=5-6.vec"
 config output-scalar-file "results/warmUpTest/$N=16, $K=5-6.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2473 6221 1032610 0.25 30 120 133828 618908 49002944 20670072389056
-1	3843 106812 709 1032673 0.08 30 6000 0 1425 1380259 714083579
+0	1476 2474 5693 1044501 0.25 30 120 132728 698332 49454608 21044819617888
+1	3950 106757 658 1044564 0.08 30 6000 0 1268 1151184 462595114
 

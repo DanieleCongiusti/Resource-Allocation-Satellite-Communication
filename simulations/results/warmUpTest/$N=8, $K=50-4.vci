@@ -1,9 +1,9 @@
-file 54246 1768652743                                           
+file 54352 1769787868                                           
 version 3
-run warmUpTest-109-20260117-13:25:43-7682
+run warmUpTest-179-20260130-16:44:28-93464
 attr configname warmUpTest
-attr datetime 20260117-13:25:43
-attr datetimef 20260117-132543
+attr datetime 20260130-16:44:28
+attr datetimef 20260130-164428
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7682
+attr processid 93464
 attr repetition 4
 attr replication #4
 attr resultdir results
-attr runnumber 109
+attr runnumber 179
 attr seedset 4
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 4
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-4.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-4.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1369 2456 4165 520065 0.25 30 120 146816 310596 24816668 5267656679056
-1	3825 50420 316 520096 0.08 30 3000 0 217 95186 6325034
+0	1475 2456 3938 516145 0.25 30 120 135648 316572 24748864 5263555332096
+1	3931 50420 331 516176 0.08 30 3000 0 253 93962 6425392
 

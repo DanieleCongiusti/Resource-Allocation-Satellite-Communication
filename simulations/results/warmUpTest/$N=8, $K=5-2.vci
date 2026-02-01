@@ -1,9 +1,9 @@
-file 55842 1768652713                                           
+file 56067 1769787822                                           
 version 3
-run warmUpTest-37-20260117-13:25:13-7603
+run warmUpTest-72-20260130-16:43:42-93310
 attr configname warmUpTest
-attr datetime 20260117-13:25:13
-attr datetimef 20260117-132513
+attr datetime 20260130-16:43:42
+attr datetimef 20260130-164342
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7603
+attr processid 93310
 attr repetition 2
 attr replication #2
 attr resultdir results
-attr runnumber 37
+attr runnumber 72
 attr seedset 2
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 2
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-2.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-2.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1359 2457 4081 568716 0.25 30 120 92724 410592 24742976 5467384298304
-1	3816 52025 324 568747 0.08 30 3000 0 577 267974 46125200
+0	1465 2455 4081 569919 0.25 30 120 59392 383548 24746840 5583868287424
+1	3920 52146 335 569950 0.08 30 3000 0 529 284894 51958392
 

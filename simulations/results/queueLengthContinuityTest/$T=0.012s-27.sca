@@ -1,8 +1,8 @@
 version 3
-run queueLengthContinuityTest-167-20260117-12:59:38-6651
+run queueLengthContinuityTest-167-20260130-16:07:01-91960
 attr configname queueLengthContinuityTest
-attr datetime 20260117-12:59:38
-attr datetimef 20260117-125938
+attr datetime 20260130-16:07:01
+attr datetimef 20260130-160701
 attr experiment queueLengthContinuityTest
 attr inifile omnetpp.ini
 attr iterationvars $T=0.012s
@@ -10,7 +10,7 @@ attr iterationvarsd T=0.012s
 attr iterationvarsf T=0.012s-
 attr measurement $T=0.012s
 attr network System
-attr processid 6651
+attr processid 91960
 attr repetition 27
 attr replication #27
 attr resultdir results
@@ -19,13 +19,14 @@ attr seedset 27
 itervar T 0.012s
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording true
 config **.vector-recording false
 config **.N 18
 config **.K 1
 config *.t[*].mean_T 0.012s
-config num-rngs 18
+config num-rngs 18*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -35,20 +36,20 @@ config seed-set 27
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file results/queueLengthContinuityTest/$T=0.012s-27.vec
 config output-scalar-file results/queueLengthContinuityTest/$T=0.012s-27.sca
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 765.98933333333
+scalar System.oracle AvgQLStat:mean 760.59466666667
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 5005.85
+scalar System.oracle throughputStat:last 5078.3
 attr "" ""
 attr recordingmode last
 attr source throughput

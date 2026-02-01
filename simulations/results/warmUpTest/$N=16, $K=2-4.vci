@@ -1,9 +1,9 @@
-file 119537 1768652864                                          
+file 119641 1769787898                                          
 version 3
-run warmUpTest-354-20260117-13:27:44-7960
+run warmUpTest-249-20260130-16:44:57-93543
 attr configname warmUpTest
-attr datetime 20260117-13:27:44
-attr datetimef 20260117-132744
+attr datetime 20260130-16:44:57
+attr datetimef 20260130-164457
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=16/K=2
 attr iterationvarsf N=16,K=2-
 attr measurement "$N=16, $K=2"
 attr network System
-attr processid 7960
+attr processid 93543
 attr repetition 4
 attr replication #4
 attr resultdir results
-attr runnumber 354
+attr runnumber 249
 attr seedset 4
 itervar K 2
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 16
 config **.K 2
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 4
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=16, $K=2-4.vec"
 config output-scalar-file "results/warmUpTest/$N=16, $K=2-4.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2332 3376 431965 0.25 30 120 25468 51092 4755128 190639360384
-1	3702 115834 686 432028 0.08 30 6000 27 14029 40228112 359377525752
+0	1476 2331 3291 433778 0.25 30 120 25544 51076 4754908 190618718608
+1	3807 115833 630 433841 0.08 30 6000 25 14265 40339360 361463480526
 

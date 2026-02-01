@@ -1,9 +1,9 @@
-file 165436 1768653214                                          
+file 165312 1769788183                                          
 version 3
-run warmUpTest-859-20260117-13:33:33-8583
+run warmUpTest-719-20260130-16:49:42-94237
 attr configname warmUpTest
-attr datetime 20260117-13:33:33
-attr datetimef 20260117-133333
+attr datetime 20260130-16:49:42
+attr datetimef 20260130-164942
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=1000"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=1000
 attr iterationvarsf N=24,K=1000-
 attr measurement "$N=24, $K=1000"
 attr network System
-attr processid 8583
+attr processid 94237
 attr repetition 19
 attr replication #19
 attr resultdir results
-attr runnumber 859
+attr runnumber 719
 attr seedset 19
 itervar K 1000
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 1000
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 19
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=1000-19.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=1000-19.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1400 2513 7087 1486439 0.25 30 120 158652 1039800 73855536 48447194214816
-1	3913 161522 1014 1486534 0.08 30 9000 0 1737 1429824 556334310
+0	1506 2514 7331 1487898 0.25 30 120 169652 1082032 73843800 48010746252960
+1	4020 161291 978 1487993 0.08 30 9000 0 1324 1300483 435380919
 

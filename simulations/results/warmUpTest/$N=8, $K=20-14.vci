@@ -1,9 +1,9 @@
-file 54648 1768652733                                           
+file 54750 1769787857                                           
 version 3
-run warmUpTest-84-20260117-13:25:33-7654
+run warmUpTest-154-20260130-16:44:17-93424
 attr configname warmUpTest
-attr datetime 20260117-13:25:33
-attr datetimef 20260117-132533
+attr datetime 20260130-16:44:17
+attr datetimef 20260130-164417
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7654
+attr processid 93424
 attr repetition 14
 attr replication #14
 attr resultdir results
-attr runnumber 84
+attr runnumber 154
 attr seedset 14
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 14
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-14.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-14.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1373 2457 3913 538251 0.25 30 120 134948 363972 24795828 5315421822384
-1	3830 50817 316 538282 0.08 30 3000 0 338 126472 10913788
+0	1481 2456 3719 537269 0.25 30 120 89508 302828 24868152 5316161120416
+1	3937 50812 341 537300 0.08 30 3000 0 306 124205 10434995
 

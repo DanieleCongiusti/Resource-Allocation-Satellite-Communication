@@ -1,9 +1,9 @@
-file 54250 1768652750                                           
+file 54360 1769787876                                           
 version 3
-run warmUpTest-127-20260117-13:25:50-7702
+run warmUpTest-197-20260130-16:44:36-93486
 attr configname warmUpTest
-attr datetime 20260117-13:25:50
-attr datetimef 20260117-132550
+attr datetime 20260130-16:44:36
+attr datetimef 20260130-164436
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7702
+attr processid 93486
 attr repetition 22
 attr replication #22
 attr resultdir results
-attr runnumber 127
+attr runnumber 197
 attr seedset 22
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 22
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-22.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-22.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 3780 516306 0.25 30 120 114668 316080 24713796 5248635417648
-1	3831 50418 344 516337 0.08 30 3000 0 240 94854 6550054
+0	1481 2456 3838 518545 0.25 30 120 130888 313008 24753636 5246457690608
+1	3937 50422 316 518576 0.08 30 3000 0 222 93534 6277072
 

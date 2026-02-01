@@ -1,9 +1,9 @@
-file 171477 1768653118                                          
+file 171696 1769788077                                          
 version 3
-run warmUpTest-739-20260117-13:31:57-8440
+run warmUpTest-564-20260130-16:47:56-94014
 attr configname warmUpTest
-attr datetime 20260117-13:31:57
-attr datetimef 20260117-133157
+attr datetime 20260130-16:47:56
+attr datetimef 20260130-164756
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=5
 attr iterationvarsf N=24,K=5-
 attr measurement "$N=24, $K=5"
 attr network System
-attr processid 8440
+attr processid 94014
 attr repetition 4
 attr replication #4
 attr resultdir results
-attr runnumber 739
+attr runnumber 564
 attr seedset 4
 itervar K 5
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 5
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 4
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=5-4.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=5-4.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2503 7444 1360569 0.25 30 120 181064 730228 62077964 32852359312752
-1	3873 167603 1023 1360664 0.08 30 9000 0 11197 12801958 60387724574
+0	1476 2503 7071 1364070 0.25 30 120 155620 778024 62193608 33031947360608
+1	3979 167716 997 1364165 0.08 30 9000 0 11189 12435649 53221576611
 

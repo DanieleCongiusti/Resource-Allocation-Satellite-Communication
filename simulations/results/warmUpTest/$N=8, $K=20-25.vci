@@ -1,9 +1,9 @@
-file 54590 1768652737                                           
+file 54768 1769787862                                           
 version 3
-run warmUpTest-95-20260117-13:25:37-7667
+run warmUpTest-165-20260130-16:44:22-93442
 attr configname warmUpTest
-attr datetime 20260117-13:25:37
-attr datetimef 20260117-132537
+attr datetime 20260130-16:44:22
+attr datetimef 20260130-164422
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7667
+attr processid 93442
 attr repetition 25
 attr replication #25
 attr resultdir results
-attr runnumber 95
+attr runnumber 165
 attr seedset 25
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 25
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-25.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-25.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1373 2457 3553 534747 0.25 30 120 113716 312132 24769096 5275916188896
-1	3830 50759 309 534778 0.08 30 3000 0 321 119922 9570140
+0	1481 2457 3921 538982 0.25 30 120 133208 345648 24900744 5360356129024
+1	3938 50829 343 539013 0.08 30 3000 0 285 124055 10200399
 

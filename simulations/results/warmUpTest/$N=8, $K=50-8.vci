@@ -1,9 +1,9 @@
-file 54242 1768652745                                           
+file 54358 1769787870                                           
 version 3
-run warmUpTest-113-20260117-13:25:45-7686
+run warmUpTest-183-20260130-16:44:30-93469
 attr configname warmUpTest
-attr datetime 20260117-13:25:45
-attr datetimef 20260117-132545
+attr datetime 20260130-16:44:30
+attr datetimef 20260130-164430
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7686
+attr processid 93469
 attr repetition 8
 attr replication #8
 attr resultdir results
-attr runnumber 113
+attr runnumber 183
 attr seedset 8
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 8
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-8.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-8.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1369 2456 4455 516027 0.25 30 120 135840 317412 24755864 5275613440384
-1	3825 50416 366 516058 0.08 30 3000 0 265 95213 6594645
+0	1475 2456 3750 518879 0.25 30 120 129000 290692 24782316 5243900721296
+1	3931 50426 315 518910 0.08 30 3000 0 244 95615 6561407
 

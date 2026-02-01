@@ -1,9 +1,9 @@
-file 54270 1768652744                                           
+file 54330 1769787869                                           
 version 3
-run warmUpTest-111-20260117-13:25:44-7684
+run warmUpTest-181-20260130-16:44:29-93467
 attr configname warmUpTest
-attr datetime 20260117-13:25:44
-attr datetimef 20260117-132544
+attr datetime 20260130-16:44:29
+attr datetimef 20260130-164429
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7684
+attr processid 93467
 attr repetition 6
 attr replication #6
 attr resultdir results
-attr runnumber 111
+attr runnumber 181
 attr seedset 6
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 6
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-6.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-6.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1369 2456 3740 521048 0.25 30 120 125704 312952 24917892 5341650336016
-1	3825 50444 341 521079 0.08 30 3000 0 325 98040 7231394
+0	1475 2456 3942 519184 0.25 30 120 124312 308600 24883144 5304719091648
+1	3931 50398 332 519215 0.08 30 3000 0 256 92494 6101832
 

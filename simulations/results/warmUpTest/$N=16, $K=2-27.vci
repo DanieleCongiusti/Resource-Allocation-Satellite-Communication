@@ -1,9 +1,9 @@
-file 119572 1768652878                                          
+file 119687 1769787910                                          
 version 3
-run warmUpTest-377-20260117-13:27:58-7985
+run warmUpTest-272-20260130-16:45:09-93575
 attr configname warmUpTest
-attr datetime 20260117-13:27:58
-attr datetimef 20260117-132758
+attr datetime 20260130-16:45:09
+attr datetimef 20260130-164509
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=16/K=2
 attr iterationvarsf N=16,K=2-
 attr measurement "$N=16, $K=2"
 attr network System
-attr processid 7985
+attr processid 93575
 attr repetition 27
 attr replication #27
 attr resultdir results
-attr runnumber 377
+attr runnumber 272
 attr seedset 27
 itervar K 2
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 16
 config **.K 2
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 27
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=16, $K=2-27.vec"
 config output-scalar-file "results/warmUpTest/$N=16, $K=2-27.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1376 2332 3288 431836 0.25 30 120 25536 51080 4756412 190735076624
-1	3708 115863 661 431899 0.08 30 6000 30 14034 40340252 361443512728
+0	1482 2332 3600 429157 0.25 30 120 25480 51056 4755836 190693818096
+1	3814 115872 652 429220 0.08 30 6000 29 13996 40428320 362984884408
 

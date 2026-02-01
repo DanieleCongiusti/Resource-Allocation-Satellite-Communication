@@ -1,9 +1,9 @@
-file 55828 1768652715                                           
+file 56032 1769787824                                           
 version 3
-run warmUpTest-42-20260117-13:25:15-7609
+run warmUpTest-77-20260130-16:43:44-93316
 attr configname warmUpTest
-attr datetime 20260117-13:25:15
-attr datetimef 20260117-132515
+attr datetime 20260130-16:43:44
+attr datetimef 20260130-164344
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7609
+attr processid 93316
 attr repetition 7
 attr replication #7
 attr resultdir results
-attr runnumber 42
+attr runnumber 77
 attr seedset 7
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 7
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-7.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-7.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1359 2457 4309 565463 0.25 30 120 79148 360628 24735032 5395562281120
-1	3816 52011 328 565494 0.08 30 3000 0 548 266712 46790628
+0	1465 2453 3558 569740 0.25 30 120 83076 331628 24750036 5426514015504
+1	3918 52113 306 569771 0.08 30 3000 0 714 292204 59040940
 

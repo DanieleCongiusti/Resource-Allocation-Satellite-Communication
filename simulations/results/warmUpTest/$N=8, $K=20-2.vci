@@ -1,9 +1,9 @@
-file 54647 1768652728                                           
+file 54717 1769787852                                           
 version 3
-run warmUpTest-72-20260117-13:25:28-7640
+run warmUpTest-142-20260130-16:44:12-93410
 attr configname warmUpTest
-attr datetime 20260117-13:25:28
-attr datetimef 20260117-132528
+attr datetime 20260130-16:44:12
+attr datetimef 20260130-164412
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7640
+attr processid 93410
 attr repetition 2
 attr replication #2
 attr resultdir results
-attr runnumber 72
+attr runnumber 142
 attr seedset 2
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 2
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-2.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-2.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1367 2457 4316 538375 0.25 30 120 135580 350408 24837636 5312671455152
-1	3824 50822 324 538406 0.08 30 3000 0 267 123244 10076698
+0	1475 2457 4151 535964 0.25 30 120 105136 336148 24904748 5374287609936
+1	3932 50784 335 535995 0.08 30 3000 0 345 122637 10330987
 

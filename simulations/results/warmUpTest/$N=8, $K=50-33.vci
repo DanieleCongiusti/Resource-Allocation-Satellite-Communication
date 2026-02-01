@@ -1,9 +1,9 @@
-file 54270 1768652755                                           
+file 54354 1769787881                                           
 version 3
-run warmUpTest-138-20260117-13:25:55-7713
+run warmUpTest-208-20260130-16:44:40-93498
 attr configname warmUpTest
-attr datetime 20260117-13:25:55
-attr datetimef 20260117-132555
+attr datetime 20260130-16:44:40
+attr datetimef 20260130-164440
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7713
+attr processid 93498
 attr repetition 33
 attr replication #33
 attr resultdir results
-attr runnumber 138
+attr runnumber 208
 attr seedset 33
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 33
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-33.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-33.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 4050 520546 0.25 30 120 137888 311224 24913248 5323849049248
-1	3831 50438 331 520577 0.08 30 3000 0 220 95456 6461198
+0	1481 2456 3965 516502 0.25 30 120 113048 300048 24656812 5209738887120
+1	3937 50416 324 516533 0.08 30 3000 0 228 91801 6012169
 

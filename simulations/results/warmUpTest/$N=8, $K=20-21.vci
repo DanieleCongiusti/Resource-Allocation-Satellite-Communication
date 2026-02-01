@@ -1,9 +1,9 @@
-file 54726 1768652736                                           
+file 54661 1769787860                                           
 version 3
-run warmUpTest-91-20260117-13:25:35-7663
+run warmUpTest-161-20260130-16:44:20-93432
 attr configname warmUpTest
-attr datetime 20260117-13:25:35
-attr datetimef 20260117-132535
+attr datetime 20260130-16:44:20
+attr datetimef 20260130-164420
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7663
+attr processid 93432
 attr repetition 21
 attr replication #21
 attr resultdir results
-attr runnumber 91
+attr runnumber 161
 attr seedset 21
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 21
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-21.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-21.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1373 2457 4032 540028 0.25 30 120 103764 373248 24840096 5361102942528
-1	3830 50895 304 540059 0.08 30 3000 0 338 130527 11653865
+0	1481 2456 4239 536331 0.25 30 120 98560 332004 24937144 5327349192448
+1	3937 50723 339 536362 0.08 30 3000 0 270 116432 8884700
 

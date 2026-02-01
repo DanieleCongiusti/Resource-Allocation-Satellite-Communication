@@ -1,9 +1,9 @@
-file 178320 1768653089                                          
+file 178419 1769788031                                          
 version 3
-run warmUpTest-702-20260117-13:31:29-8394
+run warmUpTest-492-20260130-16:47:11-93929
 attr configname warmUpTest
-attr datetime 20260117-13:31:29
-attr datetimef 20260117-133129
+attr datetime 20260130-16:47:11
+attr datetimef 20260130-164711
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=2
 attr iterationvarsf N=24,K=2-
 attr measurement "$N=24, $K=2"
 attr network System
-attr processid 8394
+attr processid 93929
 attr repetition 2
 attr replication #2
 attr resultdir results
-attr runnumber 702
+attr runnumber 492
 attr seedset 2
 itervar K 2
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 2
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 2
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=2-2.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=2-2.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2338 4521 561526 0.25 30 120 25512 51068 4758056 190874478304
-1	3708 174611 1031 561621 0.08 30 9000 27 14778 62856834 585298384688
+0	1476 2338 4369 562114 0.25 30 120 25512 51096 4758040 190872771520
+1	3814 174604 949 562209 0.08 30 9000 32 14854 62919422 586671341302
 

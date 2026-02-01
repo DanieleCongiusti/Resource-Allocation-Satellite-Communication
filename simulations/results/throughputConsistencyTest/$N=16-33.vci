@@ -1,9 +1,9 @@
-file 1404 1768649420                                            
+file 1510 1769783738                                            
 version 3
-run throughputConsistencyTest-138-20260117-12:30:20-3968
+run throughputConsistencyTest-138-20260130-15:35:38-87990
 attr configname throughputConsistencyTest
-attr datetime 20260117-12:30:20
-attr datetimef 20260117-123020
+attr datetime 20260130-15:35:38
+attr datetimef 20260130-153538
 attr experiment throughputConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $N=16
@@ -11,7 +11,7 @@ attr iterationvarsd N=16
 attr iterationvarsf N=16-
 attr measurement $N=16
 attr network System
-attr processid 3968
+attr processid 87990
 attr repetition 33
 attr replication #33
 attr resultdir results
@@ -20,13 +20,14 @@ attr seedset 33
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording true
 config **.vector-recording false
 config **.N 16
 config **.K 100
 config *.t[*].mean_T 0.016s
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -36,9 +37,9 @@ config seed-set 33
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file results/throughputConsistencyTest/$N=16-33.vec
 config output-scalar-file results/throughputConsistencyTest/$N=16-33.sca
 

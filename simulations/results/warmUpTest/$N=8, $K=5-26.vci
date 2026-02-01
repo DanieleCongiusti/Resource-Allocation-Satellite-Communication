@@ -1,9 +1,9 @@
-file 55754 1768652723                                           
+file 56003 1769787832                                           
 version 3
-run warmUpTest-61-20260117-13:25:23-7629
+run warmUpTest-96-20260130-16:43:52-93338
 attr configname warmUpTest
-attr datetime 20260117-13:25:23
-attr datetimef 20260117-132523
+attr datetime 20260130-16:43:52
+attr datetimef 20260130-164352
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7629
+attr processid 93338
 attr repetition 26
 attr replication #26
 attr resultdir results
-attr runnumber 61
+attr runnumber 96
 attr seedset 26
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 26
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-26.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-26.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2456 3946 566961 0.25 30 120 85328 404920 24760000 5446070628384
-1	3821 51932 349 566992 0.08 30 3000 0 599 262131 47980071
+0	1471 2455 3383 566745 0.25 30 120 47460 333688 24754644 5485770583728
+1	3926 52076 331 566776 0.08 30 3000 0 797 280974 54366806
 

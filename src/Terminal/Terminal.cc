@@ -86,9 +86,8 @@ void Terminal::handleMessage(cMessage *msg) {
 
     // [Start of a New Time Frame (T)] 
     else if (msg == t_time_frame) {
-        // to highlight in the console output the start of a new time frame
-        //EV_INFO << endl;
-        //EV_INFO << "time frame counter: " << ++time_frame_counter << endl;
+
+        time_frame_counter++;
 
         G = false;
         // Delete any previous Transmission Timer coming from the previous Time Frame
@@ -134,6 +133,21 @@ void Terminal::handleMessage(cMessage *msg) {
 
         G = true;
         // 2.b OTHERWISE => Compute M and Start Transmission Timer (t_tx), 
+        cModule *oracle = getParentModule()->getSubmodule("oracle");
+
+        ContentMessage* tf_count = new ContentMessage("time_frame_counter");
+        tf_count->setSize(time_frame_counter);
+        sendDirect(tf_count, 0, 0, oracle, "wirelessGate");
+        time_frame_counter = 0;
+
+        ContentMessage* acc_q_len = new ContentMessage("accumulated_queue_length");
+        acc_q_len->setSize(msg_queue->getQLength());
+        sendDirect(acc_q_len, 0, 0, oracle, "wirelessGate");
+
+        ContentMessage* b_grant = new ContentMessage("B");
+        b_grant->setSize(comMsg->getB());
+        sendDirect(b_grant, 0, 0, oracle, "wirelessGate");
+
         M = floor(100 * pow((int)par("K"), log2(B) - 1));      // M = 100*K^(log_2(B)-1)
         //////EV_INFO << "Setting M(ax Output) for Terminal " << this->getName() << " at " << M << " at simtime " << simTime() << endl;
 

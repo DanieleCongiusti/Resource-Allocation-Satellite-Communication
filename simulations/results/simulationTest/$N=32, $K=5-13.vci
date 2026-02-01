@@ -1,9 +1,9 @@
-file 1487 1769421275                                            
+file 1571 1769942022                                            
 version 3
-run simulationTest-818-20260126-10:54:34-9281
+run simulationTest-818-20260201-11:33:41-74038
 attr configname simulationTest
-attr datetime 20260126-10:54:34
-attr datetimef 20260126-105434
+attr datetime 20260201-11:33:41
+attr datetimef 20260201-113341
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=32, $K=5"
@@ -11,7 +11,7 @@ attr iterationvarsd N=32/K=5
 attr iterationvarsf N=32,K=5-
 attr measurement "$N=32, $K=5"
 attr network System
-attr processid 9281
+attr processid 74038
 attr repetition 13
 attr replication #13
 attr resultdir results
@@ -27,10 +27,11 @@ config **.scalar-recording true
 config **.vector-recording false
 config extends warmUpTest
 config warmup-period 10s
+config repeat 35
 config sim-time-limit 30s
 config **.N 32
 config **.K 5
-config num-rngs 32
+config num-rngs 32*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -40,9 +41,9 @@ config seed-set 13
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/simulationTest/$N=32, $K=5-13.vec"
 config output-scalar-file "results/simulationTest/$N=32, $K=5-13.sca"
 

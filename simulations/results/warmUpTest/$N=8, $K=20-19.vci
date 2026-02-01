@@ -1,9 +1,9 @@
-file 54638 1768652735                                           
+file 54741 1769787859                                           
 version 3
-run warmUpTest-89-20260117-13:25:35-7660
+run warmUpTest-159-20260130-16:44:19-93430
 attr configname warmUpTest
-attr datetime 20260117-13:25:35
-attr datetimef 20260117-132535
+attr datetime 20260130-16:44:19
+attr datetimef 20260130-164419
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7660
+attr processid 93430
 attr repetition 19
 attr replication #19
 attr resultdir results
-attr runnumber 89
+attr runnumber 159
 attr seedset 19
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 19
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-19.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-19.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1373 2457 3979 537926 0.25 30 120 121812 343276 24789492 5355188604912
-1	3830 50807 321 537957 0.08 30 3000 0 281 122810 10049576
+0	1481 2457 4308 536285 0.25 30 120 115808 354208 24747120 5306605070176
+1	3938 50802 362 536316 0.08 30 3000 0 225 121245 9647385
 

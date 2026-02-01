@@ -1,9 +1,9 @@
-file 54595 1768652730                                           
+file 54705 1769787854                                           
 version 3
-run warmUpTest-78-20260117-13:25:30-7646
+run warmUpTest-148-20260130-16:44:14-93418
 attr configname warmUpTest
-attr datetime 20260117-13:25:30
-attr datetimef 20260117-132530
+attr datetime 20260130-16:44:14
+attr datetimef 20260130-164414
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7646
+attr processid 93418
 attr repetition 8
 attr replication #8
 attr resultdir results
-attr runnumber 78
+attr runnumber 148
 attr seedset 8
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 8
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-8.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-8.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1367 2457 4426 533619 0.25 30 120 120196 288664 24682496 5277857124832
-1	3824 50770 366 533650 0.08 30 3000 0 316 118966 9414708
+0	1475 2457 3894 535881 0.25 30 120 112144 330144 24761736 5292508416096
+1	3932 50772 315 535912 0.08 30 3000 0 286 121442 10085286
 

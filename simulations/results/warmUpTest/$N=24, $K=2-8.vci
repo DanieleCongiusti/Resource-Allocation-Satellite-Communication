@@ -1,9 +1,9 @@
-file 178313 1768653094                                          
+file 178479 1769788035                                          
 version 3
-run warmUpTest-708-20260117-13:31:34-8404
+run warmUpTest-498-20260130-16:47:14-93937
 attr configname warmUpTest
-attr datetime 20260117-13:31:34
-attr datetimef 20260117-133134
+attr datetime 20260130-16:47:14
+attr datetimef 20260130-164714
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=2
 attr iterationvarsf N=24,K=2-
 attr measurement "$N=24, $K=2"
 attr network System
-attr processid 8404
+attr processid 93937
 attr repetition 8
 attr replication #8
 attr resultdir results
-attr runnumber 708
+attr runnumber 498
 attr seedset 8
 itervar K 2
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 2
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 8
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=2-8.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=2-8.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2338 4352 562127 0.25 30 120 25532 51072 4758628 190919732144
-1	3708 174604 959 562222 0.08 30 9000 29 14743 62900795 585967838771
+0	1476 2338 4544 563415 0.25 30 120 25528 51092 4758384 190901716896
+1	3814 174664 997 563510 0.08 30 9000 32 14770 63357807 593441320945
 

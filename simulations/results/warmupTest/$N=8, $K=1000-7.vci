@@ -1,9 +1,9 @@
-file 54238 1768652759                                           
+file 54326 1769787884                                           
 version 3
-run warmUpTest-147-20260117-13:25:59-7723
+run warmUpTest-217-20260130-16:44:44-93508
 attr configname warmUpTest
-attr datetime 20260117-13:25:59
-attr datetimef 20260117-132559
+attr datetime 20260130-16:44:44
+attr datetimef 20260130-164444
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=1000"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=1000
 attr iterationvarsf N=8,K=1000-
 attr measurement "$N=8, $K=1000"
 attr network System
-attr processid 7723
+attr processid 93508
 attr repetition 7
 attr replication #7
 attr resultdir results
-attr runnumber 147
+attr runnumber 217
 attr seedset 7
 itervar K 1000
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 1000
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 7
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=1000-7.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=1000-7.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1385 2456 4007 516612 0.25 30 120 120436 304336 24850352 5314777796416
-1	3841 50396 328 516643 0.08 30 3000 0 199 94288 6332626
+0	1491 2456 3454 514435 0.25 30 120 127752 304076 24738776 5236098833632
+1	3947 50378 306 514466 0.08 30 3000 0 313 93878 6433552
 

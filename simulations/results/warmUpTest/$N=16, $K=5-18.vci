@@ -1,9 +1,9 @@
-file 111037 1768652895                                          
+file 111276 1769787944                                          
 version 3
-run warmUpTest-403-20260117-13:28:14-8015
+run warmUpTest-333-20260130-16:45:43-93668
 attr configname warmUpTest
-attr datetime 20260117-13:28:14
-attr datetimef 20260117-132814
+attr datetime 20260130-16:45:43
+attr datetimef 20260130-164543
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=16/K=5
 attr iterationvarsf N=16,K=5-
 attr measurement "$N=16, $K=5"
 attr network System
-attr processid 8015
+attr processid 93668
 attr repetition 18
 attr replication #18
 attr resultdir results
-attr runnumber 403
+attr runnumber 333
 attr seedset 18
 itervar K 5
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 16
 config **.K 5
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 18
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=16, $K=5-18.vec"
 config output-scalar-file "results/warmUpTest/$N=16, $K=5-18.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1376 2473 6319 1045652 0.25 30 120 172120 686284 49228756 20987080538000
-1	3849 107187 698 1045715 0.08 30 6000 0 2060 1499051 864854991
+0	1482 2473 5595 1035026 0.25 30 120 108192 638108 48625104 20354208881632
+1	3955 107320 680 1035089 0.08 30 6000 0 2772 2037376 2171208420
 

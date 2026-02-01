@@ -1,9 +1,9 @@
-file 54518 1768652727                                           
+file 54772 1769787851                                           
 version 3
-run warmUpTest-70-20260117-13:25:27-7638
+run warmUpTest-140-20260130-16:44:11-93405
 attr configname warmUpTest
-attr datetime 20260117-13:25:27
-attr datetimef 20260117-132527
+attr datetime 20260130-16:44:11
+attr datetimef 20260130-164411
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7638
+attr processid 93405
 attr repetition 0
 attr replication #0
 attr resultdir results
-attr runnumber 70
+attr runnumber 140
 attr seedset 0
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 0
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-0.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-0.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1367 2456 4065 533589 0.25 30 120 121308 321488 24838880 5297483008128
-1	3823 50694 328 533620 0.08 30 3000 0 284 115250 8723706
+0	1475 2457 3715 539737 0.25 30 120 138616 314348 24802760 5285415567456
+1	3932 50839 334 539768 0.08 30 3000 0 278 125671 10316183
 

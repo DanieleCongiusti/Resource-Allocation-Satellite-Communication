@@ -1,9 +1,9 @@
-file 55938 1768652723                                           
+file 56032 1769787832                                           
 version 3
-run warmUpTest-60-20260117-13:25:23-7628
+run warmUpTest-95-20260130-16:43:51-93337
 attr configname warmUpTest
-attr datetime 20260117-13:25:23
-attr datetimef 20260117-132523
+attr datetime 20260130-16:43:51
+attr datetimef 20260130-164351
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7628
+attr processid 93337
 attr repetition 25
 attr replication #25
 attr resultdir results
-attr runnumber 60
+attr runnumber 95
 attr seedset 25
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 25
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-25.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-25.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2458 3360 566793 0.25 30 120 105216 411464 24629060 5433558898576
-1	3823 52114 309 566824 0.08 30 3000 0 900 308988 73007282
+0	1471 2459 3850 569561 0.25 30 120 103224 385532 24751696 5522433317760
+1	3930 52101 343 569592 0.08 30 3000 0 673 278873 50873087
 

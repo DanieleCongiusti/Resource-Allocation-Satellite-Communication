@@ -1,9 +1,9 @@
-file 107292 1768652912                                          
+file 107411 1769787978                                          
 version 3
-run warmUpTest-431-20260117-13:28:32-8047
+run warmUpTest-396-20260130-16:46:18-93754
 attr configname warmUpTest
-attr datetime 20260117-13:28:32
-attr datetimef 20260117-132832
+attr datetime 20260130-16:46:18
+attr datetimef 20260130-164618
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=16/K=20
 attr iterationvarsf N=16,K=20-
 attr measurement "$N=16, $K=20"
 attr network System
-attr processid 8047
+attr processid 93754
 attr repetition 11
 attr replication #11
 attr resultdir results
-attr runnumber 431
+attr runnumber 396
 attr seedset 11
 itervar K 20
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 16
 config **.K 20
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 11
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=16, $K=20-11.vec"
 config output-scalar-file "results/warmUpTest/$N=16, $K=20-11.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1384 2471 6963 1022872 0.25 30 120 196952 704676 49524572 21251818388048
-1	3855 103436 696 1022935 0.08 30 6000 0 531 389149 54653637
+0	1490 2471 6533 1020033 0.25 30 120 192392 642932 49515472 21109106059040
+1	3961 103449 611 1020096 0.08 30 6000 0 596 400616 61012288
 

@@ -1,9 +1,9 @@
-file 119545 1768652864                                          
+file 119653 1769787897                                          
 version 3
-run warmUpTest-353-20260117-13:27:43-7959
+run warmUpTest-248-20260130-16:44:57-93541
 attr configname warmUpTest
-attr datetime 20260117-13:27:43
-attr datetimef 20260117-132743
+attr datetime 20260130-16:44:57
+attr datetimef 20260130-164457
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=16/K=2
 attr iterationvarsf N=16,K=2-
 attr measurement "$N=16, $K=2"
 attr network System
-attr processid 7959
+attr processid 93541
 attr repetition 3
 attr replication #3
 attr resultdir results
-attr runnumber 353
+attr runnumber 248
 attr seedset 3
 itervar K 2
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 16
 config **.K 2
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 3
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=16, $K=2-3.vec"
 config output-scalar-file "results/warmUpTest/$N=16, $K=2-3.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1370 2331 3271 430064 0.25 30 120 25484 51064 4756712 190755963296
-1	3701 115843 667 430127 0.08 30 6000 33 14122 40381020 362002120548
+0	1476 2332 3199 430075 0.25 30 120 25508 51100 4755624 190682883328
+1	3808 115844 636 430138 0.08 30 6000 32 14088 40335882 361245089426
 

@@ -1,9 +1,9 @@
-file 55855 1768652719                                           
+file 55913 1769787827                                           
 version 3
-run warmUpTest-50-20260117-13:25:19-7618
+run warmUpTest-85-20260130-16:43:47-93324
 attr configname warmUpTest
-attr datetime 20260117-13:25:19
-attr datetimef 20260117-132519
+attr datetime 20260130-16:43:47
+attr datetimef 20260130-164347
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7618
+attr processid 93324
 attr repetition 15
 attr replication #15
 attr resultdir results
-attr runnumber 50
+attr runnumber 85
 attr seedset 15
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 15
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-15.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-15.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2456 3956 567931 0.25 30 120 89828 431392 24847700 5591958691504
-1	3821 52033 359 567962 0.08 30 3000 0 530 271798 48054164
+0	1471 2456 3147 564536 0.25 30 120 96820 333160 24555520 5322727473120
+1	3927 51985 349 564567 0.08 30 3000 0 565 260404 44079882
 

@@ -1,9 +1,9 @@
-file 54239 1768652742                                           
+file 54328 1769787867                                           
 version 3
-run warmUpTest-106-20260117-13:25:42-7678
+run warmUpTest-176-20260130-16:44:27-93459
 attr configname warmUpTest
-attr datetime 20260117-13:25:42
-attr datetimef 20260117-132542
+attr datetime 20260130-16:44:27
+attr datetimef 20260130-164427
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7678
+attr processid 93459
 attr repetition 1
 attr replication #1
 attr resultdir results
-attr runnumber 106
+attr runnumber 176
 attr seedset 1
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 1
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-1.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-1.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1369 2456 4609 521025 0.25 30 120 109548 310212 24899224 5336887351264
-1	3825 50413 353 521056 0.08 30 3000 0 200 92782 6064932
+0	1475 2456 3926 515177 0.25 30 120 119216 294496 24735692 5247837957168
+1	3931 50396 338 515208 0.08 30 3000 0 198 92743 6041087
 

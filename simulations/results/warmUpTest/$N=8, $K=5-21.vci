@@ -1,9 +1,9 @@
-file 55788 1768652721                                           
+file 55916 1769787830                                           
 version 3
-run warmUpTest-56-20260117-13:25:21-7624
+run warmUpTest-91-20260130-16:43:50-93330
 attr configname warmUpTest
-attr datetime 20260117-13:25:21
-attr datetimef 20260117-132521
+attr datetime 20260130-16:43:50
+attr datetimef 20260130-164350
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7624
+attr processid 93330
 attr repetition 21
 attr replication #21
 attr resultdir results
-attr runnumber 56
+attr runnumber 91
 attr seedset 21
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 21
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-21.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-21.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2457 3611 568565 0.25 30 120 97228 346316 24870104 5487619216864
-1	3822 51965 304 568596 0.08 30 3000 0 612 245743 38294427
+0	1471 2457 3992 566225 0.25 30 120 99048 336592 24759388 5441201132464
+1	3928 51987 339 566256 0.08 30 3000 0 792 274877 57038493
 

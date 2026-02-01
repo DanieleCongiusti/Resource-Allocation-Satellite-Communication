@@ -1,9 +1,9 @@
-file 178359 1768653098                                          
+file 178451 1769788038                                          
 version 3
-run warmUpTest-713-20260117-13:31:37-8410
+run warmUpTest-503-20260130-16:47:18-93942
 attr configname warmUpTest
-attr datetime 20260117-13:31:37
-attr datetimef 20260117-133137
+attr datetime 20260130-16:47:18
+attr datetimef 20260130-164718
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=2
 attr iterationvarsf N=24,K=2-
 attr measurement "$N=24, $K=2"
 attr network System
-attr processid 8410
+attr processid 93942
 attr repetition 13
 attr replication #13
 attr resultdir results
-attr runnumber 713
+attr runnumber 503
 attr seedset 13
 itervar K 2
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 2
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 13
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=2-13.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=2-13.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1376 2338 4501 562872 0.25 30 120 25532 51080 4757936 190854339200
-1	3714 174644 929 562967 0.08 30 9000 26 14923 63140979 590021082875
+0	1482 2338 4434 562189 0.25 30 120 25544 51140 4758340 190892797936
+1	3820 174630 997 562284 0.08 30 9000 29 14779 62864471 585525591879
 

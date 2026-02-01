@@ -1,8 +1,8 @@
 version 3
-run queueLengthConsistencyTest-10-20260117-12:37:07-4593
+run queueLengthConsistencyTest-10-20260130-15:38:27-88227
 attr configname queueLengthConsistencyTest
-attr datetime 20260117-12:37:07
-attr datetimef 20260117-123707
+attr datetime 20260130-15:38:27
+attr datetimef 20260130-153827
 attr experiment queueLengthConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $T=0.016s
@@ -10,7 +10,7 @@ attr iterationvarsd T=0.016s
 attr iterationvarsf T=0.016s-
 attr measurement $T=0.016s
 attr network System
-attr processid 4593
+attr processid 88227
 attr repetition 10
 attr replication #10
 attr resultdir results
@@ -19,13 +19,14 @@ attr seedset 10
 itervar T 0.016s
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording true
 config **.vector-recording false
 config **.N 18
 config **.K 1
 config *.t[*].mean_T 0.016s
-config num-rngs 18
+config num-rngs 18*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -35,20 +36,20 @@ config seed-set 10
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file results/queueLengthConsistencyTest/$T=0.016s-10.vec
 config output-scalar-file results/queueLengthConsistencyTest/$T=0.016s-10.sca
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 545.41777777778
+scalar System.oracle AvgQLStat:mean 547.98444444444
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 5072.3
+scalar System.oracle throughputStat:last 5099.35
 attr "" ""
 attr recordingmode last
 attr source throughput

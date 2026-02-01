@@ -1,8 +1,8 @@
 version 3
-run throughputContinuityTest-51-20260117-12:55:07-6118
+run throughputContinuityTest-51-20260130-16:02:48-91560
 attr configname throughputContinuityTest
-attr datetime 20260117-12:55:07
-attr datetimef 20260117-125507
+attr datetime 20260130-16:02:48
+attr datetimef 20260130-160248
 attr experiment throughputContinuityTest
 attr inifile omnetpp.ini
 attr iterationvars $N=3
@@ -10,7 +10,7 @@ attr iterationvarsd N=3
 attr iterationvarsf N=3-
 attr measurement $N=3
 attr network System
-attr processid 6118
+attr processid 91560
 attr repetition 16
 attr replication #16
 attr resultdir results
@@ -19,13 +19,14 @@ attr seedset 16
 itervar N 3
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording true
 config **.vector-recording false
 config **.N 3
 config **.K 100
 config *.t[*].mean_T 0.016s
-config num-rngs 3
+config num-rngs 3*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -35,9 +36,9 @@ config seed-set 16
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file results/throughputContinuityTest/$N=3-16.vec
 config output-scalar-file results/throughputContinuityTest/$N=3-16.sca
 

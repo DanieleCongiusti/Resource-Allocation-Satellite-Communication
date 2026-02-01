@@ -1,9 +1,9 @@
-file 54662 1768652739                                           
+file 54769 1769787864                                           
 version 3
-run warmUpTest-99-20260117-13:25:39-7671
+run warmUpTest-169-20260130-16:44:24-93449
 attr configname warmUpTest
-attr datetime 20260117-13:25:39
-attr datetimef 20260117-132539
+attr datetime 20260130-16:44:24
+attr datetimef 20260130-164424
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7671
+attr processid 93449
 attr repetition 29
 attr replication #29
 attr resultdir results
-attr runnumber 99
+attr runnumber 169
 attr seedset 29
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 29
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-29.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-29.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1373 2457 4253 539255 0.25 30 120 117956 346620 24939296 5364182027680
-1	3830 50831 301 539286 0.08 30 3000 0 388 127271 11186473
+0	1481 2457 3529 537126 0.25 30 120 101840 314552 24839208 5352505147712
+1	3938 50830 300 537157 0.08 30 3000 0 263 123798 10095600
 

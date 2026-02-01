@@ -1,9 +1,9 @@
-file 54264 1768652748                                           
+file 54374 1769787874                                           
 version 3
-run warmUpTest-122-20260117-13:25:48-7696
+run warmUpTest-192-20260130-16:44:34-93481
 attr configname warmUpTest
-attr datetime 20260117-13:25:48
-attr datetimef 20260117-132548
+attr datetime 20260130-16:44:34
+attr datetimef 20260130-164434
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7696
+attr processid 93481
 attr repetition 17
 attr replication #17
 attr resultdir results
-attr runnumber 122
+attr runnumber 192
 attr seedset 17
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 17
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-17.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-17.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 3547 521689 0.25 30 120 109492 308420 24966888 5346053185824
-1	3831 50432 327 521720 0.08 30 3000 0 270 95494 6678342
+0	1481 2456 4106 520750 0.25 30 120 98208 314416 24840720 5312353839040
+1	3937 50436 313 520781 0.08 30 3000 0 222 95163 6387175
 

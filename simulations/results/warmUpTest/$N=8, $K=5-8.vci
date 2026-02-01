@@ -1,9 +1,9 @@
-file 55936 1768652716                                           
+file 55928 1769787825                                           
 version 3
-run warmUpTest-43-20260117-13:25:16-7611
+run warmUpTest-78-20260130-16:43:44-93317
 attr configname warmUpTest
-attr datetime 20260117-13:25:16
-attr datetimef 20260117-132516
+attr datetime 20260130-16:43:44
+attr datetimef 20260130-164344
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7611
+attr processid 93317
 attr repetition 8
 attr replication #8
 attr resultdir results
-attr runnumber 43
+attr runnumber 78
 attr seedset 8
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 8
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-8.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-8.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1359 2456 4062 564975 0.25 30 120 60820 366256 24473476 5341070539440
-1	3815 52120 366 565006 0.08 30 3000 0 759 294143 60617535
+0	1465 2454 3380 565200 0.25 30 120 54156 334396 24617008 5442999776480
+1	3919 52008 315 565231 0.08 30 3000 0 573 272831 50343323
 

@@ -1,9 +1,9 @@
-file 178326 1768653107                                          
+file 178473 1769788046                                          
 version 3
-run warmUpTest-726-20260117-13:31:47-8425
+run warmUpTest-516-20260130-16:47:26-93957
 attr configname warmUpTest
-attr datetime 20260117-13:31:47
-attr datetimef 20260117-133147
+attr datetime 20260130-16:47:26
+attr datetimef 20260130-164726
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=2"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=2
 attr iterationvarsf N=24,K=2-
 attr measurement "$N=24, $K=2"
 attr network System
-attr processid 8425
+attr processid 93957
 attr repetition 26
 attr replication #26
 attr resultdir results
-attr runnumber 726
+attr runnumber 516
 attr seedset 26
 itervar K 2
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 2
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 26
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=2-26.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=2-26.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1376 2338 4553 561170 0.25 30 120 25480 51092 4757544 190827204704
-1	3714 174611 1022 561265 0.08 30 9000 30 14786 62840603 585229607843
+0	1482 2338 4456 564361 0.25 30 120 25508 51076 4757672 190838359104
+1	3820 174652 1019 564456 0.08 30 9000 32 14916 63264170 593212115614
 

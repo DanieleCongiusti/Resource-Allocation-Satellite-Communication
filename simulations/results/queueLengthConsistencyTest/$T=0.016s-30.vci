@@ -1,9 +1,9 @@
-file 1433 1768649831                                            
+file 1539 1769783911                                            
 version 3
-run queueLengthConsistencyTest-30-20260117-12:37:11-4615
+run queueLengthConsistencyTest-30-20260130-15:38:31-88254
 attr configname queueLengthConsistencyTest
-attr datetime 20260117-12:37:11
-attr datetimef 20260117-123711
+attr datetime 20260130-15:38:31
+attr datetimef 20260130-153831
 attr experiment queueLengthConsistencyTest
 attr inifile omnetpp.ini
 attr iterationvars $T=0.016s
@@ -11,7 +11,7 @@ attr iterationvarsd T=0.016s
 attr iterationvarsf T=0.016s-
 attr measurement $T=0.016s
 attr network System
-attr processid 4615
+attr processid 88254
 attr repetition 30
 attr replication #30
 attr resultdir results
@@ -20,13 +20,14 @@ attr seedset 30
 itervar T 0.016s
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording true
 config **.vector-recording false
 config **.N 18
 config **.K 1
 config *.t[*].mean_T 0.016s
-config num-rngs 18
+config num-rngs 18*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -36,9 +37,9 @@ config seed-set 30
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file results/queueLengthConsistencyTest/$T=0.016s-30.vec
 config output-scalar-file results/queueLengthConsistencyTest/$T=0.016s-30.sca
 

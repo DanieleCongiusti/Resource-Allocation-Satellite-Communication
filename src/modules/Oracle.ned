@@ -11,19 +11,32 @@ simple Oracle{
         //timeframe duration
         double timeframe_duration @unit(s) = 0.08s;
 
-        //signal for collecting values in order to retrieve throughput
-		@signal[throughput](type = double);
+
 		//signal for collecting values in order to retrieve the warmup-period
 		@signal[throughputWarmUp](type = double);
-        //statistic for computing throughput
-		@statistic[throughputStat](source = "throughput"; record = last;);
-		//statistic for computing warmup period
-		@statistic[throughputWarmUpStat](source = "throughputWarmUp"; record = vector;);
-
+		//signal for collecting values in order to retrieve throughput
+		@signal[throughput](type = double);
 		//signal for collecting values in order to retrieve AvgQueueLength
 		@signal[avgQueueLength](type = int);
+		//signal for collecting values in order to retrieve the number of time frame between 2 grants
+		@signal[waitingTimeFrame](type = int);
+		//signal for collecting values in order to retrieve the queue length accumulated between 2 grants
+		@signal[accumulatedQueueLength](type = int);
+		//signal for collecting values in order to retrieve the B value at grant
+		@signal[bGrant](type = int);
+		
+		//statistic for computing warmup period
+		@statistic[throughputWarmUpStat](source = "throughputWarmUp"; record = vector;);
+        //statistic for computing throughput
+		@statistic[throughputStat](source = "throughput"; record = last;);
         //statistic for computing AvgQueueLength
 		@statistic[AvgQLStat](source = "avgQueueLength"; record = mean, vector;);
+		//statistic for computing waitingTimeFrame
+		@statistic[avgWaitingTimeFrame](source = "waitingTimeFrame"; record = mean;);
+		//statistic for computing accumulatedQueueLength
+		@statistic[avgAccumulatedQueueLength](source = "accumulatedQueueLength"; record = mean;);
+		//statistic for computing bGrant
+		@statistic[avgBGrant](source = "bGrant"; record = mean;);
 
     gates:
         //gate that receives data from other nodes

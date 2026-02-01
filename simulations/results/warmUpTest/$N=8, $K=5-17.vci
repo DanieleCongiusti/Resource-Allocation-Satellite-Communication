@@ -1,9 +1,9 @@
-file 55867 1768652720                                           
+file 56042 1769787828                                           
 version 3
-run warmUpTest-52-20260117-13:25:19-7620
+run warmUpTest-87-20260130-16:43:48-93326
 attr configname warmUpTest
-attr datetime 20260117-13:25:19
-attr datetimef 20260117-132519
+attr datetime 20260130-16:43:48
+attr datetimef 20260130-164348
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7620
+attr processid 93326
 attr repetition 17
 attr replication #17
 attr resultdir results
-attr runnumber 52
+attr runnumber 87
 attr seedset 17
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 17
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-17.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-17.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2457 3637 571945 0.25 30 120 96920 364784 24869524 5513915501968
-1	3822 52044 327 571976 0.08 30 3000 0 557 270402 47419138
+0	1471 2455 3336 570003 0.25 30 120 79096 366564 24765096 5506165217440
+1	3926 52115 313 570034 0.08 30 3000 0 651 287390 56126538
 

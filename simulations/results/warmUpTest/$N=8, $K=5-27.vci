@@ -1,9 +1,9 @@
-file 55824 1768652724                                           
+file 56088 1769787832                                           
 version 3
-run warmUpTest-62-20260117-13:25:23-7630
+run warmUpTest-97-20260130-16:43:52-93339
 attr configname warmUpTest
-attr datetime 20260117-13:25:23
-attr datetimef 20260117-132523
+attr datetime 20260130-16:43:52
+attr datetimef 20260130-164352
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7630
+attr processid 93339
 attr repetition 27
 attr replication #27
 attr resultdir results
-attr runnumber 62
+attr runnumber 97
 attr seedset 27
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 27
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-27.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-27.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2457 3666 570353 0.25 30 120 97696 356616 24935732 5460485311216
-1	3822 52001 344 570384 0.08 30 3000 0 559 257435 42757235
+0	1471 2456 3789 570746 0.25 30 120 98740 374552 24823704 5469071553280
+1	3927 52160 332 570777 0.08 30 3000 0 756 316521 72618097
 

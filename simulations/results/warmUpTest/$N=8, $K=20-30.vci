@@ -1,9 +1,9 @@
-file 54591 1768652739                                           
+file 54686 1769787865                                           
 version 3
-run warmUpTest-100-20260117-13:25:39-7672
+run warmUpTest-170-20260130-16:44:24-93451
 attr configname warmUpTest
-attr datetime 20260117-13:25:39
-attr datetimef 20260117-132539
+attr datetime 20260130-16:44:24
+attr datetimef 20260130-164424
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7672
+attr processid 93451
 attr repetition 30
 attr replication #30
 attr resultdir results
-attr runnumber 100
+attr runnumber 170
 attr seedset 30
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 30
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-30.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-30.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2457 4033 537116 0.25 30 120 132444 306672 24863064 5299771229120
-1	3832 50758 340 537147 0.08 30 3000 0 310 118677 9244493
+0	1481 2456 3794 535641 0.25 30 120 90280 341424 24860000 5319858464480
+1	3937 50748 299 535672 0.08 30 3000 0 260 117068 9059362
 

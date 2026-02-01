@@ -1,9 +1,9 @@
-file 111258 1768652900                                          
+file 110917 1769787948                                          
 version 3
-run warmUpTest-411-20260117-13:28:19-8023
+run warmUpTest-341-20260130-16:45:48-93681
 attr configname warmUpTest
-attr datetime 20260117-13:28:19
-attr datetimef 20260117-132819
+attr datetime 20260130-16:45:48
+attr datetimef 20260130-164548
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=16/K=5
 attr iterationvarsf N=16,K=5-
 attr measurement "$N=16, $K=5"
 attr network System
-attr processid 8023
+attr processid 93681
 attr repetition 26
 attr replication #26
 attr resultdir results
-attr runnumber 411
+attr runnumber 341
 attr seedset 26
 itervar K 5
 itervar N 16
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 16
 config **.K 5
-config num-rngs 16
+config num-rngs 16*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 26
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=16, $K=5-26.vec"
 config output-scalar-file "results/warmUpTest/$N=16, $K=5-26.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1376 2473 5936 1037390 0.25 30 120 144276 562924 48601940 20302432961584
-1	3849 107408 648 1037453 0.08 30 6000 0 3079 1931010 2078702838
+0	1482 2472 5504 1030626 0.25 30 120 148496 607756 48302028 20052678514384
+1	3954 106962 580 1030689 0.08 30 6000 0 3275 1608686 1565491238
 

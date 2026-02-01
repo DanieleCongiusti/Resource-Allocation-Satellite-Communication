@@ -1,9 +1,9 @@
-file 54268 1768652751                                           
+file 54374 1769787877                                           
 version 3
-run warmUpTest-129-20260117-13:25:51-7704
+run warmUpTest-199-20260130-16:44:37-93489
 attr configname warmUpTest
-attr datetime 20260117-13:25:51
-attr datetimef 20260117-132551
+attr datetime 20260130-16:44:37
+attr datetimef 20260130-164437
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7704
+attr processid 93489
 attr repetition 24
 attr replication #24
 attr resultdir results
-attr runnumber 129
+attr runnumber 199
 attr seedset 24
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 24
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-24.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-24.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 3695 519951 0.25 30 120 113976 300856 24823132 5265351374992
-1	3831 50436 305 519982 0.08 30 3000 0 214 95231 6447429
+0	1481 2457 4119 524815 0.25 30 120 137884 300224 25106156 5409437239856
+1	3938 50435 327 524846 0.08 30 3000 0 253 94542 6247880
 

@@ -17,6 +17,9 @@ void Oracle::initialize() {
     throughputSignal = registerSignal("throughput");
     throughputWarmUpSignal = registerSignal("throughputWarmUp");
     avgQLSignal = registerSignal("avgQueueLength");
+    waitingTimeFrameSignal = registerSignal("waitingTimeFrame");
+    accumulatedQueueLengthSignal = registerSignal("accumulatedQueueLength");
+    bGrantSignal = registerSignal("bGrant");
 
     throughputTimer = new cMessage("throughputTimer");
     scheduleAt(simTime() + interval, throughputTimer);
@@ -25,23 +28,31 @@ void Oracle::initialize() {
 void Oracle::handleMessage(cMessage *msg) {
 
     if (msg->isSelfMessage() && msg->isName("throughputTimer")) {
-        double throuhgput = currentBytes/interval;
+        double throuhgput = currentBytes / interval;
         //EV_INFO << "Throughput: " << throuhgput << endl;
         //EV_INFO << "Bytes: " << currentBytes << endl;
-        emit(throughputWarmUpSignal, currentBytes/interval);
+        emit(throughputWarmUpSignal, currentBytes / interval);
         currentBytes = 0;
         scheduleAt(simTime() + interval, throughputTimer);
     }
     // here I can receive a contentMessage for throughput
     // or for AvgQueueLength
-    else if (!msg->isName("byte_sent") && !msg->isName("q_len")) {
+    else if (!msg->isName("byte_sent") && !msg->isName("q_len")
+            && !msg->isName("time_frame_counter")
+            && !msg->isName("accumulated_queue_length") && !msg->isName("B")) {
         delete msg;
         throw cRuntimeError("Message type not accepted by oracle");
     } else {
         ContentMessage *c_msg = check_and_cast<ContentMessage*>(msg);
-        if (msg->isName("byte_sent")){
+        if (msg->isName("byte_sent")) {
             totBytes += c_msg->getSize();
             currentBytes += c_msg->getSize();
+        } else if (msg->isName("time_frame_counter")) {
+            emit(waitingTimeFrameSignal, c_msg->getSize());
+        } else if (msg->isName("accumulated_queue_length")) {
+            emit(accumulatedQueueLengthSignal, c_msg->getSize());
+        } else if (msg->isName("B")) {
+            emit(bGrantSignal, c_msg->getSize());
         }
         else
             emit(avgQLSignal, c_msg->getSize());

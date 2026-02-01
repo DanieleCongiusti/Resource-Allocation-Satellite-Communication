@@ -1,8 +1,8 @@
 version 3
-run queueLengthContinuityTest-8-20260117-12:59:02-6466
+run queueLengthContinuityTest-8-20260130-16:06:27-91779
 attr configname queueLengthContinuityTest
-attr datetime 20260117-12:59:02
-attr datetimef 20260117-125902
+attr datetime 20260130-16:06:27
+attr datetimef 20260130-160627
 attr experiment queueLengthContinuityTest
 attr inifile omnetpp.ini
 attr iterationvars $T=0.016s
@@ -10,7 +10,7 @@ attr iterationvarsd T=0.016s
 attr iterationvarsf T=0.016s-
 attr measurement $T=0.016s
 attr network System
-attr processid 6466
+attr processid 91779
 attr repetition 8
 attr replication #8
 attr resultdir results
@@ -19,13 +19,14 @@ attr seedset 8
 itervar T 0.016s
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording true
 config **.vector-recording false
 config **.N 18
 config **.K 1
 config *.t[*].mean_T 0.016s
-config num-rngs 18
+config num-rngs 18*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -35,20 +36,20 @@ config seed-set 8
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file results/queueLengthContinuityTest/$T=0.016s-8.vec
 config output-scalar-file results/queueLengthContinuityTest/$T=0.016s-8.sca
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 555.93422222222
+scalar System.oracle AvgQLStat:mean 559.34888888889
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 4992.8
+scalar System.oracle throughputStat:last 4922.8
 attr "" ""
 attr recordingmode last
 attr source throughput

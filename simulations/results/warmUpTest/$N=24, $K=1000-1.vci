@@ -1,9 +1,9 @@
-file 165498 1768653199                                          
+file 165627 1769788170                                          
 version 3
-run warmUpTest-841-20260117-13:33:19-8559
+run warmUpTest-701-20260130-16:49:30-94209
 attr configname warmUpTest
-attr datetime 20260117-13:33:19
-attr datetimef 20260117-133319
+attr datetime 20260130-16:49:30
+attr datetimef 20260130-164930
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=1000"
@@ -11,23 +11,24 @@ attr iterationvarsd N=24/K=1000
 attr iterationvarsf N=24,K=1000-
 attr measurement "$N=24, $K=1000"
 attr network System
-attr processid 8559
+attr processid 94209
 attr repetition 1
 attr replication #1
 attr resultdir results
-attr runnumber 841
+attr runnumber 701
 attr seedset 1
 itervar K 1000
 itervar N 24
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 24
 config **.K 1000
-config num-rngs 24
+config num-rngs 24*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 1
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=24, $K=1000-1.vec"
 config output-scalar-file "results/warmUpTest/$N=24, $K=1000-1.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1394 2514 8250 1489032 0.25 30 120 173516 1214124 74014888 48911412840224
-1	3908 161589 984 1489127 0.08 30 9000 0 1789 1462933 607679699
+0	1500 2516 6903 1487670 0.25 30 120 165544 1166688 73795940 48691069543024
+1	4016 161610 1015 1487765 0.08 30 9000 0 1497 1430892 541048740
 

@@ -1,8 +1,8 @@
 version 3
-run simulationTest-1014-20260126-10:57:17-9531
+run simulationTest-1014-20260201-11:35:57-74320
 attr configname simulationTest
-attr datetime 20260126-10:57:17
-attr datetimef 20260126-105717
+attr datetime 20260201-11:35:57
+attr datetimef 20260201-113557
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=40, $K=2"
@@ -10,7 +10,7 @@ attr iterationvarsd N=40/K=2
 attr iterationvarsf N=40,K=2-
 attr measurement "$N=40, $K=2"
 attr network System
-attr processid 9531
+attr processid 74320
 attr repetition 34
 attr replication #34
 attr resultdir results
@@ -26,10 +26,11 @@ config **.scalar-recording true
 config **.vector-recording false
 config extends warmUpTest
 config warmup-period 10s
+config repeat 35
 config sim-time-limit 30s
 config **.N 40
 config **.K 2
-config num-rngs 40
+config num-rngs 40*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -39,20 +40,32 @@ config seed-set 34
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/simulationTest/$N=40, $K=2-34.vec"
 config output-scalar-file "results/simulationTest/$N=40, $K=2-34.sca"
 
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle AvgQLStat:mean 9588.6792828685
+scalar System.oracle avgBGrant:mean 15.98407960199
+attr "" ""
+attr recordingmode mean
+attr source bGrant
+scalar System.oracle avgAccumulatedQueueLength:mean 9163.1880597015
+attr "" ""
+attr recordingmode mean
+attr source accumulatedQueueLength
+scalar System.oracle avgWaitingTimeFrame:mean 8.5950248756219
+attr "" ""
+attr recordingmode mean
+attr source waitingTimeFrame
+scalar System.oracle AvgQLStat:mean 9529.0747011952
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 39767.533333333
+scalar System.oracle throughputStat:last 39767.966666667
 attr "" ""
 attr recordingmode last
 attr source throughput

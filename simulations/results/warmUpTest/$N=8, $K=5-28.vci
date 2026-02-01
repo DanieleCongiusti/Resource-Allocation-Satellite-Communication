@@ -1,9 +1,9 @@
-file 55792 1768652724                                           
+file 55950 1769787833                                           
 version 3
-run warmUpTest-63-20260117-13:25:24-7631
+run warmUpTest-98-20260130-16:43:53-93341
 attr configname warmUpTest
-attr datetime 20260117-13:25:24
-attr datetimef 20260117-132524
+attr datetime 20260130-16:43:53
+attr datetimef 20260130-164353
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 7631
+attr processid 93341
 attr repetition 28
 attr replication #28
 attr resultdir results
-attr runnumber 63
+attr runnumber 98
 attr seedset 28
 itervar K 5
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 5
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 28
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=5-28.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=5-28.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1365 2456 3597 567978 0.25 30 120 96896 349864 24773276 5356474087216
-1	3821 51970 336 568009 0.08 30 3000 0 708 263595 47887933
+0	1471 2456 3513 567343 0.25 30 120 95784 354644 24715368 5453653418880
+1	3927 52022 315 567374 0.08 30 3000 0 575 264297 45534869
 

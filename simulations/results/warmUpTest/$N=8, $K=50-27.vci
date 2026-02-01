@@ -1,9 +1,9 @@
-file 54244 1768652753                                           
+file 54372 1769787878                                           
 version 3
-run warmUpTest-132-20260117-13:25:52-7707
+run warmUpTest-202-20260130-16:44:38-93492
 attr configname warmUpTest
-attr datetime 20260117-13:25:52
-attr datetimef 20260117-132552
+attr datetime 20260130-16:44:38
+attr datetimef 20260130-164438
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=50"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=50
 attr iterationvarsf N=8,K=50-
 attr measurement "$N=8, $K=50"
 attr network System
-attr processid 7707
+attr processid 93492
 attr repetition 27
 attr replication #27
 attr resultdir results
-attr runnumber 132
+attr runnumber 202
 attr seedset 27
 itervar K 50
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 50
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 27
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=50-27.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=50-27.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1375 2456 4146 517855 0.25 30 120 119964 298248 24979236 5354934687568
-1	3831 50412 344 517886 0.08 30 3000 0 314 93567 6549311
+0	1481 2456 4206 520220 0.25 30 120 103052 293532 24850160 5304875424128
+1	3937 50434 332 520251 0.08 30 3000 0 237 95366 6506124
 

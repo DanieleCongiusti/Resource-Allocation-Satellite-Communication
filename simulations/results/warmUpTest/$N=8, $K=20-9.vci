@@ -1,9 +1,9 @@
-file 54599 1768652731                                           
+file 54726 1769787855                                           
 version 3
-run warmUpTest-79-20260117-13:25:31-7647
+run warmUpTest-149-20260130-16:44:15-93419
 attr configname warmUpTest
-attr datetime 20260117-13:25:31
-attr datetimef 20260117-132531
+attr datetime 20260130-16:44:15
+attr datetimef 20260130-164415
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7647
+attr processid 93419
 attr repetition 9
 attr replication #9
 attr resultdir results
-attr runnumber 79
+attr runnumber 149
 attr seedset 9
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 9
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-9.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-9.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1367 2457 4182 534871 0.25 30 120 118344 296788 24763356 5290361354256
-1	3824 50774 322 534902 0.08 30 3000 0 272 117244 9106352
+0	1475 2456 3844 536437 0.25 30 120 93756 309832 24911416 5376440589792
+1	3931 50794 317 536468 0.08 30 3000 0 316 121480 9776766
 

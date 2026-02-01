@@ -1,9 +1,9 @@
-file 1393 1768651449                                            
+file 1497 1769787496                                            
 version 3
-run degeneracyTest-11-20260117-13:04:09-7112
+run degeneracyTest-11-20260130-16:38:16-93064
 attr configname degeneracyTest
-attr datetime 20260117-13:04:09
-attr datetimef 20260117-130409
+attr datetime 20260130-16:38:16
+attr datetimef 20260130-163816
 attr experiment degeneracyTest
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -11,7 +11,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network System
-attr processid 7112
+attr processid 93064
 attr repetition 11
 attr replication #11
 attr resultdir results
@@ -19,6 +19,7 @@ attr runnumber 11
 attr seedset 11
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording true
 config **.vector-recording false
@@ -37,9 +38,9 @@ config seed-set 11
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file results/degeneracyTest/-11.vec
 config output-scalar-file results/degeneracyTest/-11.sca
 

@@ -1,9 +1,9 @@
-file 54619 1768652736                                           
+file 54753 1769787861                                           
 version 3
-run warmUpTest-93-20260117-13:25:36-7665
+run warmUpTest-163-20260130-16:44:21-93439
 attr configname warmUpTest
-attr datetime 20260117-13:25:36
-attr datetimef 20260117-132536
+attr datetime 20260130-16:44:21
+attr datetimef 20260130-164421
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=20"
@@ -11,23 +11,24 @@ attr iterationvarsd N=8/K=20
 attr iterationvarsf N=8,K=20-
 attr measurement "$N=8, $K=20"
 attr network System
-attr processid 7665
+attr processid 93439
 attr repetition 23
 attr replication #23
 attr resultdir results
-attr runnumber 93
+attr runnumber 163
 attr seedset 23
 itervar K 20
 itervar N 8
 config cmdenv-express-mode false
 config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
 config record-eventlog false
 config **.scalar-recording false
 config **.vector-recording true
 config sim-time-limit 30s
 config **.N 8
 config **.K 20
-config num-rngs 8
+config num-rngs 8*3
 config network System
 config sim-time-limit 20s
 config cmdenv-express-mode false
@@ -37,9 +38,9 @@ config seed-set 23
 config *.t[*].a 4B
 config *.t[*].b 100B
 config *.t[*].mean_T 0.002s
-config *.t[*].rng-0 index
-config *.t[*].rng-1 index
-config *.t[*].rng-2 index
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/warmUpTest/$N=8, $K=20-23.vec"
 config output-scalar-file "results/warmUpTest/$N=8, $K=20-23.sca"
 
@@ -51,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1373 2457 4177 537537 0.25 30 120 117068 343832 24782316 5320320840048
-1	3830 50788 354 537568 0.08 30 3000 0 245 120208 9510230
+0	1481 2457 3570 538206 0.25 30 120 109776 305372 24807780 5312998435440
+1	3938 50814 297 538237 0.08 30 3000 0 337 122793 10031569
 
