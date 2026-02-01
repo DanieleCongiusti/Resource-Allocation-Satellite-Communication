@@ -32,7 +32,7 @@ class Terminal : public cSimpleModule
 
     int B = 0; 
     bool G = false;
-    int M = 0; 
+    long double M = 0; 
     cMessage* t_tx = nullptr;
 
     // Fields for Data Collection

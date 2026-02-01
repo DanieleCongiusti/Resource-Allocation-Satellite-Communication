@@ -121,6 +121,11 @@ void Terminal::handleMessage(cMessage *msg) {
         //EV_INFO << "Previous bearer index: " << B << endl;
         generateRequest(msg_grant);        // B value saved
         //EV_INFO << "Bearer index: " << msg_grant->getB() << endl;
+        if (msg_grant->getB()==-1) {
+            ContentMessage* b = new ContentMessage("B");
+            b->setSize(-1);
+            sendDirect(b, 0, 0, oracle, "wirelessGate");
+        }
         send(msg_grant, "t_io$o");         // B value sent
     }
 
