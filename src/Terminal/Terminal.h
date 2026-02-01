@@ -31,16 +31,15 @@ class Terminal : public cSimpleModule
     cMessage* t_time_frame = nullptr;
 
     int B = 0; 
-    
+    bool G = false;
     int M = 0; 
     cMessage* t_tx = nullptr;
 
     // Fields for Data Collection
     int byteSent = 0;
-
     int time_frame_counter = 0;
 
-    bool G = false;
+    int byteGenerated = 0; 
 
   public:
     Terminal() = default;
@@ -50,7 +49,7 @@ class Terminal : public cSimpleModule
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
     
-    void generateGrant(ComMessage* msg);
+    void generateRequest(ComMessage* msg);
 
 };
 

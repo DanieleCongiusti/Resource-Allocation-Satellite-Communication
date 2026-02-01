@@ -17,7 +17,7 @@ using namespace std;
 
 Define_Module(Terminal);
 
-void Terminal::generateGrant(ComMessage* msg) {
+void Terminal::generateRequest(ComMessage* msg) {
     // Check if Queue is Empty
     if (!msg_queue->getLast()) {
         msg->setB(-1);
@@ -82,14 +82,20 @@ void Terminal::handleMessage(cMessage *msg) {
 
         // Timer for next packet to be generated
         scheduleAt(simTime()+par("T"), t_msg_to_q);
+
+        // Data collection: Counting the bytes generated in between Grants
+        byteGenerated += new_msg->getSize(); 
     }
 
     // [Start of a New Time Frame (T)] 
     else if (msg == t_time_frame) {
 
+        // Couting waiting timeframes
         time_frame_counter++;
 
+        // Resetting "grant"
         G = false;
+
         // Delete any previous Transmission Timer coming from the previous Time Frame
         if (t_tx->isScheduled())  cancelEvent(t_tx);
         
@@ -98,7 +104,6 @@ void Terminal::handleMessage(cMessage *msg) {
 
         // Data Collection: Send #byteSent + #qLength from previous Time Frame to the Oracle
         cModule *oracle = getParentModule()->getSubmodule("oracle");
-        //cGate *oracle_gate = oracle->gate("wirelessGate", 0);
         ContentMessage* byte_sent = new ContentMessage("byte_sent");
         byte_sent->setSize(byteSent);
         sendDirect(byte_sent, 0, 0, oracle, "wirelessGate");
@@ -107,19 +112,16 @@ void Terminal::handleMessage(cMessage *msg) {
 
         ContentMessage* q_len = new ContentMessage("q_len");
         q_len->setSize(msg_queue->getQLength());
-
         //EV_INFO << "Queue length: " << q_len->getSize() << endl;
-
         sendDirect(q_len, 0, 0, oracle, "wirelessGate");
         // delete q_len;    // DO IT ON THE ORACLE SIDE
 
         // 1. Create ComMessage -> Save and Send B to GS (NB: call message "grant_request") 
         ComMessage* msg_grant = new ComMessage("grant_request");
         //EV_INFO << "Previous bearer index: " << B << endl;
-        generateGrant(msg_grant);       // B value saved
+        generateRequest(msg_grant);        // B value saved
         //EV_INFO << "Bearer index: " << msg_grant->getB() << endl;
-        send(msg_grant, "t_io$o");      // B value sent
-        //if (msg_grant->getB() != -1) ////EV_INFO << "Terminal " << this->getName() << " has sent Grant Request to GS w/ value B = " << msg_grant->getB() << " at simtime: " << simTime()  << endl;
+        send(msg_grant, "t_io$o");         // B value sent
     }
 
     // [Receive 'Grant' (GS)]  
@@ -130,24 +132,26 @@ void Terminal::handleMessage(cMessage *msg) {
             delete comMsg; 
             return;
         }
-
+        // Setting Grant to true so that during the  
         G = true;
-        // 2.b OTHERWISE => Compute M and Start Transmission Timer (t_tx), 
-        cModule *oracle = getParentModule()->getSubmodule("oracle");
 
+        cModule *oracle = getParentModule()->getSubmodule("oracle");
+        
         ContentMessage* tf_count = new ContentMessage("time_frame_counter");
         tf_count->setSize(time_frame_counter);
         sendDirect(tf_count, 0, 0, oracle, "wirelessGate");
         time_frame_counter = 0;
-
-        ContentMessage* acc_q_len = new ContentMessage("accumulated_queue_length");
-        acc_q_len->setSize(msg_queue->getQLength());
+        
+        ContentMessage* acc_q_len = new ContentMessage("accumulated_bytes_grant");
+        acc_q_len->setSize(byteGenerated);
         sendDirect(acc_q_len, 0, 0, oracle, "wirelessGate");
-
+        byteGenerated = 0; 
+        
         ContentMessage* b_grant = new ContentMessage("B");
         b_grant->setSize(comMsg->getB());
         sendDirect(b_grant, 0, 0, oracle, "wirelessGate");
-
+        
+        // 2.b OTHERWISE => Compute M and Start Transmission Timer (t_tx), 
         M = floor(100 * pow((int)par("K"), log2(B) - 1));      // M = 100*K^(log_2(B)-1)
         //////EV_INFO << "Setting M(ax Output) for Terminal " << this->getName() << " at " << M << " at simtime " << simTime() << endl;
 

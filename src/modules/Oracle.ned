@@ -21,7 +21,7 @@ simple Oracle{
 		//signal for collecting values in order to retrieve the number of time frame between 2 grants
 		@signal[waitingTimeFrame](type = int);
 		//signal for collecting values in order to retrieve the queue length accumulated between 2 grants
-		@signal[accumulatedQueueLength](type = int);
+		@signal[accumulatedBytesGrant](type = int);
 		//signal for collecting values in order to retrieve the B value at grant
 		@signal[bGrant](type = int);
 		
@@ -33,8 +33,8 @@ simple Oracle{
 		@statistic[AvgQLStat](source = "avgQueueLength"; record = mean, vector;);
 		//statistic for computing waitingTimeFrame
 		@statistic[avgWaitingTimeFrame](source = "waitingTimeFrame"; record = mean;);
-		//statistic for computing accumulatedQueueLength
-		@statistic[avgAccumulatedQueueLength](source = "accumulatedQueueLength"; record = mean;);
+		//statistic for computing accumulatedBytesGrant
+		@statistic[avgAccumulatedBytesGrant](source = "accumulatedBytesGrant"; record = histogram, vector;);
 		//statistic for computing bGrant
 		@statistic[avgBGrant](source = "bGrant"; record = mean;);
 

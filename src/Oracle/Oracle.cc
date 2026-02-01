@@ -18,7 +18,7 @@ void Oracle::initialize() {
     throughputWarmUpSignal = registerSignal("throughputWarmUp");
     avgQLSignal = registerSignal("avgQueueLength");
     waitingTimeFrameSignal = registerSignal("waitingTimeFrame");
-    accumulatedQueueLengthSignal = registerSignal("accumulatedQueueLength");
+    accumulatedBytesGrantSignal = registerSignal("accumulatedBytesGrant");
     bGrantSignal = registerSignal("bGrant");
 
     throughputTimer = new cMessage("throughputTimer");
@@ -39,7 +39,7 @@ void Oracle::handleMessage(cMessage *msg) {
     // or for AvgQueueLength
     else if (!msg->isName("byte_sent") && !msg->isName("q_len")
             && !msg->isName("time_frame_counter")
-            && !msg->isName("accumulated_queue_length") && !msg->isName("B")) {
+            && !msg->isName("accumulated_bytes_grant") && !msg->isName("B")) {
         delete msg;
         throw cRuntimeError("Message type not accepted by oracle");
     } else {
@@ -49,8 +49,8 @@ void Oracle::handleMessage(cMessage *msg) {
             currentBytes += c_msg->getSize();
         } else if (msg->isName("time_frame_counter")) {
             emit(waitingTimeFrameSignal, c_msg->getSize());
-        } else if (msg->isName("accumulated_queue_length")) {
-            emit(accumulatedQueueLengthSignal, c_msg->getSize());
+        } else if (msg->isName("accumulated_bytes_grant")) {
+            emit(accumulatedBytesGrantSignal, c_msg->getSize());
         } else if (msg->isName("B")) {
             emit(bGrantSignal, c_msg->getSize());
         }
