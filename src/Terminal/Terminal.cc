@@ -82,9 +82,6 @@ void Terminal::handleMessage(cMessage *msg) {
 
         // Timer for next packet to be generated
         scheduleAt(simTime()+par("T"), t_msg_to_q);
-
-        // Data collection: Counting the bytes generated in between Grants
-        byteGenerated += new_msg->getSize(); 
     }
 
     // [Start of a New Time Frame (T)] 
@@ -147,11 +144,6 @@ void Terminal::handleMessage(cMessage *msg) {
         sendDirect(tf_count, 0, 0, oracle, "wirelessGate");
         time_frame_counter = 0;
         
-        ContentMessage* acc_q_len = new ContentMessage("accumulated_bytes_grant");
-        acc_q_len->setSize(byteGenerated);
-        sendDirect(acc_q_len, 0, 0, oracle, "wirelessGate");
-        byteGenerated = 0; 
-        
         ContentMessage* b_grant = new ContentMessage("B");
         b_grant->setSize(comMsg->getB());
         sendDirect(b_grant, 0, 0, oracle, "wirelessGate");
@@ -160,9 +152,12 @@ void Terminal::handleMessage(cMessage *msg) {
         M = floor(100 * pow((int)par("K"), log2(B) - 1));      // M = 100*K^(log_2(B)-1)
         //////EV_INFO << "Setting M(ax Output) for Terminal " << this->getName() << " at " << M << " at simtime " << simTime() << endl;
 
-        scheduleAt(simTime(), t_tx);    // Begin Transmission Timer
-        delete comMsg; 
+        if (msg->queue_bytes > M){
+            // send to oracle
+        }
 
+        scheduleAt(simTime(), t_tx);    // Begin Transmission Timer
+        delete comMsg;
     }
 
     // [Receive "Transmission Notification" (T)]

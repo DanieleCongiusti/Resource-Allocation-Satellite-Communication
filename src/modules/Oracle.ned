@@ -33,10 +33,8 @@ simple Oracle{
 		@statistic[AvgQLStat](source = "avgQueueLength"; record = mean, vector;);
 		//statistic for computing waitingTimeFrame
 		@statistic[avgWaitingTimeFrame](source = "waitingTimeFrame"; record = mean;);
-		//statistic for computing accumulatedBytesGrant
-		@statistic[avgAccumulatedBytesGrant](source = "accumulatedBytesGrant"; record = mean;);
 		//statistic for computing bGrant
-		@statistic[avgBGrant](source = "bGrant"; record = histogram, vector;);
+		@statistic[avgBGrant](source = "bGrant"; record = last;);
 
     gates:
         //gate that receives data from other nodes

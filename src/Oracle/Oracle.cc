@@ -18,7 +18,6 @@ void Oracle::initialize() {
     throughputWarmUpSignal = registerSignal("throughputWarmUp");
     avgQLSignal = registerSignal("avgQueueLength");
     waitingTimeFrameSignal = registerSignal("waitingTimeFrame");
-    accumulatedBytesGrantSignal = registerSignal("accumulatedBytesGrant");
     bGrantSignal = registerSignal("bGrant");
 
     throughputTimer = new cMessage("throughputTimer");
@@ -49,10 +48,15 @@ void Oracle::handleMessage(cMessage *msg) {
             currentBytes += c_msg->getSize();
         } else if (msg->isName("time_frame_counter")) {
             emit(waitingTimeFrameSignal, c_msg->getSize());
-        } else if (msg->isName("accumulated_bytes_grant")) {
-            emit(accumulatedBytesGrantSignal, c_msg->getSize());
         } else if (msg->isName("B")) {
-            emit(bGrantSignal, c_msg->getSize());
+            int B = c_msg->getSize();
+            if (B == -1){
+                b_values[4]++;
+            }
+            else
+            {
+                b_values[(int)(log2(B)-1)]++;
+            }
         }
         else
             emit(avgQLSignal, c_msg->getSize());
@@ -63,4 +67,13 @@ void Oracle::handleMessage(cMessage *msg) {
 void Oracle::finish() {
     double totTime = simTime().dbl();
     emit(throughputSignal, totBytes / totTime);
+
+    double totTimeFrame = totTime/(double)par("timeframe_duration");
+
+    for (int count : b_values)
+    {
+        emit(bGrantSignal, count/totTimeFrame);
+    }
+
+    //emit(....., M>100.000/totTimeFrame)
 }

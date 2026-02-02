@@ -16,8 +16,6 @@ class Oracle : public cSimpleModule {
         simsignal_t avgQLSignal;
         //signal for number of time frame between 2 grants
         simsignal_t waitingTimeFrameSignal;
-        //signal for the bytes accumulated between 2 grants
-        simsignal_t accumulatedBytesGrantSignal;
         //signal for the B values at grant
         simsignal_t bGrantSignal;
 
@@ -29,6 +27,8 @@ class Oracle : public cSimpleModule {
         double currentBytes = 0;
         //timer for warmup-period
         cMessage *throughputTimer;
+
+        int b_values[5] = {0};
 
     public:
         virtual ~Oracle();

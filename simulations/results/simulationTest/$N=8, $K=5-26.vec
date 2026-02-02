@@ -1,8 +1,8 @@
 version 3
-run simulationTest-96-20260201-11:27:29-73187
+run simulationTest-96-20260202-12:39:05-7241
 attr configname simulationTest
-attr datetime 20260201-11:27:29
-attr datetimef 20260201-112729
+attr datetime 20260202-12:39:05
+attr datetimef 20260202-123905
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=5"
@@ -10,7 +10,7 @@ attr iterationvarsd N=8/K=5
 attr iterationvarsf N=8,K=5-
 attr measurement "$N=8, $K=5"
 attr network System
-attr processid 73187
+attr processid 7241
 attr repetition 26
 attr replication #26
 attr resultdir results
