@@ -45,6 +45,9 @@ private:
     //integer value used to count number of queued messages
     int qLength;
 
+    // bytes contained in queue
+    double bytesQueue;
+
 public:
     //constructor
     MessageList();
@@ -57,6 +60,8 @@ public:
     scheduledMessage* getLast();
     //function to retrieve length of queue
     int getQLength();
+    //function to retrieve bytes contained in queue
+    double getBytesQueue();
 };
 
 #endif /* MESSAGELIST_MESSAGELIST_H_ */
