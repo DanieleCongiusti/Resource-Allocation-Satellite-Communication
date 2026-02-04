@@ -13,7 +13,14 @@ BASE_PLOTS_DIR = os.path.join(PROJECT_ROOT, "charts", "variance", "plots")
 
 OUTPUT_DIRS_MAP = {
     "A": os.path.join(BASE_PLOTS_DIR, "queue_length_variance"),
-    "T": os.path.join(BASE_PLOTS_DIR, "throughput_variance")
+    "T": os.path.join(BASE_PLOTS_DIR, "throughput_variance"),
+    "M": os.path.join(BASE_PLOTS_DIR, "exceed_m_variance"),
+    "W": os.path.join(BASE_PLOTS_DIR, "waiting_time_variance"),
+    "B2": os.path.join(BASE_PLOTS_DIR, "b_2_variance"),
+    "B4": os.path.join(BASE_PLOTS_DIR, "b_4_variance"),
+    "B8": os.path.join(BASE_PLOTS_DIR, "b_8_variance"),
+    "B16": os.path.join(BASE_PLOTS_DIR, "b_16_variance"),
+    "BMinus1": os.path.join(BASE_PLOTS_DIR, "b_minus_1_variance"),
 }
 
 
@@ -104,8 +111,7 @@ def main():
     
     ensure_directories()
 
-    # Ciclo su Prefissi, N e K
-    for prefix in ["A", "T"]:
+    for prefix in ["A", "T", "M", "W", "B2", "B4", "B8", "B16", "BMinus1"]:
         for N in N_VALUES:
             for K in K_VALUES:
                 process_file(prefix, N, K)

@@ -1,8 +1,8 @@
 version 3
-run simulationTest-576-20260202-12:42:59-7920
+run simulationTest-576-20260202-18:09:00-24606
 attr configname simulationTest
-attr datetime 20260202-12:42:59
-attr datetimef 20260202-124259
+attr datetime 20260202-18:09:00
+attr datetimef 20260202-180900
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=24, $K=5"
@@ -10,7 +10,7 @@ attr iterationvarsd N=24/K=5
 attr iterationvarsf N=24,K=5-
 attr measurement "$N=24, $K=5"
 attr network System
-attr processid 7920
+attr processid 24606
 attr repetition 16
 attr replication #16
 attr resultdir results
@@ -49,10 +49,15 @@ config output-scalar-file "results/simulationTest/$N=24, $K=5-16.sca"
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle avgBGrant:last 1.0586666666667
+scalar System.oracle B_2 0
+scalar System.oracle B_4 0.032
+scalar System.oracle B_8 0.48533333333333
+scalar System.oracle B_16 3.7493333333333
+scalar System.oracle B_Minus1 1.0586666666667
+scalar System.oracle exceedM:last 3.0026666666667
 attr "" ""
 attr recordingmode last
-attr source bGrant
+attr source exceedM
 scalar System.oracle avgWaitingTimeFrame:mean 5.7144203581527
 attr "" ""
 attr recordingmode mean

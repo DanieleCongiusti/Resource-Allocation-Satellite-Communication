@@ -16,11 +16,13 @@ class Oracle : public cSimpleModule {
         simsignal_t avgQLSignal;
         //signal for number of time frame between 2 grants
         simsignal_t waitingTimeFrameSignal;
-        //signal for the B values at grant
-        simsignal_t bGrantSignal;
+        //signal for the number of time that msg queue exceeds M
+        simsignal_t exceedMSignal;
 
         //total number of bytes recevied
         int totBytes = 0;
+        //number of time that msg queue exceeds M
+        int exceed_m = 0;
         //interval of emit for warmup
         double interval = 0.25;
         //total number of bytes received in an interval

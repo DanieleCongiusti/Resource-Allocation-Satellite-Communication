@@ -7,7 +7,11 @@ from collections import defaultdict
 # =====================
 # Configuration
 # =====================
-DATA_DIR = '/Users/iacopomassei/Downloads/CSV_NEW'  # directory containing the CSV files
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../../../"))
+INPUT_DATA_DIR = os.path.join(PROJECT_ROOT, "data_analysis", "charts", "simulation", "data")
+BASE_PLOTS_DIR = os.path.join(PROJECT_ROOT, "data_analysis", "charts", "simulation", "plots")
+
 VALID_N = [8, 16, 24, 32, 40]
 VALID_K = [2, 3, 5, 10, 20, 50, 1000]
 
@@ -19,10 +23,6 @@ FILENAME_RE = re.compile(r'^(A|T)_(\d+)_(\d+)\.csv$')
 # =====================
 
 def read_mean(filepath: str) -> float:
-    """
-    Legge un CSV e restituisce direttamente la media dei valori.
-    Ritorna None se il file è vuoto o non valido.
-    """
     values = []
     with open(filepath, 'r') as f:
         lines = f.readlines()
@@ -46,12 +46,12 @@ def read_mean(filepath: str) -> float:
 # Data Loading
 # =====================
 
-# Struttura dati: data[K][N] = {'T': valore_medio, 'A': valore_medio}
+# Data structure: data[K][N] = {'T': valore_medio, 'A': valore_medio}
 data = defaultdict(lambda: defaultdict(dict))
 
-print("Caricamento dati in corso...")
+print("Loading data...")
 
-for fname in os.listdir(DATA_DIR):
+for fname in os.listdir(INPUT_DATA_DIR):
     match = FILENAME_RE.match(fname)
     if not match:
         continue
@@ -63,7 +63,7 @@ for fname in os.listdir(DATA_DIR):
     if N not in VALID_N or K not in VALID_K:
         continue
 
-    val_mean = read_mean(os.path.join(DATA_DIR, fname))
+    val_mean = read_mean(os.path.join(INPUT_DATA_DIR, fname))
     
     if val_mean is not None:
         data[K][N][ftype] = val_mean
@@ -82,17 +82,15 @@ cmap = plt.get_cmap('tab10')
 colors = {val: cmap(i % cmap.N) for i, val in enumerate(sorted_Ks)}
 
 for K in sorted_Ks:
-    # Prepariamo i punti (x, y) = (N, Ratio)
     xs = []
     ys = []
-    
-    # Ordiniamo N per tracciare la linea correttamente
+
     sorted_Ns = sorted(data[K].keys())
     
     for N in sorted_Ns:
         metrics = data[K][N]
         
-        # Procediamo solo se abbiamo sia Throughput (T) che Queue (A) per questa coppia N,K
+       
         if 'T' in metrics and 'A' in metrics:
             val_T = metrics['T']
             val_A = metrics['A']
@@ -105,7 +103,7 @@ for K in sorted_Ks:
     if not xs:
         continue
 
-    # Plot della serie per questo K
+    
     plt.plot(
         xs,
         ys,
@@ -122,5 +120,6 @@ plt.ylabel('Ratio (Avg Throughput / Avg Queue Length)', labelpad=20)
 plt.title('Performance Ratio')
 plt.legend()
 plt.grid(axis='both', linestyle='--', alpha=0.5)
-
-plt.show()
+filename = f"ratio.png"
+save_path = os.path.join(BASE_PLOTS_DIR, filename)
+plt.savefig(save_path, dpi=300)

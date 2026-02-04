@@ -1,0 +1,562 @@
+version 3
+run varianceTest-5391-20260204-11:07:28-8731
+attr configname varianceTest
+attr datetime 20260204-11:07:28
+attr datetimef 20260204-110728
+attr experiment varianceTest
+attr inifile omnetpp.ini
+attr iterationvars "$N=32, $K=50"
+attr iterationvarsd N=32/K=50
+attr iterationvarsf N=32,K=50-
+attr measurement "$N=32, $K=50"
+attr network System
+attr processid 8731
+attr repetition 191
+attr replication #191
+attr resultdir results
+attr runnumber 5391
+attr seedset 191
+itervar K 50
+itervar N 32
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
+config record-eventlog false
+config **.scalar-recording true
+config **.vector-recording false
+config extends simulationTest
+config repeat 200
+config extends warmUpTest
+config warmup-period 10s
+config repeat 35
+config sim-time-limit 30s
+config **.N 32
+config **.K 50
+config num-rngs 32*3
+config network System
+config sim-time-limit 20s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config repeat 35
+config seed-set 191
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
+config output-vector-file "results/varianceTest/$N=32, $K=50-191.vec"
+config output-scalar-file "results/varianceTest/$N=32, $K=50-191.sca"
+
+par System.oracle typename "\"resource_allocator.modules.Oracle\""
+par System.oracle timeframe_duration 0.08s
+attr unit s
+scalar System.oracle B_2 0
+scalar System.oracle B_4 0
+scalar System.oracle B_8 0.16533333333333
+scalar System.oracle B_16 3.9173333333333
+scalar System.oracle B_Minus1 4.072
+scalar System.oracle exceedM:last 0
+attr "" ""
+attr recordingmode last
+attr source exceedM
+scalar System.oracle avgWaitingTimeFrame:mean 7.8924731182796
+attr "" ""
+attr recordingmode mean
+attr source waitingTimeFrame
+scalar System.oracle AvgQLStat:mean 456.25410856574
+attr "" ""
+attr recordingmode mean
+attr source avgQueueLength
+scalar System.oracle throughputStat:last 809236.66666667
+attr "" ""
+attr recordingmode last
+attr source throughput
+par System.gs typename "\"resource_allocator.modules.GS\""
+par System.gs scheduler_slots 64
+par System.gs terminal_counter 32
+par System.st typename "\"resource_allocator.modules.Satellite\""
+par System.t[0] typename "\"resource_allocator.modules.Terminal\""
+par System.t[0] timeFrame_duration 0.08s
+attr unit s
+par System.t[0] B "intuniform(1, 4, 0)"
+par System.t[0] K parent.K
+par System.t[0] a 4bytes
+attr unit bytes
+par System.t[0] b 100bytes
+attr unit bytes
+par System.t[0] mean_T 0.002s
+attr unit s
+par System.t[0] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[0] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[1] typename "\"resource_allocator.modules.Terminal\""
+par System.t[1] timeFrame_duration 0.08s
+attr unit s
+par System.t[1] B "intuniform(1, 4, 0)"
+par System.t[1] K parent.K
+par System.t[1] a 4bytes
+attr unit bytes
+par System.t[1] b 100bytes
+attr unit bytes
+par System.t[1] mean_T 0.002s
+attr unit s
+par System.t[1] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[1] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[2] typename "\"resource_allocator.modules.Terminal\""
+par System.t[2] timeFrame_duration 0.08s
+attr unit s
+par System.t[2] B "intuniform(1, 4, 0)"
+par System.t[2] K parent.K
+par System.t[2] a 4bytes
+attr unit bytes
+par System.t[2] b 100bytes
+attr unit bytes
+par System.t[2] mean_T 0.002s
+attr unit s
+par System.t[2] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[2] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[3] typename "\"resource_allocator.modules.Terminal\""
+par System.t[3] timeFrame_duration 0.08s
+attr unit s
+par System.t[3] B "intuniform(1, 4, 0)"
+par System.t[3] K parent.K
+par System.t[3] a 4bytes
+attr unit bytes
+par System.t[3] b 100bytes
+attr unit bytes
+par System.t[3] mean_T 0.002s
+attr unit s
+par System.t[3] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[3] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[4] typename "\"resource_allocator.modules.Terminal\""
+par System.t[4] timeFrame_duration 0.08s
+attr unit s
+par System.t[4] B "intuniform(1, 4, 0)"
+par System.t[4] K parent.K
+par System.t[4] a 4bytes
+attr unit bytes
+par System.t[4] b 100bytes
+attr unit bytes
+par System.t[4] mean_T 0.002s
+attr unit s
+par System.t[4] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[4] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[5] typename "\"resource_allocator.modules.Terminal\""
+par System.t[5] timeFrame_duration 0.08s
+attr unit s
+par System.t[5] B "intuniform(1, 4, 0)"
+par System.t[5] K parent.K
+par System.t[5] a 4bytes
+attr unit bytes
+par System.t[5] b 100bytes
+attr unit bytes
+par System.t[5] mean_T 0.002s
+attr unit s
+par System.t[5] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[5] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[6] typename "\"resource_allocator.modules.Terminal\""
+par System.t[6] timeFrame_duration 0.08s
+attr unit s
+par System.t[6] B "intuniform(1, 4, 0)"
+par System.t[6] K parent.K
+par System.t[6] a 4bytes
+attr unit bytes
+par System.t[6] b 100bytes
+attr unit bytes
+par System.t[6] mean_T 0.002s
+attr unit s
+par System.t[6] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[6] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[7] typename "\"resource_allocator.modules.Terminal\""
+par System.t[7] timeFrame_duration 0.08s
+attr unit s
+par System.t[7] B "intuniform(1, 4, 0)"
+par System.t[7] K parent.K
+par System.t[7] a 4bytes
+attr unit bytes
+par System.t[7] b 100bytes
+attr unit bytes
+par System.t[7] mean_T 0.002s
+attr unit s
+par System.t[7] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[7] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[8] typename "\"resource_allocator.modules.Terminal\""
+par System.t[8] timeFrame_duration 0.08s
+attr unit s
+par System.t[8] B "intuniform(1, 4, 0)"
+par System.t[8] K parent.K
+par System.t[8] a 4bytes
+attr unit bytes
+par System.t[8] b 100bytes
+attr unit bytes
+par System.t[8] mean_T 0.002s
+attr unit s
+par System.t[8] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[8] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[9] typename "\"resource_allocator.modules.Terminal\""
+par System.t[9] timeFrame_duration 0.08s
+attr unit s
+par System.t[9] B "intuniform(1, 4, 0)"
+par System.t[9] K parent.K
+par System.t[9] a 4bytes
+attr unit bytes
+par System.t[9] b 100bytes
+attr unit bytes
+par System.t[9] mean_T 0.002s
+attr unit s
+par System.t[9] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[9] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[10] typename "\"resource_allocator.modules.Terminal\""
+par System.t[10] timeFrame_duration 0.08s
+attr unit s
+par System.t[10] B "intuniform(1, 4, 0)"
+par System.t[10] K parent.K
+par System.t[10] a 4bytes
+attr unit bytes
+par System.t[10] b 100bytes
+attr unit bytes
+par System.t[10] mean_T 0.002s
+attr unit s
+par System.t[10] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[10] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[11] typename "\"resource_allocator.modules.Terminal\""
+par System.t[11] timeFrame_duration 0.08s
+attr unit s
+par System.t[11] B "intuniform(1, 4, 0)"
+par System.t[11] K parent.K
+par System.t[11] a 4bytes
+attr unit bytes
+par System.t[11] b 100bytes
+attr unit bytes
+par System.t[11] mean_T 0.002s
+attr unit s
+par System.t[11] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[11] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[12] typename "\"resource_allocator.modules.Terminal\""
+par System.t[12] timeFrame_duration 0.08s
+attr unit s
+par System.t[12] B "intuniform(1, 4, 0)"
+par System.t[12] K parent.K
+par System.t[12] a 4bytes
+attr unit bytes
+par System.t[12] b 100bytes
+attr unit bytes
+par System.t[12] mean_T 0.002s
+attr unit s
+par System.t[12] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[12] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[13] typename "\"resource_allocator.modules.Terminal\""
+par System.t[13] timeFrame_duration 0.08s
+attr unit s
+par System.t[13] B "intuniform(1, 4, 0)"
+par System.t[13] K parent.K
+par System.t[13] a 4bytes
+attr unit bytes
+par System.t[13] b 100bytes
+attr unit bytes
+par System.t[13] mean_T 0.002s
+attr unit s
+par System.t[13] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[13] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[14] typename "\"resource_allocator.modules.Terminal\""
+par System.t[14] timeFrame_duration 0.08s
+attr unit s
+par System.t[14] B "intuniform(1, 4, 0)"
+par System.t[14] K parent.K
+par System.t[14] a 4bytes
+attr unit bytes
+par System.t[14] b 100bytes
+attr unit bytes
+par System.t[14] mean_T 0.002s
+attr unit s
+par System.t[14] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[14] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[15] typename "\"resource_allocator.modules.Terminal\""
+par System.t[15] timeFrame_duration 0.08s
+attr unit s
+par System.t[15] B "intuniform(1, 4, 0)"
+par System.t[15] K parent.K
+par System.t[15] a 4bytes
+attr unit bytes
+par System.t[15] b 100bytes
+attr unit bytes
+par System.t[15] mean_T 0.002s
+attr unit s
+par System.t[15] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[15] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[16] typename "\"resource_allocator.modules.Terminal\""
+par System.t[16] timeFrame_duration 0.08s
+attr unit s
+par System.t[16] B "intuniform(1, 4, 0)"
+par System.t[16] K parent.K
+par System.t[16] a 4bytes
+attr unit bytes
+par System.t[16] b 100bytes
+attr unit bytes
+par System.t[16] mean_T 0.002s
+attr unit s
+par System.t[16] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[16] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[17] typename "\"resource_allocator.modules.Terminal\""
+par System.t[17] timeFrame_duration 0.08s
+attr unit s
+par System.t[17] B "intuniform(1, 4, 0)"
+par System.t[17] K parent.K
+par System.t[17] a 4bytes
+attr unit bytes
+par System.t[17] b 100bytes
+attr unit bytes
+par System.t[17] mean_T 0.002s
+attr unit s
+par System.t[17] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[17] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[18] typename "\"resource_allocator.modules.Terminal\""
+par System.t[18] timeFrame_duration 0.08s
+attr unit s
+par System.t[18] B "intuniform(1, 4, 0)"
+par System.t[18] K parent.K
+par System.t[18] a 4bytes
+attr unit bytes
+par System.t[18] b 100bytes
+attr unit bytes
+par System.t[18] mean_T 0.002s
+attr unit s
+par System.t[18] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[18] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[19] typename "\"resource_allocator.modules.Terminal\""
+par System.t[19] timeFrame_duration 0.08s
+attr unit s
+par System.t[19] B "intuniform(1, 4, 0)"
+par System.t[19] K parent.K
+par System.t[19] a 4bytes
+attr unit bytes
+par System.t[19] b 100bytes
+attr unit bytes
+par System.t[19] mean_T 0.002s
+attr unit s
+par System.t[19] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[19] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[20] typename "\"resource_allocator.modules.Terminal\""
+par System.t[20] timeFrame_duration 0.08s
+attr unit s
+par System.t[20] B "intuniform(1, 4, 0)"
+par System.t[20] K parent.K
+par System.t[20] a 4bytes
+attr unit bytes
+par System.t[20] b 100bytes
+attr unit bytes
+par System.t[20] mean_T 0.002s
+attr unit s
+par System.t[20] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[20] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[21] typename "\"resource_allocator.modules.Terminal\""
+par System.t[21] timeFrame_duration 0.08s
+attr unit s
+par System.t[21] B "intuniform(1, 4, 0)"
+par System.t[21] K parent.K
+par System.t[21] a 4bytes
+attr unit bytes
+par System.t[21] b 100bytes
+attr unit bytes
+par System.t[21] mean_T 0.002s
+attr unit s
+par System.t[21] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[21] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[22] typename "\"resource_allocator.modules.Terminal\""
+par System.t[22] timeFrame_duration 0.08s
+attr unit s
+par System.t[22] B "intuniform(1, 4, 0)"
+par System.t[22] K parent.K
+par System.t[22] a 4bytes
+attr unit bytes
+par System.t[22] b 100bytes
+attr unit bytes
+par System.t[22] mean_T 0.002s
+attr unit s
+par System.t[22] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[22] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[23] typename "\"resource_allocator.modules.Terminal\""
+par System.t[23] timeFrame_duration 0.08s
+attr unit s
+par System.t[23] B "intuniform(1, 4, 0)"
+par System.t[23] K parent.K
+par System.t[23] a 4bytes
+attr unit bytes
+par System.t[23] b 100bytes
+attr unit bytes
+par System.t[23] mean_T 0.002s
+attr unit s
+par System.t[23] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[23] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[24] typename "\"resource_allocator.modules.Terminal\""
+par System.t[24] timeFrame_duration 0.08s
+attr unit s
+par System.t[24] B "intuniform(1, 4, 0)"
+par System.t[24] K parent.K
+par System.t[24] a 4bytes
+attr unit bytes
+par System.t[24] b 100bytes
+attr unit bytes
+par System.t[24] mean_T 0.002s
+attr unit s
+par System.t[24] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[24] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[25] typename "\"resource_allocator.modules.Terminal\""
+par System.t[25] timeFrame_duration 0.08s
+attr unit s
+par System.t[25] B "intuniform(1, 4, 0)"
+par System.t[25] K parent.K
+par System.t[25] a 4bytes
+attr unit bytes
+par System.t[25] b 100bytes
+attr unit bytes
+par System.t[25] mean_T 0.002s
+attr unit s
+par System.t[25] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[25] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[26] typename "\"resource_allocator.modules.Terminal\""
+par System.t[26] timeFrame_duration 0.08s
+attr unit s
+par System.t[26] B "intuniform(1, 4, 0)"
+par System.t[26] K parent.K
+par System.t[26] a 4bytes
+attr unit bytes
+par System.t[26] b 100bytes
+attr unit bytes
+par System.t[26] mean_T 0.002s
+attr unit s
+par System.t[26] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[26] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[27] typename "\"resource_allocator.modules.Terminal\""
+par System.t[27] timeFrame_duration 0.08s
+attr unit s
+par System.t[27] B "intuniform(1, 4, 0)"
+par System.t[27] K parent.K
+par System.t[27] a 4bytes
+attr unit bytes
+par System.t[27] b 100bytes
+attr unit bytes
+par System.t[27] mean_T 0.002s
+attr unit s
+par System.t[27] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[27] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[28] typename "\"resource_allocator.modules.Terminal\""
+par System.t[28] timeFrame_duration 0.08s
+attr unit s
+par System.t[28] B "intuniform(1, 4, 0)"
+par System.t[28] K parent.K
+par System.t[28] a 4bytes
+attr unit bytes
+par System.t[28] b 100bytes
+attr unit bytes
+par System.t[28] mean_T 0.002s
+attr unit s
+par System.t[28] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[28] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[29] typename "\"resource_allocator.modules.Terminal\""
+par System.t[29] timeFrame_duration 0.08s
+attr unit s
+par System.t[29] B "intuniform(1, 4, 0)"
+par System.t[29] K parent.K
+par System.t[29] a 4bytes
+attr unit bytes
+par System.t[29] b 100bytes
+attr unit bytes
+par System.t[29] mean_T 0.002s
+attr unit s
+par System.t[29] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[29] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[30] typename "\"resource_allocator.modules.Terminal\""
+par System.t[30] timeFrame_duration 0.08s
+attr unit s
+par System.t[30] B "intuniform(1, 4, 0)"
+par System.t[30] K parent.K
+par System.t[30] a 4bytes
+attr unit bytes
+par System.t[30] b 100bytes
+attr unit bytes
+par System.t[30] mean_T 0.002s
+attr unit s
+par System.t[30] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[30] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[31] typename "\"resource_allocator.modules.Terminal\""
+par System.t[31] timeFrame_duration 0.08s
+attr unit s
+par System.t[31] B "intuniform(1, 4, 0)"
+par System.t[31] K parent.K
+par System.t[31] a 4bytes
+attr unit bytes
+par System.t[31] b 100bytes
+attr unit bytes
+par System.t[31] mean_T 0.002s
+attr unit s
+par System.t[31] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[31] T "exponential(mean_T, 2)"
+attr unit s
+par System typename "\"resource_allocator.simulations.System\""
+par System N 32
+par System K 50
+
