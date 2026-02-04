@@ -14,7 +14,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../../"))
 ANALYSIS_MAP = {
     "variance": "varianceTest",
     "simulation": "simulationTest",
-    "variance400": "varianceN16K5"
+    "variance500": "varianceN16K5"
 }
 
 def main():

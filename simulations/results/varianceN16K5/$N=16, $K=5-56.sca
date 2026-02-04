@@ -1,8 +1,8 @@
 version 3
-run varianceN16K5-56-20260204-14:23:26-21951
+run varianceN16K5-56-20260204-14:43:24-24126
 attr configname varianceN16K5
-attr datetime 20260204-14:23:26
-attr datetimef 20260204-142326
+attr datetime 20260204-14:43:24
+attr datetimef 20260204-144324
 attr experiment varianceN16K5
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network System
-attr processid 21951
+attr processid 24126
 attr repetition 56
 attr replication #56
 attr resultdir results
@@ -26,7 +26,7 @@ config **.N 16
 config **.K 5
 config num-rngs 3*16
 config warmup-period 10s
-config repeat 400
+config repeat 500
 config output-scalar-file "results/varianceN16K5/$N=16, $K=5-56.sca"
 config network System
 config sim-time-limit 20s

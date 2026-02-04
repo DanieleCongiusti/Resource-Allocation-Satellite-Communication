@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../../"))
 
-INPUT_DATA_DIR = os.path.join(PROJECT_ROOT, "charts", "variance", "data")
+INPUT_DATA_DIR = os.path.join(PROJECT_ROOT, "charts", "variance500", "data")
 
-BASE_PLOTS_DIR = os.path.join(PROJECT_ROOT, "charts", "variance", "plots")
+BASE_PLOTS_DIR = os.path.join(PROJECT_ROOT, "charts", "variance500", "plots")
 
 
 OUTPUT_DIRS_MAP = {
