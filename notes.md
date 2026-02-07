@@ -178,3 +178,13 @@ Come mai allora non avete provato ad aumentare il numero di N ulteriormente per 
 **CONCLUSIONS**
 
 "Conclusions provided by recapping most relevant comments on graphs"
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+**EXTRA NOTES**
+
+Dubbio "Wait Timeframes N40, K=*": *Perché aumentando K aumenta W?*
+    - Per K<10 i terminali non si svuotano (quasi) mai per cui i terminali che hanno appena trasmesso possono ricevere un nuovo grant anche al prossimo timeframe (pur sempre con probabilità bassa MA non nulla)
+    - Per K>10 invece i terminali (quasi) sempre si svuotano per cui i terminali "" "" "" NON potranno MAI ricevere un nuovo grant al prossimo timeframe   
