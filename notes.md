@@ -189,13 +189,11 @@ Dubbio "Wait Timeframes N40, K=*": *Perché aumentando K aumenta W?*
     - Per K<10 i terminali non si svuotano (quasi) mai per cui i terminali che hanno appena trasmesso possono ricevere un nuovo grant anche al prossimo timeframe (pur sempre con probabilità bassa MA non nulla)
     - Per K>10 invece i terminali (quasi) sempre si svuotano per cui i terminali "" "" "" NON potranno MAI ricevere un nuovo grant al prossimo timeframe  
 
-%
-% impatto N e K su diversa scala
-%
-%
-% Schedulet slots GS non più sufficienti per Valori di N e K perché QueueLength aumenta
-%
-%Considerare trade off tra throughput e queue length, perché aumentare mole di byte ha
-%benefici su throughput, ma anche di costo in termini di memoria nella queue length
+Hints:
+    - impatto N e K su diversa scala, basta un aumento lineare di N per avere dei miglioramenti in termini di throughput, mentre K basta aumentarlo di poco e si ottengono prestazioni nettamente migliori;
+
+    - con gli slot fissati a 64 non è sufficiente aumentare N e K (le performance non migliorano considerando che anche la queue length aumenta);
+
+    - considerare trade off tra throughput e queue length, perché aumentare mole di byte ha benefici su throughput, ma anche di costo in termini di memoria nella queue length.
  
 
