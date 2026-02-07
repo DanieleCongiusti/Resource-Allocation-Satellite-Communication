@@ -178,3 +178,14 @@ Come mai allora non avete provato ad aumentare il numero di N ulteriormente per 
 **CONCLUSIONS**
 
 "Conclusions provided by recapping most relevant comments on graphs"
+
+07/02/2026
+
+%
+% impatto N e K su diversa scala
+%
+%
+% Schedulet slots GS non più sufficienti per Valori di N e K perché QueueLength aumenta
+%
+%Considerare trade off tra throughput e queue length, perché aumentare mole di byte ha
+%benefici su throughput, ma anche di costo in termini di memoria nella queue length
