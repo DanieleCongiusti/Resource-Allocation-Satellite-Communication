@@ -26,16 +26,19 @@ VALID_N = [8, 16, 24, 32, 40]
 VALID_K = [2, 3, 5, 10, 20, 50, 1000]
 
 METRICS_MAP = {
-    "A": "AVG Queue Length",
-    "T": "Throughput",
-    "B": "avgBGrant",
-    "Q": "avgAccumulatedQueueLength",
-    "W": "avgWaitingTimeFrame"
+    "A": "Avg Queue Length",
+    "T": "Avg Throughput",
+    "B2": "Avg B=2 Grant",
+    "B4": "Avg B=4 Grant",
+    "B8": "Avg B=8 Grant",
+    "B16": "Avg B=16 Grant",
+    "BMinus1": "Avg B=-1 Grant",
+    "W": "Avg Waiting Time",
+    "M": "Avg exceedM Count"
 }
 
 # Regex
-FILENAME_RE = re.compile(r'^(A|T|B|Q|W)_(\d+)_(\d+)\.csv$')
-
+FILENAME_RE = re.compile(r'^(A|T|M|W|BMinus1|B\d+)_(\d+)_(\d+)\.csv$')
 
 def read_values(filepath: str) -> np.ndarray:
     values = []
@@ -60,6 +63,7 @@ def mean_and_ci(values: np.ndarray):
     return mean, ci
 
 def generate_plot(metric_code, metric_name, data_subset):
+    """Funzione generica per metriche standard (N variabile, K raggruppati)"""
     if not data_subset: return
 
     present_ks = sorted([k for k in VALID_K if k in data_subset])
@@ -90,11 +94,177 @@ def generate_plot(metric_code, metric_name, data_subset):
     plt.ylabel(metric_name, labelpad=20)
     plt.title(f'{metric_name} Analysis')
     plt.xticks(x_indices, x_values)
-    plt.legend(title="K")
+    plt.legend()
     plt.grid(axis='y', linestyle='--', alpha=0.5)
     plt.tight_layout()
 
     filename = f"{metric_name.replace(' ', '_')}.png"
+    save_path = os.path.join(BASE_PLOTS_DIR, filename)
+    plt.savefig(save_path, dpi=300)
+    plt.close()
+    print(f"[PLOT] Created: {filename}")
+
+def generate_exceedM_plot(data_subset):
+    fixed_N = 40
+    target_Ks = [10, 20]
+    
+    # Verifica dati
+    has_data = any(
+        (k in data_subset and fixed_N in data_subset[k]) 
+        for k in target_Ks
+    )
+    
+    if not has_data:
+        return
+
+    plt.figure(figsize=(8, 6))
+    
+    x_indices = np.arange(len(target_Ks))
+    means = []
+    cis = []
+    
+    for K in target_Ks:
+        val = data_subset.get(K, {}).get(fixed_N, (0.0, 0.0))
+        means.append(val[0])
+        cis.append(val[1])
+
+    colors = ['#d62728', '#1f77b4'] 
+
+    plt.bar(x_indices, means, yerr=cis, width=0.5, 
+            tick_label=[str(k) for k in target_Ks], 
+            color=colors,
+            capsize=5, alpha=0.9, edgecolor='black')
+
+    plt.xlabel('K', labelpad=10)
+    plt.ylabel('exceedM Count', labelpad=20)
+    plt.title(f'exceedM Analysis (N={fixed_N}, Selected K)')
+    plt.grid(axis='y', linestyle='--', alpha=0.5)
+    
+    max_height = max([m + c for m, c in zip(means, cis)]) if means else 1.0
+    if max_height == 0: max_height = 0.1 
+
+    offset = max_height * 0.05 
+
+    for i, v in enumerate(means):
+        error_val = cis[i]
+        text_y = v + error_val + offset
+        plt.text(i, text_y, f"{v:.2f}", 
+                 ha='center', va='bottom', fontweight='bold', color='black')
+
+    plt.ylim(top=max_height * 1.2) 
+    plt.tight_layout()
+
+    filename = f"exceedM_N{fixed_N}_K10_K20.png"
+    save_path = os.path.join(BASE_PLOTS_DIR, filename)
+    plt.savefig(save_path, dpi=300)
+    plt.close()
+    print(f"[PLOT] Created: {filename}")
+
+
+def generate_bminus1_plot(data_subset):
+    fixed_N = 40
+    
+    present_ks = sorted([k for k in VALID_K if k in data_subset and fixed_N in data_subset[k]])
+    
+    if not present_ks:
+        print(f"[INFO] No data for BMinus1 at N={fixed_N}")
+        return
+
+    plt.figure(figsize=(10, 6))
+    
+    x_indices = np.arange(len(present_ks))
+    means = []
+    cis = []
+    
+    for K in present_ks:
+        val = data_subset[K][fixed_N]
+        means.append(val[0])
+        cis.append(val[1])
+
+    cmap = plt.get_cmap('tab10')
+    colors = [cmap(i % cmap.N) for i in range(len(present_ks))]
+
+    plt.bar(x_indices, means, yerr=cis, width=0.6, 
+            tick_label=[str(k) for k in present_ks], 
+            color=colors,
+            capsize=4, alpha=0.9, edgecolor='black')
+
+    plt.xlabel('K', labelpad=10)
+    plt.ylabel('Avg B=-1 Grant', labelpad=20)
+    plt.title(f'B=-1 Analysis (Fixed N={fixed_N})')
+    plt.grid(axis='y', linestyle='--', alpha=0.5)
+
+    max_height = max([m + c for m, c in zip(means, cis)]) if means else 1.0
+    if max_height == 0: max_height = 0.1
+    offset = max_height * 0.02
+
+    for i, v in enumerate(means):
+        text_y = v + cis[i] + offset
+        plt.text(i, text_y, f"{v:.2f}", ha='center', va='bottom', fontweight='bold', fontsize=9)
+
+    plt.ylim(top=max_height * 1.15)
+    plt.tight_layout()
+
+    filename = f"Avg_B=-1_N=40.png"
+    save_path = os.path.join(BASE_PLOTS_DIR, filename)
+    plt.savefig(save_path, dpi=300)
+    plt.close()
+    print(f"[PLOT] Created: {filename}")
+
+# =====================
+# NUOVA FUNZIONE PER WAITING TIME (W)
+# =====================
+def generate_waiting_time_plot(data_subset):
+    fixed_N = 40
+    metric_name = "Avg Waiting Time"
+    
+    # Filtra K presenti solo se esiste il dato per N=40
+    present_ks = sorted([k for k in VALID_K if k in data_subset and fixed_N in data_subset[k]])
+    
+    if not present_ks:
+        print(f"[INFO] No data for {metric_name} at N={fixed_N}")
+        return
+
+    plt.figure(figsize=(10, 6))
+    
+    x_indices = np.arange(len(present_ks))
+    means = []
+    cis = []
+    
+    for K in present_ks:
+        val = data_subset[K][fixed_N]
+        means.append(val[0])
+        cis.append(val[1])
+
+    # Colori distinti per ogni K
+    cmap = plt.get_cmap('tab10')
+    colors = [cmap(i % cmap.N) for i in range(len(present_ks))]
+
+    # Creazione grafico a barre (X=K)
+    plt.bar(x_indices, means, yerr=cis, width=0.6, 
+            tick_label=[str(k) for k in present_ks], 
+            color=colors,
+            capsize=4, alpha=0.9, edgecolor='black')
+
+    plt.xlabel('K', labelpad=10)
+    plt.ylabel(metric_name, labelpad=20)
+    plt.title(f'{metric_name} (Fixed N={fixed_N})')
+    plt.grid(axis='y', linestyle='--', alpha=0.5)
+
+    # Calcolo altezza massima per posizionare le etichette e scalare Y
+    max_height = max([m + c for m, c in zip(means, cis)]) if means else 1.0
+    if max_height == 0: max_height = 0.1
+    offset = max_height * 0.02
+
+    # Aggiunge i valori sopra le barre
+    for i, v in enumerate(means):
+        text_y = v + cis[i] + offset
+        plt.text(i, text_y, f"{v:.2f}", ha='center', va='bottom', fontweight='bold', fontsize=9)
+
+    plt.ylim(top=max_height * 1.15)
+    plt.tight_layout()
+
+    filename = f"Avg_Waiting_Time_N={fixed_N}.png"
     save_path = os.path.join(BASE_PLOTS_DIR, filename)
     plt.savefig(save_path, dpi=300)
     plt.close()
@@ -129,10 +299,23 @@ def main():
     print(f"CSV files found: {files_found}")
 
     for code, name in METRICS_MAP.items():
-        if code in global_data:
-            generate_plot(code, name, global_data[code])
-        else:
+        if code not in global_data:
             print(f"[INFO] No data for {name} ({code})")
+            continue
+
+        if code == "M":
+            generate_exceedM_plot(global_data[code])
+        
+        elif code == "BMinus1":
+            generate_bminus1_plot(global_data[code])
+            
+        # --- NUOVA GESTIONE PER WAITING TIME (W) ---
+        elif code == "W":
+            generate_waiting_time_plot(global_data[code])
+
+        # CASO STANDARD (A, T, B2, B4, etc.) -> N Variabile, K raggruppati
+        else:
+            generate_plot(code, name, global_data[code])
 
     print(f"--- COMPLETATO ---")
     print(f"Plots saved: {BASE_PLOTS_DIR}")

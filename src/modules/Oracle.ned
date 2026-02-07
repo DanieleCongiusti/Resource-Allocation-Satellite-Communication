@@ -22,8 +22,8 @@ simple Oracle{
 		@signal[waitingTimeFrame](type = int);
 		//signal for collecting values in order to retrieve the queue length accumulated between 2 grants
 		@signal[accumulatedBytesGrant](type = int);
-		//signal for collecting values in order to retrieve the B value at grant
-		@signal[bGrant](type = int);
+		//signal for the number of time that msg queue exceeds M in a time frame
+		@signal[exceedM](type = int);
 		
 		//statistic for computing warmup period
 		@statistic[throughputWarmUpStat](source = "throughputWarmUp"; record = vector;);
@@ -33,10 +33,8 @@ simple Oracle{
 		@statistic[AvgQLStat](source = "avgQueueLength"; record = mean, vector;);
 		//statistic for computing waitingTimeFrame
 		@statistic[avgWaitingTimeFrame](source = "waitingTimeFrame"; record = mean;);
-		//statistic for computing accumulatedBytesGrant
-		@statistic[avgAccumulatedBytesGrant](source = "accumulatedBytesGrant"; record = mean;);
-		//statistic for computing bGrant
-		@statistic[avgBGrant](source = "bGrant"; record = histogram, vector;);
+		//statistic for computing exceedM
+		@statistic[exceedM](source = "exceedM"; record = last;);
 
     gates:
         //gate that receives data from other nodes

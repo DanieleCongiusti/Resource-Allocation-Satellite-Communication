@@ -18,8 +18,7 @@ void Oracle::initialize() {
     throughputWarmUpSignal = registerSignal("throughputWarmUp");
     avgQLSignal = registerSignal("avgQueueLength");
     waitingTimeFrameSignal = registerSignal("waitingTimeFrame");
-    accumulatedBytesGrantSignal = registerSignal("accumulatedBytesGrant");
-    bGrantSignal = registerSignal("bGrant");
+    exceedMSignal = registerSignal("exceedM");
 
     throughputTimer = new cMessage("throughputTimer");
     scheduleAt(simTime() + interval, throughputTimer);
@@ -39,7 +38,7 @@ void Oracle::handleMessage(cMessage *msg) {
     // or for AvgQueueLength
     else if (!msg->isName("byte_sent") && !msg->isName("q_len")
             && !msg->isName("time_frame_counter")
-            && !msg->isName("accumulated_bytes_grant") && !msg->isName("B")) {
+            && !msg->isName("accumulated_bytes_grant") && !msg->isName("B") && !msg->isName("queued_bytes")) {
         delete msg;
         throw cRuntimeError("Message type not accepted by oracle");
     } else {
@@ -49,12 +48,16 @@ void Oracle::handleMessage(cMessage *msg) {
             currentBytes += c_msg->getSize();
         } else if (msg->isName("time_frame_counter")) {
             emit(waitingTimeFrameSignal, c_msg->getSize());
-        } else if (msg->isName("accumulated_bytes_grant")) {
-            emit(accumulatedBytesGrantSignal, c_msg->getSize());
         } else if (msg->isName("B")) {
-            emit(bGrantSignal, c_msg->getSize());
-        }
-        else
+            int B = c_msg->getSize();
+            if (B == -1) {
+                b_values[4]++;
+            } else {
+                b_values[(int) (log2(B) - 1)]++;
+            }
+        } else if (msg->isName("queued_bytes")) {
+            exceed_m++;
+        } else
             emit(avgQLSignal, c_msg->getSize());
         delete c_msg;
     }
@@ -63,4 +66,14 @@ void Oracle::handleMessage(cMessage *msg) {
 void Oracle::finish() {
     double totTime = simTime().dbl();
     emit(throughputSignal, totBytes / totTime);
+
+    double totTimeFrame = totTime / (double) par("timeframe_duration");
+
+    const char *bLabels[] = { "B_2", "B_4", "B_8", "B_16", "B_Minus1" };
+
+    for (int i = 0; i < 5; i++) {
+        recordScalar(bLabels[i], b_values[i] / totTimeFrame);
+    }
+
+    emit(exceedMSignal, exceed_m / totTimeFrame);
 }

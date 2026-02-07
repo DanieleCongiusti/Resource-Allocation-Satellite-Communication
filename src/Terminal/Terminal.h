@@ -39,8 +39,6 @@ class Terminal : public cSimpleModule
     int byteSent = 0;
     int time_frame_counter = 0;
 
-    int byteGenerated = 0; 
-
   public:
     Terminal() = default;
     virtual ~Terminal();

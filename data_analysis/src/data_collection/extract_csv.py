@@ -13,7 +13,8 @@ PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "../../../"))
 
 ANALYSIS_MAP = {
     "variance": "varianceTest",
-    "simulation": "simulationTest"
+    "simulation": "simulationTest",
+    "variance500": "varianceN16K5"
 }
 
 def main():
@@ -46,23 +47,27 @@ def main():
     print(f"Input:  {SOURCE_DIRECTORY}")
     print(f"Output: {OUTPUT_DIRECTORY}")
     print(f"---------------------")
-
-    # Dizionario per accumulare i dati
+    
+    # Data structure: {(N, K): {metric_name: [values]}}
     data_store = defaultdict(lambda: {
         'Throughput': [], 
         'AVGQLen': [], 
         'avgWaitingTimeFrame': [], 
-        'accumulatedQueueLength': [], 
-        'bGrant': []
+        'exceedM': [], 
+        'B_2': [],
+        'B_4': [],
+        'B_8': [],
+        'B_16': [],
+        'B_Minus1': [],
     })
 
-    # Regex per N e K: "$N=12, $K=1000"
+    # Regex for N and K: "$N=12, $K=1000"
     filename_pattern = re.compile(r'\$N=(\d+).*?\$K=(\d+)')
 
     print(f"Starting extraction...")
     count_files = 0
     
-    # 1. Scansione file e estrazione
+    #1. Reading .sca files
     for filename in os.listdir(SOURCE_DIRECTORY):
         if filename.endswith(".sca"):
             match = filename_pattern.search(filename)
@@ -83,12 +88,24 @@ def main():
                                 stat_name_raw = parts[-2]
                                 clean_name = stat_name_raw.strip('"')
 
-                                # --- LOGICA DI MATCHING ---
+                                # --- MATCHING ---
                                 
                                 # T -> Throughput
                                 if "throughputStat:last" in clean_name:
                                     data_store[config_key]['Throughput'].append(stat_value)
-                                
+
+                                # B_* -> B_*
+                                elif "B_2" in clean_name:
+                                    data_store[config_key]['B_2'].append(stat_value)
+                                elif "B_4" in clean_name:
+                                    data_store[config_key]['B_4'].append(stat_value)
+                                elif "B_8" in clean_name:
+                                    data_store[config_key]['B_8'].append(stat_value)
+                                elif "B_16" in clean_name:
+                                    data_store[config_key]['B_16'].append(stat_value)
+                                elif "B_Minus1" in clean_name:
+                                    data_store[config_key]['B_Minus1'].append(stat_value)
+
                                 # A -> AVG Queue Length
                                 elif "AvgQLStat:mean" in clean_name:
                                     data_store[config_key]['AVGQLen'].append(stat_value)
@@ -97,17 +114,10 @@ def main():
                                 elif "avgWaitingTimeFrame:mean" in clean_name:
                                     data_store[config_key]['avgWaitingTimeFrame'].append(stat_value)
                                 
-                                # Q -> Accumulated Queue Length
-                                # Cerca "accumulatedQueueLength" ignorando :min/:max
-                                elif "accumulatedQueueLength" in clean_name:
-                                    if not any(x in clean_name for x in [':min', ':max', ':stddev']):
-                                        data_store[config_key]['accumulatedQueueLength'].append(stat_value)
-
-                                # B -> bGrant
-                                # Cerca "bGrant" ignorando :min/:max
-                                elif "bGrant" in clean_name:
-                                    if not any(x in clean_name for x in [':min', ':max', ':stddev']):
-                                        data_store[config_key]['bGrant'].append(stat_value)
+                                 # M -> Exceed M
+                                elif "exceedM:last" in clean_name:
+                                    data_store[config_key]['exceedM'].append(stat_value)
+                                
                                     
             except Exception as e:
                 print(f"Error reading {filename}: {e}")
@@ -116,7 +126,7 @@ def main():
 
     print(f"Analyzed {count_files} .sca files.")
 
-    # 2. Scrittura CSV con intestazioni corrette
+    # 2. Writing CSV files
     output_count = 0
 
     for (n, k), stats in data_store.items():
@@ -141,7 +151,7 @@ def main():
                     writer.writerow([val.replace('.', ',')])
             output_count += 1
 
-        # W_N_K.csv -> Intestazione richiesta: avgWaitingTimeFrame:mean
+        # W_N_K.csv -> Header: avgWaitingTimeFrame:mean
         if stats['avgWaitingTimeFrame']:
             path = os.path.join(OUTPUT_DIRECTORY, f"W_{n}_{k}.csv")
             with open(path, 'w', newline='') as csvfile:
@@ -151,25 +161,64 @@ def main():
                     writer.writerow([val.replace('.', ',')])
             output_count += 1
 
-        # Q_N_K.csv -> Intestazione richiesta: avgAccumulatedQueueLength:mean
-        if stats['accumulatedQueueLength']:
-            path = os.path.join(OUTPUT_DIRECTORY, f"Q_{n}_{k}.csv")
+        # B*_N_K.csv -> Header: B_*
+        if stats['B_2']:
+            path = os.path.join(OUTPUT_DIRECTORY, f"B2_{n}_{k}.csv")
             with open(path, 'w', newline='') as csvfile:
                 writer = csv.writer(csvfile, delimiter=';')
                 # QUI INSERIAMO L'HEADER ESATTO RICHIESTO
-                writer.writerow(['avgAccumulatedQueueLength:mean'])
-                for val in stats['accumulatedQueueLength']:
+                writer.writerow(['B_2'])
+                for val in stats['B_2']:
+                    writer.writerow([val.replace('.', ',')])
+            output_count += 1
+        
+        if stats['B_4']:
+            path = os.path.join(OUTPUT_DIRECTORY, f"B4_{n}_{k}.csv")
+            with open(path, 'w', newline='') as csvfile:
+                writer = csv.writer(csvfile, delimiter=';')
+                # QUI INSERIAMO L'HEADER ESATTO RICHIESTO
+                writer.writerow(['B_4'])
+                for val in stats['B_4']:
+                    writer.writerow([val.replace('.', ',')])
+            output_count += 1
+        
+        if stats['B_8']:
+            path = os.path.join(OUTPUT_DIRECTORY, f"B8_{n}_{k}.csv")
+            with open(path, 'w', newline='') as csvfile:
+                writer = csv.writer(csvfile, delimiter=';')
+                # QUI INSERIAMO L'HEADER ESATTO RICHIESTO
+                writer.writerow(['B_8'])
+                for val in stats['B_8']:
                     writer.writerow([val.replace('.', ',')])
             output_count += 1
 
-        # B_N_K.csv -> Intestazione richiesta: avgBGrant:mean
-        if stats['bGrant']:
-            path = os.path.join(OUTPUT_DIRECTORY, f"B_{n}_{k}.csv")
+        if stats['B_16']:
+            path = os.path.join(OUTPUT_DIRECTORY, f"B16_{n}_{k}.csv")
             with open(path, 'w', newline='') as csvfile:
                 writer = csv.writer(csvfile, delimiter=';')
                 # QUI INSERIAMO L'HEADER ESATTO RICHIESTO
-                writer.writerow(['avgBGrant:mean'])
-                for val in stats['bGrant']:
+                writer.writerow(['B_16'])
+                for val in stats['B_16']:
+                    writer.writerow([val.replace('.', ',')])
+            output_count += 1
+
+        if stats['B_Minus1']:
+            path = os.path.join(OUTPUT_DIRECTORY, f"BMinus1_{n}_{k}.csv")
+            with open(path, 'w', newline='') as csvfile:
+                writer = csv.writer(csvfile, delimiter=';')
+                # QUI INSERIAMO L'HEADER ESATTO RICHIESTO
+                writer.writerow(['B_Minus1'])
+                for val in stats['B_Minus1']:
+                    writer.writerow([val.replace('.', ',')])
+            output_count += 1
+
+        # M_N_K.csv -> Header: exceedM:last
+        if stats['exceedM']:
+            path = os.path.join(OUTPUT_DIRECTORY, f"M_{n}_{k}.csv")
+            with open(path, 'w', newline='') as csvfile:
+                writer = csv.writer(csvfile, delimiter=';')
+                writer.writerow(['exceedM:last'])
+                for val in stats['exceedM']:
                     writer.writerow([val.replace('.', ',')])
             output_count += 1
 

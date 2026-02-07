@@ -1,8 +1,8 @@
 version 3
-run simulationTest-470-20260201-11:30:04-73604
+run simulationTest-470-20260202-18:07:58-24484
 attr configname simulationTest
-attr datetime 20260201-11:30:04
-attr datetimef 20260201-113004
+attr datetime 20260202-18:07:58
+attr datetimef 20260202-180758
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=16, $K=1000"
@@ -10,7 +10,7 @@ attr iterationvarsd N=16/K=1000
 attr iterationvarsf N=16,K=1000-
 attr measurement "$N=16, $K=1000"
 attr network System
-attr processid 73604
+attr processid 24484
 attr repetition 15
 attr replication #15
 attr resultdir results
@@ -49,14 +49,15 @@ config output-scalar-file "results/simulationTest/$N=16, $K=1000-15.sca"
 par System.oracle typename "\"resource_allocator.modules.Oracle\""
 par System.oracle timeframe_duration 0.08s
 attr unit s
-scalar System.oracle avgBGrant:mean 9.3551119177253
+scalar System.oracle B_2 0.95466666666667
+scalar System.oracle B_4 1.3173333333333
+scalar System.oracle B_8 1.7973333333333
+scalar System.oracle B_16 2.496
+scalar System.oracle B_Minus1 5.592
+scalar System.oracle exceedM:last 0.95466666666667
 attr "" ""
-attr recordingmode mean
-attr source bGrant
-scalar System.oracle avgAccumulatedQueueLength:mean 73.468844525106
-attr "" ""
-attr recordingmode mean
-attr source accumulatedQueueLength
+attr recordingmode last
+attr source exceedM
 scalar System.oracle avgWaitingTimeFrame:mean 2.4416212946158
 attr "" ""
 attr recordingmode mean
