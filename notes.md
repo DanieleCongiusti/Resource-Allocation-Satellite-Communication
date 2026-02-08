@@ -214,3 +214,13 @@ Hints (2.0):
         le performance si peggiorano ma questo è aspettato in quanto aumenta la quantità di terminali che generano pacchetti e riduce la probabilità di grant per terminale, aumentando il tempo di attesa e quindi pacchetti accumulati. 
         E anche se questo andamento è constrastabile incrementando K, la coda di pacchetti che rimane a fine simulazione è pur sempre crescente al aumentare di N indipendentemente da quando grande di fa K; questo dovuto dalla capacità 
         limitata di slot della ground station   
+    
+    - Quindi il focus delle nostre conclusioni è dire che l'impatto di K sul sistema satura molto più rapidamente rispetto a N:
+        Aumentando N si aumenta in maniera lineare il throughput potenziale e il carico di pacchetti da gestire (le code); Aumentando K in maniera più lenta di N permette di raggiungere il throughput potenziale e di minimizzare 
+        le code dei terminali in maniera efficace ma, dato come influenza in maniera esponenziale il threshold M e data la capacità (C) limitata della ground station, aumentare più di tanto K non implica miglioramenti importanti: 
+            .Nel throughput perché è limitato da quanti terminali ci sono (N) + perché M cresce esponenzialmente per K quindi piccoli incrementi implicano dei grandi per M e quindi permette rande più ampli per N di raggiungere le potenzialità del sistema 
+            .Nella queue length perché è limitato dalla capacità della ground station in quanto al crescere di N saranno solo un sottoinsieme limitato di terminali a transmettere, quindi N impatta il wait time in maniera lineare come 
+            nel throughput e K, indipendentemente da quanto viene incrementato, non potrà mai ridurre la coda sotto un limimte inferiore in quanto quest'ultimo dipende sia da N che da C. 
+        
+        Se avessimo la possibilità di testare il sistema con diverse capacità di slot, quindi più terminali a trasmettere per timeframe, vedremmo K avere un impatto più importante, in particolare sulla queue length, mentre nel throughput 
+        avrebbe sempre un andamento dello stesso carattere lineare ma più ripido avendo più terminali a transmettere con B più elevati 
