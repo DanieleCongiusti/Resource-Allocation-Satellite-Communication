@@ -196,4 +196,21 @@ Hints:
 
     - considerare trade off tra throughput e queue length, perché aumentare mole di byte ha benefici su throughput, ma anche di costo in termini di memoria nella queue length.
  
+Hints (2.0):
+    - nel throughput evidenziare come N determina il throughput potenziale e come K permette al throughput effettivo di raggiungere il max potenziale 
+        - aumentando N si aumentano i byte accumulati per volta e permette di poter transmetterne di più per timeframe; per cui K diventa utile per permettere di avere M abbastanza grande da transmettere i pacchetti accumulati 
+        incrementando così il throughput medio  
+        - per come K fa scalare M, piccoli incrementi di K sono sufficienti per poter permettere al sistema di raggiungere il suo picco e diventa un fattore ridondante finché N non è abbastanza grande da rendere M non più sufficiente 
+        per transmettere tutti i pacchetti accumulati 
+        - quindi dato un certo K, questo permette al sistema entro un certo range di N terminali di raggiungere le sue massime potenzialità. **Per cui concludendo che N incrementa il throughput potenziale in maniera lineare (quasi) 
+        e K permette di raggiungere questo potenziale più rapidamente per come scala M**
 
+    - nella queue length evidenziare come K è il fattore determinante per ridurre il più possibile questa misura per poter svuotare la coda del singolo terminale al momento della transmissione
+        - come detto prima, aumentando N si aumentano i byte accumulati per volta quindi è richiesto un M sempre più grande per poter soddisfare i bisogno del terminale. Ma con piccoli incrementi per K, M cresce esponenzialmente 
+        e quindi svuotare la coda anche per N più grandi, come vediamo la differenza tra K=2,3 e K=5 (come nel throughput)
+        - ma, dato l'andamento del grafico, la queue length sembra non poter scendere sotto un certo livello di pacchetti indipendendemtente da K. Questo è dovuto dalla capacità di slot limitata della ground station che permette solo
+        ad un numero limitato di terminali di poter trasmettere e quindi diventando il fattore limitante del sistema
+        - quindi, come detto nel throughput, K migliora le performance del sistema nel ridurre la queue length drasticamente con incrementi modesti (raddoppiando K si riduce di molto di più queue length). Mentre stavolta aumentando N
+        le performance si peggiorano ma questo è aspettato in quanto aumenta la quantità di terminali che generano pacchetti e riduce la probabilità di grant per terminale, aumentando il tempo di attesa e quindi pacchetti accumulati. 
+        E anche se questo andamento è constrastabile incrementando K, la coda di pacchetti che rimane a fine simulazione è pur sempre crescente al aumentare di N indipendentemente da quando grande di fa K; questo dovuto dalla capacità 
+        limitata di slot della ground station   
