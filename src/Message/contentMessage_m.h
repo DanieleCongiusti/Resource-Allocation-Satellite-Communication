@@ -23,14 +23,14 @@ class ContentMessage;
  * message ContentMessage
  * {
  *     //this is a field initialized only at runtime (depends on S from uniform distribution)
- *     int size;
+ *     int content;
  * }
  * </pre>
  */
 class ContentMessage : public ::omnetpp::cMessage
 {
   protected:
-    int size = 0;
+    int content = 0;
 
   private:
     void copy(const ContentMessage& other);
@@ -47,8 +47,8 @@ class ContentMessage : public ::omnetpp::cMessage
     virtual void parsimPack(omnetpp::cCommBuffer *b) const override;
     virtual void parsimUnpack(omnetpp::cCommBuffer *b) override;
 
-    virtual int getSize() const;
-    virtual void setSize(int size);
+    virtual int getContent() const;
+    virtual void setContent(int content);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const ContentMessage& obj) {obj.parsimPack(b);}

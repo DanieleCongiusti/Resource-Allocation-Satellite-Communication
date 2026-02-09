@@ -175,29 +175,29 @@ ContentMessage& ContentMessage::operator=(const ContentMessage& other)
 
 void ContentMessage::copy(const ContentMessage& other)
 {
-    this->size = other.size;
+    this->content = other.content;
 }
 
 void ContentMessage::parsimPack(omnetpp::cCommBuffer *b) const
 {
     ::omnetpp::cMessage::parsimPack(b);
-    doParsimPacking(b,this->size);
+    doParsimPacking(b,this->content);
 }
 
 void ContentMessage::parsimUnpack(omnetpp::cCommBuffer *b)
 {
     ::omnetpp::cMessage::parsimUnpack(b);
-    doParsimUnpacking(b,this->size);
+    doParsimUnpacking(b,this->content);
 }
 
-int ContentMessage::getSize() const
+int ContentMessage::getContent() const
 {
-    return this->size;
+    return this->content;
 }
 
-void ContentMessage::setSize(int size)
+void ContentMessage::setContent(int content)
 {
-    this->size = size;
+    this->content = content;
 }
 
 class ContentMessageDescriptor : public omnetpp::cClassDescriptor
@@ -205,7 +205,7 @@ class ContentMessageDescriptor : public omnetpp::cClassDescriptor
   private:
     mutable const char **propertyNames;
     enum FieldConstants {
-        FIELD_size,
+        FIELD_content,
     };
   public:
     ContentMessageDescriptor();
@@ -284,7 +284,7 @@ unsigned int ContentMessageDescriptor::getFieldTypeFlags(int field) const
         field -= base->getFieldCount();
     }
     static unsigned int fieldTypeFlags[] = {
-        FD_ISEDITABLE,    // FIELD_size
+        FD_ISEDITABLE,    // FIELD_content
     };
     return (field >= 0 && field < 1) ? fieldTypeFlags[field] : 0;
 }
@@ -298,7 +298,7 @@ const char *ContentMessageDescriptor::getFieldName(int field) const
         field -= base->getFieldCount();
     }
     static const char *fieldNames[] = {
-        "size",
+        "content",
     };
     return (field >= 0 && field < 1) ? fieldNames[field] : nullptr;
 }
@@ -307,7 +307,7 @@ int ContentMessageDescriptor::findField(const char *fieldName) const
 {
     omnetpp::cClassDescriptor *base = getBaseClassDescriptor();
     int baseIndex = base ? base->getFieldCount() : 0;
-    if (strcmp(fieldName, "size") == 0) return baseIndex + 0;
+    if (strcmp(fieldName, "content") == 0) return baseIndex + 0;
     return base ? base->findField(fieldName) : -1;
 }
 
@@ -320,7 +320,7 @@ const char *ContentMessageDescriptor::getFieldTypeString(int field) const
         field -= base->getFieldCount();
     }
     static const char *fieldTypeStrings[] = {
-        "int",    // FIELD_size
+        "int",    // FIELD_content
     };
     return (field >= 0 && field < 1) ? fieldTypeStrings[field] : nullptr;
 }
@@ -405,7 +405,7 @@ std::string ContentMessageDescriptor::getFieldValueAsString(omnetpp::any_ptr obj
     }
     ContentMessage *pp = omnetpp::fromAnyPtr<ContentMessage>(object); (void)pp;
     switch (field) {
-        case FIELD_size: return long2string(pp->getSize());
+        case FIELD_content: return long2string(pp->getContent());
         default: return "";
     }
 }
@@ -422,7 +422,7 @@ void ContentMessageDescriptor::setFieldValueAsString(omnetpp::any_ptr object, in
     }
     ContentMessage *pp = omnetpp::fromAnyPtr<ContentMessage>(object); (void)pp;
     switch (field) {
-        case FIELD_size: pp->setSize(string2long(value)); break;
+        case FIELD_content: pp->setContent(string2long(value)); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'ContentMessage'", field);
     }
 }
@@ -437,7 +437,7 @@ omnetpp::cValue ContentMessageDescriptor::getFieldValue(omnetpp::any_ptr object,
     }
     ContentMessage *pp = omnetpp::fromAnyPtr<ContentMessage>(object); (void)pp;
     switch (field) {
-        case FIELD_size: return pp->getSize();
+        case FIELD_content: return pp->getContent();
         default: throw omnetpp::cRuntimeError("Cannot return field %d of class 'ContentMessage' as cValue -- field index out of range?", field);
     }
 }
@@ -454,7 +454,7 @@ void ContentMessageDescriptor::setFieldValue(omnetpp::any_ptr object, int field,
     }
     ContentMessage *pp = omnetpp::fromAnyPtr<ContentMessage>(object); (void)pp;
     switch (field) {
-        case FIELD_size: pp->setSize(omnetpp::checked_int_cast<int>(value.intValue())); break;
+        case FIELD_content: pp->setContent(omnetpp::checked_int_cast<int>(value.intValue())); break;
         default: throw omnetpp::cRuntimeError("Cannot set field %d of class 'ContentMessage'", field);
     }
 }

@@ -23,7 +23,7 @@ simple Oracle{
 		//signal for collecting values in order to retrieve the queue length accumulated between 2 grants
 		@signal[accumulatedBytesGrant](type = int);
 		//signal for the number of time that msg queue exceeds M in a time frame
-		@signal[exceedM](type = int);
+		@signal[exceedM](type = double);
 		
 		//statistic for computing warmup period
 		@statistic[throughputWarmUpStat](source = "throughputWarmUp"; record = vector;);
