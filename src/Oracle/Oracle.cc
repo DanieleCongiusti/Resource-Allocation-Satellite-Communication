@@ -44,12 +44,12 @@ void Oracle::handleMessage(cMessage *msg) {
     } else {
         ContentMessage *c_msg = check_and_cast<ContentMessage*>(msg);
         if (msg->isName("byte_sent")) {
-            totBytes += c_msg->getSize();
-            currentBytes += c_msg->getSize();
+            totBytes += c_msg->getContent();
+            currentBytes += c_msg->getContent();
         } else if (msg->isName("time_frame_counter")) {
-            emit(waitingTimeFrameSignal, c_msg->getSize());
+            emit(waitingTimeFrameSignal, c_msg->getContent());
         } else if (msg->isName("B")) {
-            int B = c_msg->getSize();
+            int B = c_msg->getContent();
             if (B == -1) {
                 b_values[4]++;
             } else {
@@ -58,7 +58,7 @@ void Oracle::handleMessage(cMessage *msg) {
         } else if (msg->isName("queued_bytes")) {
             exceed_m++;
         } else
-            emit(avgQLSignal, c_msg->getSize());
+            emit(avgQLSignal, c_msg->getContent());
         delete c_msg;
     }
 }
