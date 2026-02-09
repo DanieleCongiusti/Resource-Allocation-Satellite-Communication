@@ -27,7 +27,7 @@ void Oracle::initialize() {
 void Oracle::handleMessage(cMessage *msg) {
 
     if (msg->isSelfMessage() && msg->isName("throughputTimer")) {
-        double throuhgput = currentBytes / interval;
+        //double throuhgput = currentBytes / interval;
         //EV_INFO << "Throughput: " << throuhgput << endl;
         //EV_INFO << "Bytes: " << currentBytes << endl;
         emit(throughputWarmUpSignal, currentBytes / interval);
@@ -71,6 +71,8 @@ void Oracle::finish() {
 
     const char *bLabels[] = { "B_2", "B_4", "B_8", "B_16", "B_Minus1" };
 
+    // here we are associating at each value of B its respective counter
+    //
     for (int i = 0; i < 5; i++) {
         recordScalar(bLabels[i], b_values[i] / totTimeFrame);
     }

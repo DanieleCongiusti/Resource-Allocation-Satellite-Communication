@@ -13,10 +13,6 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-//
-// TODO generated message class
-//
-
 // This class models the packet that terminal sends to ground station to ask for a grant and start the
 // communication
 

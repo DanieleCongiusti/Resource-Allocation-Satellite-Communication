@@ -43,7 +43,7 @@ struct Comp {
 
 class GS: public cSimpleModule {
 private:
-    int scheduler;
+    int scheduler;      //counter for scheduled slots in a time frame
     int terminal_counter;
     priority_queue<ComMessage*, vector<ComMessage*>, Comp> rcv_B;
 

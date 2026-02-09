@@ -47,9 +47,9 @@ void Satellite::handleMessage(cMessage *msg)
             send(comMsg,"s_iogs$o");
         }
         else if ("bytes")
-            send(msg,"s_iogs$o"); //we're dealing with a ContMessage that terminal is sending
+            send(msg,"s_iogs$o"); //we're dealing with a ContMessage that terminal is sending to GS
         else
-            delete msg;
+            delete msg; //messages not recognized are discarded
     }
 
 }

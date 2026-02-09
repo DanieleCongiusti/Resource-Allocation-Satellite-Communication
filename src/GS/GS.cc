@@ -58,7 +58,7 @@ void GS::handleMessage(cMessage *msg) {
 void GS::handleComMessage(cMessage *msg) {
     ComMessage *rcv_msg;
     ComMessage *send_msg;
-
+    // another terminal has sent baerer index value
     terminal_counter--;
     rcv_msg = check_and_cast<ComMessage*>(msg);
 
@@ -72,7 +72,7 @@ void GS::handleComMessage(cMessage *msg) {
     }
 
     if (terminal_counter == 0) { // GS received all the B values
-        //Extract all messages and send grant or not
+        //Extract all messages and determine grant permission for each terminal
         while (!rcv_B.empty()) {
             send_msg = rcv_B.top();
             int B = send_msg->getB();
@@ -85,6 +85,7 @@ void GS::handleComMessage(cMessage *msg) {
             send(send_msg, "gs_io$o");
             rcv_B.pop();
         }
+        //update counters for next operations
         terminal_counter = par("terminal_counter");
         scheduler = par("scheduler_slots");
     }

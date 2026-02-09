@@ -39,7 +39,7 @@ private:
     //terminal has received a grant
     scheduledMessage *msg_list;
 
-    //added pointer to last element of the list, done for improving performance of write op
+    //added pointer to last element of the list, done for improving writing operations' performances
     scheduledMessage *last;
 
     //integer value used to count number of queued messages

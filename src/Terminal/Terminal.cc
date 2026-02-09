@@ -58,8 +58,6 @@ void Terminal::initialize() {
     // Message Queue
     msg_queue = new MessageList();
 
-    // Signals 
-    // ... 
 
     //// LOOP BEGINNING
     // "Create Message to Queue"
@@ -78,7 +76,7 @@ void Terminal::handleMessage(cMessage *msg) {
         msg_queue->addMessage(new_msg);
         //EV_INFO << "Added New Message of Size "<< new_msg->getContent() << endl;
 
-        // If the Terminal has received a Grant and the Time Frame hasn't yet ended, it resumes transmission
+        // If the Terminal has received a Grant and the Time Frame hasn't ended yet, it resumes transmission
         if (G)
             scheduleAt(simTime(), t_tx);
 
@@ -109,7 +107,6 @@ void Terminal::handleMessage(cMessage *msg) {
         byte_sent->setContent(byteSent);
         sendDirect(byte_sent, 0, 0, oracle, "wirelessGate");
         byteSent = 0;
-        // delete byte_sent; // DO IT ON THE ORACLE SIDE
 
 
         ContentMessage* q_len = new ContentMessage("q_len");
@@ -117,7 +114,6 @@ void Terminal::handleMessage(cMessage *msg) {
 
         //EV_INFO << "Queue length: " << q_len->getContent() << endl;
         sendDirect(q_len, 0, 0, oracle, "wirelessGate");
-        // delete q_len;    // DO IT ON THE ORACLE SIDE
 
         // 1. Create ComMessage -> Save and Send B to GS (NB: call message "grant_request") 
         ComMessage *msg_grant = new ComMessage("grant_request");
@@ -145,6 +141,7 @@ void Terminal::handleMessage(cMessage *msg) {
 
         cModule *oracle = getParentModule()->getSubmodule("oracle");
 
+        //computed number of time frames terminal has waited before transmission
         ContentMessage *tf_count = new ContentMessage("time_frame_counter");
         tf_count->setContent(time_frame_counter);
         sendDirect(tf_count, 0, 0, oracle, "wirelessGate");
@@ -199,6 +196,7 @@ void Terminal::handleMessage(cMessage *msg) {
             // Data Collection
             byteSent += size;
 
+            //content message is sent to GS
             send(byte_msg, "t_io$o");
             ////EV_INFO << "Sent message at simtime: " << simTime() << endl;
         } else {
