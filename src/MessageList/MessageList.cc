@@ -46,7 +46,7 @@ void MessageList::addMessage(ContentMessage* msg){
         last=msg_list;
     }
     qLength++;
-    bytesQueue+=msg->getSize();
+    bytesQueue+=msg->getContent();
 }
 
 ContentMessage* MessageList::extractMessage(){
@@ -60,7 +60,7 @@ ContentMessage* MessageList::extractMessage(){
             last = nullptr; 
 
         qLength--;
-        bytesQueue-=targetMessage->getSize();
+        bytesQueue-=targetMessage->getContent();
         return targetMessage;
     }
     return nullptr; 

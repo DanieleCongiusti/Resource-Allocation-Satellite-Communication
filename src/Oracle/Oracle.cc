@@ -40,11 +40,11 @@ void Oracle::handleMessage(cMessage *msg) {
     } else {
         ContentMessage *c_msg = check_and_cast<ContentMessage*>(msg);
         if (msg->isName("byte_sent")){
-            totBytes += c_msg->getSize();
-            currentBytes += c_msg->getSize();
+            totBytes += c_msg->getContent();
+            currentBytes += c_msg->getContent();
         }
         else
-            emit(avgQLSignal, c_msg->getSize());
+            emit(avgQLSignal, c_msg->getContent());
         delete c_msg;
     }
 }

@@ -21,5 +21,5 @@
 
 message ContentMessage {
     //this is a field initialized only at runtime (depends on S from uniform distribution)
-    int size;
+    int content;
 }

@@ -73,9 +73,9 @@ void Terminal::handleMessage(cMessage *msg) {
     // [Create Packets]
     if(msg == t_msg_to_q) {
         ContentMessage* new_msg = new ContentMessage("bytes");
-        new_msg->setSize(par("S"));
+        new_msg->setContent(par("S"));
         msg_queue->addMessage(new_msg);
-        //EV_INFO << "Added New Message of Size "<< new_msg->getSize() << endl;
+        //EV_INFO << "Added New Message of Size "<< new_msg->getContent() << endl;
 
         // If the Terminal has received a Grant and the Time Frame hasn't yet ended, it resumes transmission
         if (G) scheduleAt(simTime(), t_tx);
@@ -101,15 +101,15 @@ void Terminal::handleMessage(cMessage *msg) {
         cModule *oracle = getParentModule()->getSubmodule("oracle");
         //cGate *oracle_gate = oracle->gate("wirelessGate", 0);
         ContentMessage* byte_sent = new ContentMessage("byte_sent");
-        byte_sent->setSize(byteSent);
+        byte_sent->setContent(byteSent);
         sendDirect(byte_sent, 0, 0, oracle, "wirelessGate");
         byteSent = 0;
         // delete byte_sent; // DO IT ON THE ORACLE SIDE
 
         ContentMessage* q_len = new ContentMessage("q_len");
-        q_len->setSize(msg_queue->getQLength());
+        q_len->setContent(msg_queue->getQLength());
 
-        //EV_INFO << "Queue length: " << q_len->getSize() << endl;
+        //EV_INFO << "Queue length: " << q_len->getContent() << endl;
 
         sendDirect(q_len, 0, 0, oracle, "wirelessGate");
         // delete q_len;    // DO IT ON THE ORACLE SIDE
@@ -163,7 +163,7 @@ void Terminal::handleMessage(cMessage *msg) {
 
         // If max amount M hasn't reached, send them 
         // OTHERWISE stop the routine (return)
-        int size = byte_msg->getSize();
+        int size = byte_msg->getContent();
         if (M >= size) {
             M -= size;
 
