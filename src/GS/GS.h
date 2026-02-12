@@ -43,9 +43,16 @@ struct Comp {
 
 class GS: public cSimpleModule {
 private:
-    int scheduler;      //counter for scheduled slots in a time frame
+    // upper limit of scheduled slots within a time frame
+    int scheduler;
+    // counter to determine when to start scheduling (wait for all terminals to send B)
     int terminal_counter;
+    // counter to determine the total number of bytes received in a time frame for throughput statistics
+    int byte_received;
+    // scheduler
     priority_queue<ComMessage*, vector<ComMessage*>, Comp> rcv_B;
+
+    cModule *oracle = getParentModule()->getSubmodule("oracle");
 
 public: 
     virtual ~GS(); 

@@ -74,7 +74,6 @@ void Terminal::handleMessage(cMessage *msg) {
         ContentMessage* new_msg = new ContentMessage("bytes");
         new_msg->setContent(par("S"));
         msg_queue->addMessage(new_msg);
-        //EV_INFO << "Added New Message of Size "<< new_msg->getContent() << endl;
 
         // If the Terminal has received a Grant and the Time Frame hasn't ended yet, it resumes transmission
         if (G)
@@ -84,10 +83,12 @@ void Terminal::handleMessage(cMessage *msg) {
         scheduleAt(simTime() + par("T"), t_msg_to_q);
     }
 
-    // [Start of a New Time Frame (T)] 
+    // [Start of a New Time Frame (Tf)]
     else if (msg == t_time_frame) {
+        // Restart Timer for Time Frame
+        scheduleAt(simTime() + par("timeFrame_duration"), t_time_frame);
 
-        // Couting waiting timeframes
+        // Couting waiting time frames
         time_frame_counter++;
 
         // Resetting "grant"
@@ -97,29 +98,14 @@ void Terminal::handleMessage(cMessage *msg) {
         if (t_tx->isScheduled())
             cancelEvent(t_tx);
 
-        // Restart Timer for Time Frame as soon as possible
-        scheduleAt(simTime() + par("timeFrame_duration"), t_time_frame);
-
-        // Data Collection: Send #byteSent + #qLength from previous Time Frame to the Oracle
-        cModule *oracle = getParentModule()->getSubmodule("oracle");
-        //cGate *oracle_gate = oracle->gate("wirelessGate", 0);
-        ContentMessage* byte_sent = new ContentMessage("byte_sent");
-        byte_sent->setContent(byteSent);
-        sendDirect(byte_sent, 0, 0, oracle, "wirelessGate");
-        byteSent = 0;
-
-
+        // Data Collection: Send #qLength from previous Time Frame to the Oracle
         ContentMessage* q_len = new ContentMessage("q_len");
         q_len->setContent(msg_queue->getQLength());
-
-        //EV_INFO << "Queue length: " << q_len->getContent() << endl;
         sendDirect(q_len, 0, 0, oracle, "wirelessGate");
 
         // 1. Create ComMessage -> Save and Send B to GS (NB: call message "grant_request") 
         ComMessage *msg_grant = new ComMessage("grant_request");
-        //EV_INFO << "Previous bearer index: " << B << endl;
         generateRequest(msg_grant);        // B value saved
-        //EV_INFO << "Bearer index: " << msg_grant->getB() << endl;
         if (msg_grant->getB() == -1) {
             ContentMessage *b = new ContentMessage("B");
             b->setContent(-1);
@@ -139,8 +125,6 @@ void Terminal::handleMessage(cMessage *msg) {
         // Setting Grant to true so that during the  
         G = true;
 
-        cModule *oracle = getParentModule()->getSubmodule("oracle");
-
         //computed number of time frames terminal has waited before transmission
         ContentMessage *tf_count = new ContentMessage("time_frame_counter");
         tf_count->setContent(time_frame_counter);
@@ -153,13 +137,12 @@ void Terminal::handleMessage(cMessage *msg) {
 
         // 2.b OTHERWISE => Compute M and Start Transmission Timer (t_tx), 
         M = floor(100 * pow((int) par("K"), log2(B) - 1)); // M = 100*K^(log_2(B)-1)
-        //////EV_INFO << "Setting M(ax Output) for Terminal " << this->getName() << " at " << M << " at simtime " << simTime() << endl;
 
         long double queued_bytes = msg_queue->getBytesQueue();
 
         if (queued_bytes > M) {
             ContentMessage *q_bytes = new ContentMessage("queued_bytes");
-            q_bytes->setContent(queued_bytes);
+            q_bytes->setContent(1);
             sendDirect(q_bytes, 0, 0, oracle, "wirelessGate");
         }
 
@@ -171,11 +154,6 @@ void Terminal::handleMessage(cMessage *msg) {
     else if (msg == t_tx) {
         // 3. Transmit as much as 100*K^(log_2(B)-1) AND until the Queue is NOT empty 
         //      (NB: call message "bytes")
-
-        // NB: DON'T USE WHILE LOOP, instead create a new section (this one) in handleMessage to handle 
-        //      the transmission of packets so that it can be interruptable; the timer is "fake" as in 
-        //      the "scheduleAt()" takes as the delay time directly simTime() meaning that the module 
-        //      receives the message immediately 
 
         ContentMessage *byte_msg = nullptr;
 
@@ -191,14 +169,8 @@ void Terminal::handleMessage(cMessage *msg) {
         int size = byte_msg->getContent();
         if (M >= size) {
             M -= size;
-
-            //////EV_INFO<<"Prepare to count byte sent";
-            // Data Collection
-            byteSent += size;
-
             //content message is sent to GS
             send(byte_msg, "t_io$o");
-            ////EV_INFO << "Sent message at simtime: " << simTime() << endl;
         } else {
             // Re-insert the message back in the queue if it goes beyond the max amount
             msg_queue->addMessage(byte_msg);

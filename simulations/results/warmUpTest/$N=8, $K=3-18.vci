@@ -1,9 +1,9 @@
-file 60805 1769787814                                           
+file 118459 1770801548                                          
 version 3
-run warmUpTest-53-20260130-16:43:34-93290
+run warmUpTest-53-20260211-10:19:08-3345
 attr configname warmUpTest
-attr datetime 20260130-16:43:34
-attr datetimef 20260130-164334
+attr datetime 20260211-10:19:08
+attr datetimef 20260211-101908
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=3"
@@ -11,7 +11,7 @@ attr iterationvarsd N=8/K=3
 attr iterationvarsf N=8,K=3-
 attr measurement "$N=8, $K=3"
 attr network System
-attr processid 93290
+attr processid 3345
 attr repetition 18
 attr replication #18
 attr resultdir results
@@ -52,6 +52,6 @@ vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
 attr source avgQueueLength
-0	1471 2368 3226 419609 0.25 30 120 53816 150100 11300508 1111904114672
-1	3839 56965 322 419640 0.08 30 3000 22 8509 12147194 65336496270
+0	1469 60008 321 427412 0.08 30 3000 0 33750 35391325 930916654687.5
+1	61477 56981 322 427413 0.08 30 3000 22 8509 12147194 65336496270
 

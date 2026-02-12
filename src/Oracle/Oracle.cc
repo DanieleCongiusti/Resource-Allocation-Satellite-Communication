@@ -10,33 +10,16 @@
 Define_Module(Oracle);
 
 Oracle::~Oracle() {
-    cancelAndDelete(throughputTimer);
 }
 
 void Oracle::initialize() {
     throughputSignal = registerSignal("throughput");
-    throughputWarmUpSignal = registerSignal("throughputWarmUp");
     avgQLSignal = registerSignal("avgQueueLength");
     waitingTimeFrameSignal = registerSignal("waitingTimeFrame");
-    exceedMSignal = registerSignal("exceedM");
-
-    throughputTimer = new cMessage("throughputTimer");
-    scheduleAt(simTime() + interval, throughputTimer);
 }
 
 void Oracle::handleMessage(cMessage *msg) {
-
-    if (msg->isSelfMessage() && msg->isName("throughputTimer")) {
-        //double throuhgput = currentBytes / interval;
-        //EV_INFO << "Throughput: " << throuhgput << endl;
-        //EV_INFO << "Bytes: " << currentBytes << endl;
-        emit(throughputWarmUpSignal, currentBytes / interval);
-        currentBytes = 0;
-        scheduleAt(simTime() + interval, throughputTimer);
-    }
-    // here I can receive a contentMessage for throughput
-    // or for AvgQueueLength
-    else if (!msg->isName("byte_sent") && !msg->isName("q_len")
+    if (!msg->isName("byte_sent") && !msg->isName("q_len")
             && !msg->isName("time_frame_counter")
             && !msg->isName("accumulated_bytes_grant") && !msg->isName("B") && !msg->isName("queued_bytes")) {
         delete msg;
@@ -44,9 +27,10 @@ void Oracle::handleMessage(cMessage *msg) {
     } else {
         ContentMessage *c_msg = check_and_cast<ContentMessage*>(msg);
         if (msg->isName("byte_sent")) {
-            totBytes += c_msg->getContent();
-            currentBytes += c_msg->getContent();
+            // to compute the average throughput of the system
+            emit(throughputSignal, (c_msg->getContent() / (double) par("timeframe_duration")));
         } else if (msg->isName("time_frame_counter")) {
+            // to compute the average waiting time (in time frames) of each terminal
             emit(waitingTimeFrameSignal, c_msg->getContent());
         } else if (msg->isName("B")) {
             int B = c_msg->getContent();
@@ -58,6 +42,7 @@ void Oracle::handleMessage(cMessage *msg) {
         } else if (msg->isName("queued_bytes")) {
             exceed_m++;
         } else
+            // to compute the average queue length of each terminal
             emit(avgQLSignal, c_msg->getContent());
         delete c_msg;
     }
@@ -65,17 +50,16 @@ void Oracle::handleMessage(cMessage *msg) {
 
 void Oracle::finish() {
     double totTime = simTime().dbl();
-    emit(throughputSignal, totBytes / totTime);
 
     double totTimeFrame = totTime / (double) par("timeframe_duration");
 
     const char *bLabels[] = { "B_2", "B_4", "B_8", "B_16", "B_Minus1" };
 
-    // here we are associating at each value of B its respective counter
-    //
+    // to compute the total occurrencies of each B index per time frame
     for (int i = 0; i < 5; i++) {
         recordScalar(bLabels[i], b_values[i] / totTimeFrame);
     }
 
-    emit(exceedMSignal, exceed_m / totTimeFrame);
+    // to compute the number of terminals (not for single terminal) with queue > M per time frame
+    recordScalar("exceedM", exceed_m / totTimeFrame);
 }

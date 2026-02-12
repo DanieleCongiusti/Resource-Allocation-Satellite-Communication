@@ -35,17 +35,16 @@ struct scheduledMessage {
 
 class MessageList {
 private:
-    //this attribute identifies the list of content message that has to be sent once
-    //terminal has received a grant
+    //this attribute identifies the list of content messages that have to be sent once terminal has received a grant
     scheduledMessage *msg_list;
 
-    //added pointer to last element of the list, done for improving writing operations' performances
+    //added pointer to last element of the list
     scheduledMessage *last;
 
     //integer value used to count number of queued messages
     int qLength;
 
-    // bytes contained in queue
+    //bytes contained in queue
     double bytesQueue;
 
 public:

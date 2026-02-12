@@ -13,20 +13,13 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-// This class models the packet that terminal sends to ground station to ask for a grant and start the
-// communication
-
-//this kind of message doesn't need to be queued, because is the only one that terminal sends to
-//ask to be active during the time frame
-
-// declaration of cpacket with: B, gate_index, boolean grant
-
+// This class models the packet that terminals use to request B scheduling slots to the GS
 
 message ComMessage {
-    //parameter to allocate slots at ground station and tells me how much byte I have to send
+    //parameter to allocate slots at GS
     int B;
-    //parameter set by the terminal that represent the gate at satellite
+    //parameter set by the satellite to know on which gate to forward back to the terminal the answered request from GS (
     int gateIndex;
-    //parameter set by GS to grant communication permission to the terminal that has requested for 
+    //parameter set by GS to grant communication to the terminal that has requested 
     bool grant;
 }

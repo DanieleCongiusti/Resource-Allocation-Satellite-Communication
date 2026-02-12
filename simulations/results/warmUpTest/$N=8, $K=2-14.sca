@@ -1,8 +1,8 @@
 version 3
-run warmUpTest-14-20260130-16:43:18-93248
+run warmUpTest-14-20260211-10:18:52-3302
 attr configname warmUpTest
-attr datetime 20260130-16:43:18
-attr datetimef 20260130-164318
+attr datetime 20260211-10:18:52
+attr datetimef 20260211-101852
 attr experiment warmUpTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=8, $K=2"
@@ -10,7 +10,7 @@ attr iterationvarsd N=8/K=2
 attr iterationvarsf N=8,K=2-
 attr measurement "$N=8, $K=2"
 attr network System
-attr processid 93248
+attr processid 3302
 attr repetition 14
 attr replication #14
 attr resultdir results

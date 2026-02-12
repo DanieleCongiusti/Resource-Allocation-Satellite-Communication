@@ -18,15 +18,15 @@
 
 class ComMessage;
 /**
- * Class generated from <tt>Message/comMessage.msg:29</tt> by opp_msgtool.
+ * Class generated from <tt>Message/comMessage.msg:18</tt> by opp_msgtool.
  * <pre>
  * message ComMessage
  * {
- *     //parameter to allocate slots at ground station and tells me how much byte I have to send
+ *     //parameter to allocate slots at GS
  *     int B;
- *     //parameter set by the terminal that represent the gate at satellite
+ *     //parameter set by the satellite to know on which gate to forward back to the terminal the answered request from GS (
  *     int gateIndex;
- *     //parameter set by GS to grant communication permission to the terminal that has requested for 
+ *     //parameter set by GS to grant communication to the terminal that has requested 
  *     bool grant;
  * }
  * </pre>

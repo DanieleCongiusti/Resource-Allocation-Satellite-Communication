@@ -36,8 +36,9 @@ class Terminal : public cSimpleModule
     cMessage* t_tx = nullptr;
 
     // Fields for Data Collection
-    int byteSent = 0;
     int time_frame_counter = 0;
+
+    cModule *oracle = getParentModule()->getSubmodule("oracle");
 
   public:
     Terminal() = default;

@@ -8,33 +8,26 @@ package resource_allocator.modules;
 simple Oracle{
 
     parameters:
-        //timeframe duration
+        //time frame duration
         double timeframe_duration @unit(s) = 0.08s;
 
-
-		//signal for collecting values in order to retrieve the warmup-period
-		@signal[throughputWarmUp](type = double);
-		//signal for collecting values in order to retrieve throughput
+		// signal to collect data for computing throughput
 		@signal[throughput](type = double);
-		//signal for collecting values in order to retrieve AvgQueueLength
+		// signal to monitor the queue length
 		@signal[avgQueueLength](type = int);
-		//signal for collecting values in order to retrieve the number of time frame between 2 grants
+		// signal to measure the time interval between two consecutive grants
 		@signal[waitingTimeFrame](type = int);
-		//signal for collecting values in order to retrieve the queue length accumulated between 2 grants
-		@signal[accumulatedBytesGrant](type = int);
-		//signal for the number of time that msg queue exceeds M in a time frame
+		// signal to count how many times the msg queue exceeds M within a time frame
 		@signal[exceedM](type = double);
+		// signal to count the number of occurrencies of B index
+		@signal[bValue](type = int);
 		
-		//statistic for computing warmup period
-		@statistic[throughputWarmUpStat](source = "throughputWarmUp"; record = vector;);
-        //statistic for computing throughput
-		@statistic[throughputStat](source = "throughput"; record = last;);
-        //statistic for computing AvgQueueLength
+        // statistic for computing throughput
+		@statistic[throughputStat](source = "throughput"; record = mean, vector;);
+        // statistic for computing the average queue length
 		@statistic[AvgQLStat](source = "avgQueueLength"; record = mean, vector;);
-		//statistic for computing waitingTimeFrame
+		// statistic for computing waiting time frame
 		@statistic[avgWaitingTimeFrame](source = "waitingTimeFrame"; record = mean;);
-		//statistic for computing exceedM
-		@statistic[exceedM](source = "exceedM"; record = last;);
 
     gates:
         //gate that receives data from other nodes

@@ -8,7 +8,7 @@ simple Satellite
         //space for parameters
 
 	gates:
-	    // provide one input gate for each terminal
+	    //provide one input gate for each terminal
 	    inout 	s_iot[];
 	    //gate for GS communication
 	    inout   s_iogs;

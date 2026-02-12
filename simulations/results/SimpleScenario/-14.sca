@@ -1,0 +1,105 @@
+version 3
+run SimpleScenario-14-20260211-10:15:14-2986
+attr configname SimpleScenario
+attr datetime 20260211-10:15:14
+attr datetimef 20260211-101514
+attr experiment SimpleScenario
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network System
+attr processid 2986
+attr repetition 14
+attr replication #14
+attr resultdir results
+attr runnumber 14
+attr seedset 14
+config cmdenv-express-mode false
+config cmdenv-redirect-output false
+config cmdenv-stop-batch-on-error true
+config record-eventlog false
+config **.scalar-recording true
+config **.vector-recording false
+config sim-time-limit 5s
+config **.N 2
+config **.K 100
+config num-rngs 2*3
+config network System
+config sim-time-limit 20s
+config cmdenv-express-mode false
+config cmdenv-event-banners false
+config repeat 35
+config seed-set 14
+config *.t[*].a 4B
+config *.t[*].b 100B
+config *.t[*].mean_T 0.002s
+config *.t[*].rng-0 "ancestorIndex(0) * 3 + 0"
+config *.t[*].rng-1 "ancestorIndex(0) * 3 + 1"
+config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
+config output-vector-file results/SimpleScenario/-14.vec
+config output-scalar-file results/SimpleScenario/-14.sca
+
+par System.oracle typename "\"resource_allocator.modules.Oracle\""
+par System.oracle timeframe_duration 0.08s
+attr unit s
+scalar System.oracle B_2 0.32
+scalar System.oracle B_4 0.272
+scalar System.oracle B_8 0.336
+scalar System.oracle B_16 0.24
+scalar System.oracle B_Minus1 0.816
+scalar System.oracle exceedM:last 0.32
+attr "" ""
+attr recordingmode last
+attr source exceedM
+scalar System.oracle avgWaitingTimeFrame:mean 1.6986301369863
+attr "" ""
+attr recordingmode mean
+attr source waitingTimeFrame
+scalar System.oracle AvgQLStat:mean 31.112903225806
+attr "" ""
+attr recordingmode mean
+attr source avgQueueLength
+scalar System.oracle throughputStat:last 50658.8
+attr "" ""
+attr recordingmode last
+attr source throughput
+par System.gs typename "\"resource_allocator.modules.GS\""
+par System.gs scheduler_slots 64
+par System.gs terminal_counter 2
+par System.st typename "\"resource_allocator.modules.Satellite\""
+par System.t[0] typename "\"resource_allocator.modules.Terminal\""
+par System.t[0] timeFrame_duration 0.08s
+attr unit s
+par System.t[0] B "intuniform(1, 4, 0)"
+par System.t[0] K parent.K
+par System.t[0] a 4bytes
+attr unit bytes
+par System.t[0] b 100bytes
+attr unit bytes
+par System.t[0] mean_T 0.002s
+attr unit s
+par System.t[0] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[0] T "exponential(mean_T, 2)"
+attr unit s
+par System.t[1] typename "\"resource_allocator.modules.Terminal\""
+par System.t[1] timeFrame_duration 0.08s
+attr unit s
+par System.t[1] B "intuniform(1, 4, 0)"
+par System.t[1] K parent.K
+par System.t[1] a 4bytes
+attr unit bytes
+par System.t[1] b 100bytes
+attr unit bytes
+par System.t[1] mean_T 0.002s
+attr unit s
+par System.t[1] S "intuniform(a, b, 1)"
+attr unit bytes
+par System.t[1] T "exponential(mean_T, 2)"
+attr unit s
+par System typename "\"resource_allocator.simulations.System\""
+par System N 2
+par System K 100
+

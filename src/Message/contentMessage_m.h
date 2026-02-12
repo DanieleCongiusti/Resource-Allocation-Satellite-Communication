@@ -18,11 +18,11 @@
 
 class ContentMessage;
 /**
- * Class generated from <tt>Message/contentMessage.msg:22</tt> by opp_msgtool.
+ * Class generated from <tt>Message/contentMessage.msg:18</tt> by opp_msgtool.
  * <pre>
  * message ContentMessage
  * {
- *     //this is a field initialized only at runtime (depends on S from uniform distribution)
+ *     //field containing different types of data, i.e, packet size or statistics
  *     int content;
  * }
  * </pre>

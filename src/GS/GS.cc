@@ -34,22 +34,22 @@ GS::~GS() {
 void GS::initialize() {
     scheduler = par("scheduler_slots");
     terminal_counter = par("terminal_counter");
+    byte_received = 0;
 }
 
 void GS::handleMessage(cMessage *msg) {
 
-    // When a message with B arrives
+    // when a message with B arrives
     if (msg->isName("grant_request"))
     {
         handleComMessage(msg);
     }
-    else if (msg->isName("bytes")) // Message with S
+    else if (msg->isName("bytes"))
     {
         handleContMessage(msg);
     }
     else
     {
-        //EV_INFO << "Message: " << msg->getName() << endl;
         delete msg; 
         throw cRuntimeError("Unrecognized message type. Abort");
     }
@@ -58,9 +58,18 @@ void GS::handleMessage(cMessage *msg) {
 void GS::handleComMessage(cMessage *msg) {
     ComMessage *rcv_msg;
     ComMessage *send_msg;
-    // another terminal has sent baerer index value
+    // another terminal has sent bearer index value
     terminal_counter--;
     rcv_msg = check_and_cast<ComMessage*>(msg);
+
+    // send bytes accumulated in previous time frame (if exist)
+    if (byte_received > 0)
+    {
+        ContentMessage* byte = new ContentMessage("byte_sent");
+        byte->setContent(byte_received);
+        sendDirect(byte, 0, 0, oracle, "wirelessGate");
+        byte_received = 0;
+    }
 
     if (rcv_msg->getB() != -1) // Terminal is active
     {
@@ -72,7 +81,7 @@ void GS::handleComMessage(cMessage *msg) {
     }
 
     if (terminal_counter == 0) { // GS received all the B values
-        //Extract all messages and determine grant permission for each terminal
+        // extract all messages and determine grant permission for each terminal
         while (!rcv_B.empty()) {
             send_msg = rcv_B.top();
             int B = send_msg->getB();
@@ -85,7 +94,7 @@ void GS::handleComMessage(cMessage *msg) {
             send(send_msg, "gs_io$o");
             rcv_B.pop();
         }
-        //update counters for next operations
+        // update counters for next operations
         terminal_counter = par("terminal_counter");
         scheduler = par("scheduler_slots");
     }
@@ -94,6 +103,6 @@ void GS::handleComMessage(cMessage *msg) {
 void GS::handleContMessage(cMessage *msg) {
     ContentMessage *rcv_bytes;
     rcv_bytes = check_and_cast<ContentMessage*>(msg);
-    //EV_INFO << "Received message of size " << rcv_bytes->getSize() << endl;
+    byte_received += rcv_bytes->getContent();
     delete rcv_bytes;
 }

@@ -13,13 +13,9 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-//This class models the type of message that contains bytes of content that 
-// a terminal want to send to the GS
-
-// declaration of cpacket with S bytes
-
+//This type of message is used to transmit general data (i.e., packet size or statistics) across the network
 
 message ContentMessage {
-    //this is a field initialized only at runtime (depends on S from uniform distribution)
+    //field containing different types of data, i.e, packet size or statistics
     int content;
 }

@@ -9,7 +9,7 @@ package resource_allocator.modules;
 simple Terminal
 {
     parameters:
-        // TimeFrame durations
+        // Time Frame durations
         double timeFrame_duration @unit(s) = 0.08s;
 
         // To generate Grant Request msg
@@ -19,7 +19,7 @@ simple Terminal
         // To generate packet with random S every random T seconds
 		int a @unit(bytes);			// lower bound of uniform								-> *to be defined in .ini file*
         int b @unit(bytes);			// upper bound of uniform								-> *to be defined in .ini file*
-        double mean_T @unit(s);	// mean value of the exponential distribution for T 	-> *to be defined in .ini file*
+        double mean_T @unit(s);		// mean value of the exponential distribution for T 	-> *to be defined in .ini file*
 
         volatile int S @unit(bytes) = intuniform(a, b, 1);       	// bytes per packet
         volatile double T @unit(s) = exponential(mean_T, 2); 		// inter-arrival time

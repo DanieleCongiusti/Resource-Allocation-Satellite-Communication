@@ -24,32 +24,30 @@ Define_Module(Satellite);
 
 void Satellite::initialize()
 {
-        //NOTHING TO DO 
+        // NOTHING TO DO
 }
 
 void Satellite::handleMessage(cMessage *msg)
 {
-    //check if message comes from GS
+    // check if message comes from GS
     if(strcmp(msg->getArrivalGate()->getName(),"s_iogs$i")==0){
-        //check for destination terminal
-        //check the gateIndex if it is comMessage
+        // check for destination terminal by the gate index
         ComMessage *comMsg = check_and_cast<ComMessage*>(msg);
-        //EV << "Sending to terminal index " << comMsg->getGateIndex()
-           //<< " (max: " << gateSize("s_iot$o") << ")" << endl;
         send(comMsg,"s_iot$o",comMsg->getGateIndex());
     }
     else{
-        //message from a terminal
-        //need to insert arrival gate
+        // message from a terminal
+        // need to insert input gate index
         if(msg->isName("grant_request")){
             ComMessage *comMsg=check_and_cast<ComMessage*>(msg);
             comMsg->setGateIndex(msg->getArrivalGate()->getIndex());
             send(comMsg,"s_iogs$o");
         }
         else if ("bytes")
-            send(msg,"s_iogs$o"); //we're dealing with a ContMessage that terminal is sending to GS
+            send(msg,"s_iogs$o");
         else
-            delete msg; //messages not recognized are discarded
+            // messages not recognized are discarded
+            delete msg;
     }
 
 }

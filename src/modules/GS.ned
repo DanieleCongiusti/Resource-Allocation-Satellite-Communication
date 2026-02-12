@@ -9,11 +9,9 @@ package resource_allocator.modules;
 simple GS
 {
     parameters:
-        //space for parameters
         int scheduler_slots = 64;
         int terminal_counter;
 
     gates:
         inout gs_io;
-
 }
