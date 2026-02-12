@@ -99,6 +99,7 @@ void Terminal::handleMessage(cMessage *msg) {
             cancelEvent(t_tx);
 
         // Data Collection: Send #qLength from previous Time Frame to the Oracle
+        cModule *oracle = getParentModule()->getSubmodule("oracle");
         ContentMessage* q_len = new ContentMessage("q_len");
         q_len->setContent(msg_queue->getQLength());
         sendDirect(q_len, 0, 0, oracle, "wirelessGate");
@@ -125,6 +126,7 @@ void Terminal::handleMessage(cMessage *msg) {
         // Setting Grant to true so that during the  
         G = true;
 
+        cModule *oracle = getParentModule()->getSubmodule("oracle");
         //computed number of time frames terminal has waited before transmission
         ContentMessage *tf_count = new ContentMessage("time_frame_counter");
         tf_count->setContent(time_frame_counter);

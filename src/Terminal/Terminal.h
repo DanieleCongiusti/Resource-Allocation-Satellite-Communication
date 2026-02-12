@@ -38,8 +38,6 @@ class Terminal : public cSimpleModule
     // Fields for Data Collection
     int time_frame_counter = 0;
 
-    cModule *oracle = getParentModule()->getSubmodule("oracle");
-
   public:
     Terminal() = default;
     virtual ~Terminal();

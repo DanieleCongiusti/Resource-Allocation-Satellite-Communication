@@ -52,8 +52,6 @@ private:
     // scheduler
     priority_queue<ComMessage*, vector<ComMessage*>, Comp> rcv_B;
 
-    cModule *oracle = getParentModule()->getSubmodule("oracle");
-
 public: 
     virtual ~GS(); 
 

@@ -65,6 +65,7 @@ void GS::handleComMessage(cMessage *msg) {
     // send bytes accumulated in previous time frame (if exist)
     if (byte_received > 0)
     {
+        cModule *oracle = getParentModule()->getSubmodule("oracle");
         ContentMessage* byte = new ContentMessage("byte_sent");
         byte->setContent(byte_received);
         sendDirect(byte, 0, 0, oracle, "wirelessGate");
