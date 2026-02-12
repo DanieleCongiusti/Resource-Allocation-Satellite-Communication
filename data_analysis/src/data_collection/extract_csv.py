@@ -91,7 +91,7 @@ def main():
                                 # --- MATCHING ---
                                 
                                 # T -> Throughput
-                                if "throughputStat:last" in clean_name:
+                                if "throughputStat:mean" in clean_name:
                                     data_store[config_key]['Throughput'].append(stat_value)
 
                                 # B_* -> B_*
@@ -115,7 +115,7 @@ def main():
                                     data_store[config_key]['avgWaitingTimeFrame'].append(stat_value)
                                 
                                  # M -> Exceed M
-                                elif "exceedM:last" in clean_name:
+                                elif "exceedM" in clean_name:
                                     data_store[config_key]['exceedM'].append(stat_value)
                                 
                                     
@@ -136,7 +136,7 @@ def main():
             path = os.path.join(OUTPUT_DIRECTORY, f"T_{n}_{k}.csv")
             with open(path, 'w', newline='') as csvfile:
                 writer = csv.writer(csvfile, delimiter=';')
-                writer.writerow(['ThroughputStat:last']) 
+                writer.writerow(['ThroughputStat:mean']) 
                 for val in stats['Throughput']:
                     writer.writerow([val.replace('.', ',')])
             output_count += 1
@@ -212,12 +212,12 @@ def main():
                     writer.writerow([val.replace('.', ',')])
             output_count += 1
 
-        # M_N_K.csv -> Header: exceedM:last
+        # M_N_K.csv -> Header: exceedM
         if stats['exceedM']:
             path = os.path.join(OUTPUT_DIRECTORY, f"M_{n}_{k}.csv")
             with open(path, 'w', newline='') as csvfile:
                 writer = csv.writer(csvfile, delimiter=';')
-                writer.writerow(['exceedM:last'])
+                writer.writerow(['exceedM'])
                 for val in stats['exceedM']:
                     writer.writerow([val.replace('.', ',')])
             output_count += 1

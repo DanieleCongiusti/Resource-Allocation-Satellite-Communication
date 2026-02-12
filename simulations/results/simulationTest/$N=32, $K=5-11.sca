@@ -1,8 +1,8 @@
 version 3
-run simulationTest-816-20260202-18:11:38-25050
+run simulationTest-816-20260212-12:21:57-21566
 attr configname simulationTest
-attr datetime 20260202-18:11:38
-attr datetimef 20260202-181138
+attr datetime 20260212-12:21:57
+attr datetimef 20260212-122157
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=32, $K=5"
@@ -10,7 +10,7 @@ attr iterationvarsd N=32/K=5
 attr iterationvarsf N=32,K=5-
 attr measurement "$N=32, $K=5"
 attr network System
-attr processid 25050
+attr processid 21566
 attr repetition 11
 attr replication #11
 attr resultdir results
@@ -26,13 +26,11 @@ config **.scalar-recording true
 config **.vector-recording false
 config extends warmUpTest
 config warmup-period 10s
-config repeat 35
-config sim-time-limit 30s
 config **.N 32
 config **.K 5
 config num-rngs 32*3
 config network System
-config sim-time-limit 20s
+config sim-time-limit 30s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
 config repeat 35
@@ -54,10 +52,7 @@ scalar System.oracle B_4 0
 scalar System.oracle B_8 0.042666666666667
 scalar System.oracle B_16 3.9786666666667
 scalar System.oracle B_Minus1 1.16
-scalar System.oracle exceedM:last 2.68
-attr "" ""
-attr recordingmode last
-attr source exceedM
+scalar System.oracle exceedM 2.68
 scalar System.oracle avgWaitingTimeFrame:mean 7.5054509415263
 attr "" ""
 attr recordingmode mean
@@ -66,9 +61,9 @@ scalar System.oracle AvgQLStat:mean 3418.1027141434
 attr "" ""
 attr recordingmode mean
 attr source avgQueueLength
-scalar System.oracle throughputStat:last 546491.66666667
+scalar System.oracle throughputStat:mean 550988.9940239
 attr "" ""
-attr recordingmode last
+attr recordingmode mean
 attr source throughput
 par System.gs typename "\"resource_allocator.modules.GS\""
 par System.gs scheduler_slots 64

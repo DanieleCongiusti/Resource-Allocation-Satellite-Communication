@@ -1,9 +1,9 @@
-file 1595 1770052404                                            
+file 1540 1770895433                                            
 version 3
-run simulationTest-955-20260202-18:13:23-25279
+run simulationTest-955-20260212-12:23:52-21757
 attr configname simulationTest
-attr datetime 20260202-18:13:23
-attr datetimef 20260202-181323
+attr datetime 20260212-12:23:52
+attr datetimef 20260212-122352
 attr experiment simulationTest
 attr inifile omnetpp.ini
 attr iterationvars "$N=32, $K=1000"
@@ -11,7 +11,7 @@ attr iterationvarsd N=32/K=1000
 attr iterationvarsf N=32,K=1000-
 attr measurement "$N=32, $K=1000"
 attr network System
-attr processid 25279
+attr processid 21757
 attr repetition 10
 attr replication #10
 attr resultdir results
@@ -27,13 +27,11 @@ config **.scalar-recording true
 config **.vector-recording false
 config extends warmUpTest
 config warmup-period 10s
-config repeat 35
-config sim-time-limit 30s
 config **.N 32
 config **.K 1000
 config num-rngs 32*3
 config network System
-config sim-time-limit 20s
+config sim-time-limit 30s
 config cmdenv-express-mode false
 config cmdenv-event-banners false
 config repeat 35
@@ -47,10 +45,10 @@ config *.t[*].rng-2 "ancestorIndex(0) * 3 + 2"
 config output-vector-file "results/simulationTest/$N=32, $K=1000-10.vec"
 config output-scalar-file "results/simulationTest/$N=32, $K=1000-10.sca"
 
-vector 0 System.oracle throughputWarmUpStat:vector ETV
+vector 0 System.oracle throughputStat:vector ETV
 attr "" ""
 attr recordingmode vector
-attr source throughputWarmUp
+attr source throughput
 vector 1 System.oracle AvgQLStat:vector ETV
 attr "" ""
 attr recordingmode vector
